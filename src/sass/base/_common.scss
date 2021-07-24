@@ -31,11 +31,10 @@ img {
 }
 
 body {
-  //   font-family: var(--text-font);
-  //   color: var(--text-color-dark);
+  font-family: var(--text-main-font);
+  color: var(--text-light-color);
   font-weight: 500;
   font-size: 12px;
-  letter-spacing: 0.04em;
 }
 
 // body.modal-open {
@@ -48,10 +47,6 @@ body {
 
 .list {
   list-style-type: none;
-}
-
-.address {
-  font-style: normal;
 }
 
 button {

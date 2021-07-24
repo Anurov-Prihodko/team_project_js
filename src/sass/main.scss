@@ -5,6 +5,20 @@
 
 // BASE тут базовый сброс и можно добавить стили контейнера
 @import './base/common';
+@import './base/container';
+
+// COMPONENTS тут общие стили секций/блоков
+@import './components/btn_for_library';
+@import './components/logo';
+@import './components/modal_btn';
+
+// LAYOUT тут стили секций/блоков
+@import './layout/about_us_modal';
+@import './layout/footer';
+@import './layout/pagination';
+@import './layout/modal_one_film';
+@import './layout/gallery';
+@import './layout/main_header';
 
 // UTILS тут переменные и visually-hidden variables
 @import './utils/variables';
