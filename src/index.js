@@ -8,7 +8,7 @@ import btnForLibrary from './templates/btn_for_library.hbs';
 import inputHeader from './templates/input_header.hbs';
 import severalFilmCard from './templates/several_film_card.hbs';
 import oneFilmCard from './templates/one_film_card.hbs';
-import FilmotekaApiServise from './js/api_service';
+import filmotekaApiServise from './js/api_service';
 // import NOTE from './js/notifications';
 // import refs from './js/refs';
 
