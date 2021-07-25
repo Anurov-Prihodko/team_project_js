@@ -52,7 +52,8 @@
   }
 }
 
-.site-nav-item {
+.site-nav-item,
+.logo {
   font-family: var(--text-main-font);
   font-style: normal;
   font-weight: 500;
@@ -63,16 +64,54 @@
   text-align: center;
   text-transform: uppercase;
   color: var(--the-lightest-text-color);
-
+}
+.site-nav-item {
   &:not(:last-child) {
     margin-right: 39px;
   }
 }
+.site-nav-link {
+  display: inline-block;
+  padding: 4px 0;
+  position: relative;
+}
+// Подчеркивание текущей ссылки
+.site-nav-link.current::after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: block;
+  content: '';
+  width: 100%;
+  height: 4px;
+  background-color: var(--accent-color);
+  border-radius: 1px;
+  animation-name: scale;
+  animation-duration: 250ms;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  transform-origin: center left;
+}
 
+@keyframes scale {
+  0% {
+    transform: scaleX(0);
+  }
+
+  100% {
+    transform: scaleX(1);
+  }
+}
+.logo {
+  text-decoration: none;
+  font-size: 30px;
+  line-height: 1.172;
+}
 .logo-title {
   @media screen and (max-width: 767px) {
     display: none;
   }
+  margin-left: 10px;
 }
 
 .container-navigation {
@@ -84,6 +123,7 @@
 }
 
 .site-nav {
+  position: relative;
   display: flex;
 }
 
@@ -92,13 +132,13 @@
   margin: 0 auto;
   margin-bottom: 22px;
   width: 280px;
-
-  //   @media screen and (min-width: $tablet) {
-  //     width: 336px;
-  //   }
+  @media screen and(min-width: 768px) {
+    width: 336px;
+  }
 }
 .search-input {
-  width: 100%;
+  width: 280px;
+  height: 20px;
   padding: 4px;
   outline: none;
   background-color: transparent;
@@ -108,6 +148,7 @@
   color: var(--the-lightest-text-color);
 
   &::placeholder {
+    font-weight: normal;
     color: var(--the-lightest-text-color);
     opacity: 1;
     transition: opacity var(--transition-time) var(--time-function);
@@ -115,6 +156,10 @@
 
   &:focus::placeholder {
     opacity: 0;
+  }
+
+  @media screen and(min-width: 768px) {
+    width: 336px;
   }
 }
 .search-btn {
@@ -131,4 +176,12 @@
   &:focus {
     transform: scale(1.1);
   }
+}
+.notification {
+  width: 280px;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 1.17;
+  font-weight: 400;
+  color: var(--alert-color);
 }
