@@ -7,13 +7,19 @@ line-height: 1.33;
 text-align: center;
 text-transform: uppercase;
 
-color: #FFFFFF;
+color: var(--the-lightest-text-color);
 background-color: none;    
 width: 136px;
 height: 44px;
-border: 1px solid #FFFFFF;
+border: 1px solid var(--the-lightest-text-color);
 box-sizing: border-box;
 border-radius: 5px;
+outline: none;
+&:focus,
+&:hover{
+outline: none;
+border-color: var(--accent-color);
+}
 
 @media screen and (min-width: 320px) {
     width: 130px;
@@ -31,9 +37,15 @@ border-radius: 5px;
   }
 }
 .Active{
-     background-color: #FF6B01;
-     border-color: #FF6B01;
-   
+     background-color: var(--accent-color);
+     border-color: var(--accent-color);
+     
+     
+   &:hover,
+   &:focus{
+        border-color: var(--the-lightest-text-color);
+        
+   }
 }
 .btn-lib-list{
      display: flex;
