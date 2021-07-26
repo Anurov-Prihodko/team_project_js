@@ -5,48 +5,42 @@ const API_KEY = '980aef4f6602bffaf56ce8d4b0805479';
 
 export default class FilmotekaApiServise {
   constructor() {
-    this.filmId = '';
-    this.keyword = '';
     this.page = 1;
+    this.keyword = '';
+    // this.filmId = '';
   }
   fetchTrendingMovie() {
-    return fetch(`${BASE_URL}trending/movie/week?api_key=${API_KEY}&page=${this.page}`)
-      .then(response => response.json())
-      .then(query => {
-        this.page += 1;
-        return query;
-      });
+    return fetch(`${BASE_URL}trending/movie/week?api_key=${API_KEY}`).then(response =>
+      response.json(),
+    );
   }
   fetchMovieByKeyword(keyword) {
-    return fetch(
-      `${BASE_URL}search/movie?api_key=${API_KEY}&query=${this.keyword}&page=${this.page}`,
-    )
+    return fetch(`${BASE_URL}search/movie?api_key=${API_KEY}&query=${keyword}&page=${this.page}`)
       .then(response => response.json())
-      .then(query => {
+      .then(value => {
         this.page += 1;
-        return query;
+        return value;
       });
   }
   fetchMovieById(filmId) {
-    return fetch(`${BASE_URL}movie/${this.filmId}?api_key=${API_KEY}`).then(response =>
-      response.json(),
-    );
+    return fetch(`${BASE_URL}movie/${filmId}?api_key=${API_KEY}`).then(response => response.json());
   }
 
   resetPage() {
     this.page = 1;
   }
 
-  get query() {
+  get value() {
     return this.keyword;
   }
-  set query(newKeyword) {
+  set value(newKeyword) {
     this.keyword = newKeyword;
   }
-  get filmId() {
-    return this.filmId;
-  }
-  set filmId(currentId) {
-    this.filmId = currentId;
-  }
+  // get query() {
+  //   return this.filmId;
+  // }
+  // set query(newId) {
+  //   this.filmId = newId;
+  // }
+  //
 }
