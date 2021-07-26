@@ -8,6 +8,8 @@ import btnForLibrary from './templates/btn_for_library.hbs';
 import inputHeader from './templates/input_header.hbs';
 import severalFilmCard from './templates/several_film_card.hbs';
 import oneFilmCard from './templates/one_film_card.hbs';
+import toggleSwitch from './js/toggleSwitch.js';
+
 
 
 // import API from './js/api_service';
