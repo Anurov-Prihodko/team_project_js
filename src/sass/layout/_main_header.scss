@@ -71,6 +71,12 @@
   }
 }
 .site-nav-link {
+  &:hover {
+    cursor: pointer;
+    color: inherit;
+    text-decoration: inherit;
+  }
+
   display: inline-block;
   padding: 4px 0;
   position: relative;
