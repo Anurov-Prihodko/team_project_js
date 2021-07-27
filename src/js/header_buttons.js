@@ -23,12 +23,12 @@ function onClickHome() {
 }
 
 function onClickLibBtnWatched() {
-    watchedButton.classList.add("Active");
-    queueButton.classList.remove("Active");
+    watchedButton.classList.add("active");
+    queueButton.classList.remove("active");
 }
 function onClickLibBtnQueue() {
-    watchedButton.classList.remove("Active");
-    queueButton.classList.add("Active");
+    watchedButton.classList.remove("active");
+    queueButton.classList.add("active");
 }
 libButton.addEventListener('click', onClickLib)
 homeButton.addEventListener('click', onClickHome)
