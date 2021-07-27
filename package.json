@@ -27,6 +27,8 @@
   },
   "dependencies": {
     "bootstrap.native": "^4.0.3",
-    "lodash.debounce": "^4.0.8"
+    "lodash.debounce": "^4.0.8",
+    "toaster-js": "^2.2.3",
+    "toastr": "^2.1.4"
   }
 }
