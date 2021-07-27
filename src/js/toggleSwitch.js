@@ -1,39 +1,34 @@
 // Переключатель темы
 
 const Theme = {
-    LIGHT: 'light-theme',
-    DARK: 'dark-theme',
+  LIGHT: 'light-theme',
+  DARK: 'dark-theme',
 };
-const {LIGHT, DARK} = Theme;
+const { LIGHT, DARK } = Theme;
 
 const toggleSwitch = document.querySelector('.theme-switch__toggle');
 const themeClassContainer = document.body;
 
-
-themeClassContainer.classList.add(localStorage.getItem('theme') === null ? 
-Theme.LIGHT : localStorage.getItem('theme'));
-if (localStorage.getItem('theme') === Theme.DARK){
-    toggleSwitch.checked = true
-};
-
-
-
-function switchTheme(e) {
-    if (e.target.checked) {
-        themeClassContainer.classList.add(Theme.DARK);
-        themeClassContainer.classList.remove(Theme.LIGHT);
-        localStorage.setItem('theme', Theme.DARK);
-        
-         
-    }
-    else {themeClassContainer.classList.add(Theme.LIGHT);
-        themeClassContainer.classList.remove(Theme.DARK);
-          localStorage.setItem('theme', Theme.LIGHT);
-        }       
+themeClassContainer.classList.add(
+  localStorage.getItem('theme') === null ? Theme.LIGHT : localStorage.getItem('theme'),
+);
+if (localStorage.getItem('theme') === Theme.DARK) {
+  toggleSwitch.checked = true;
 }
 
-toggleSwitch.addEventListener('change', switchTheme, false );
+function switchTheme(e) {
+  if (e.target.checked) {
+    themeClassContainer.classList.add(Theme.DARK);
+    themeClassContainer.classList.remove(Theme.LIGHT);
+    localStorage.setItem('theme', Theme.DARK);
+  } else {
+    themeClassContainer.classList.add(Theme.LIGHT);
+    themeClassContainer.classList.remove(Theme.DARK);
+    localStorage.setItem('theme', Theme.LIGHT);
+  }
+}
 
+toggleSwitch.addEventListener('change', switchTheme, false);
 
 // Надоедалка
 
@@ -59,11 +54,10 @@ function openModal() {
   if (promptCounter === MAX_PROMPT_ATTEMPTS || hasSubscribed) {
     console.log('Максимальное кол-во надоеданий или подписался');
     return;
-    
   }
 
   setTimeout(() => {
-    console.log('Открываем надоедалку');
+    // console.log('Открываем надоедалку');
     modal.show();
     promptCounter += 1;
   }, PROMPT_DELAY);
@@ -72,5 +66,5 @@ function openModal() {
 function onSubscribeBtnClick() {
   hasSubscribed = true;
   //   modal.hide();
- modalJoke.show();
+  modalJoke.show();
 }
