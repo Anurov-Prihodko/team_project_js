@@ -9,8 +9,11 @@ import inputHeader from './templates/input_header.hbs';
 import severalFilmCard from './templates/several_film_card.hbs';
 import oneFilmCard from './templates/one_film_card.hbs';
 import { fetchMovieByKeyword, fetchMovieById, fetchTrendingMovie } from './js/api_service';
+import toggleSwitch from './js/toggleSwitch.js';
+import headerButtons from './js/header_buttons.js'
+
 // import NOTE from './js/notifications';
-// import refs from './js/refs';
+
 
 //вызовы фетчей в консоль
 // fetchMovieById('496450').then(films => console.log(films));
