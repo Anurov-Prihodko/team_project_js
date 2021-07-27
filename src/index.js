@@ -8,10 +8,15 @@ import btnForLibrary from './templates/btn_for_library.hbs';
 import inputHeader from './templates/input_header.hbs';
 import severalFilmCard from './templates/several_film_card.hbs';
 import oneFilmCard from './templates/one_film_card.hbs';
-import filmotekaApiServise from './js/api_service';
+import { fetchMovieByKeyword, fetchMovieById, fetchTrendingMovie } from './js/api_service';
 // import NOTE from './js/notifications';
 // import refs from './js/refs';
 
+//вызовы фетчей в консоль
+// fetchMovieById('496450').then(films => console.log(films));
+// fetchMovieByKeyword('cat').then(films => console.log(films));
+// fetchTrendingMovie().then(films => console.log(films));
+//
 // === GALLERY BLOCK
 
 // === END GALLERY BLOCK
