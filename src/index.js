@@ -11,6 +11,7 @@ import oneFilmCard from './templates/one_film_card.hbs';
 import { fetchMovieByKeyword, fetchMovieById, fetchTrendingMovie } from './js/api_service';
 import toggleSwitch from './js/toggleSwitch.js';
 import headerButtons from './js/header_buttons.js';
+import * as ourTeam from './js/our-team'
 // import NOTE from './js/notifications';
 
 //вызовы фетчей в консоль

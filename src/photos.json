@@ -1,0 +1,68 @@
+[
+    {
+        "name": "Aleksey Anurov-Prihodko",
+        "image": "./images/team-photos/Aleksei.jpg",
+        "desc": "Project structure, technical support, json",
+        "role": "Team Lead"
+    },
+        {
+        "name": "Kateryna Burlaka",
+        "image": "./images/team-photos/Kateryna.jpg",
+        "desc": "CSS variables, organizational support",
+        "role": "Scrum Master"
+    },
+    {
+        "name": "Daria Valitskaya",
+        "image": "./images/team-photos/Daria.jpg",
+        "desc": "API service, fetch functions",
+        "role": "Developer"
+    },
+    {
+        "name": "Elena Tsapliuk",
+        "image": "./images/team-photos/woman.jpg",
+        "desc": "Header-main, notifications",
+        "role": "Developer"
+    },
+    {
+        "name": "Evgeniy Stoyan",
+        "image": "./images/team-photos/man.jpg",
+        "desc": "Gallery",
+        "role": "Developer"
+    },
+    {
+        "name": "Julia Gordienko",
+        "image": "./images/team-photos/woman.jpg",
+        "desc": "Local Storage, add to Watched, add to queue",
+        "role": "Developer"
+    },
+    {
+        "name": "Mark Titan",
+        "image": "./images/team-photos/man.jpg",
+        "desc": "Pagination",
+        "role": "Developer"
+    },
+    {
+        "name": "Rostyslav Dubinin",
+        "image": "./images/team-photos/man.jpg",
+        "desc": "Fiches, theme switcher, annoying msg",
+        "role": "Developer"
+    },
+    {
+        "name": "Sergii Yastremskyi",
+        "image": "./images/team-photos/man.jpg",
+        "desc": "Library buttons, render buttons function",
+        "role": "Developer"
+    },
+    {
+        "name": "Vitalia Milaeva",
+        "image": "./images/team-photos/woman.jpg",
+        "desc": "modal-film, remove/delete buttons",
+        "role": "Developer"
+    },
+    {
+        "name": "Aleksandr Tsyhankov",
+        "image": "./images/team-photos/Aleksandr.jpg",
+        "desc": "Footer, Our team modal",
+        "role": "Developer"
+    }
+]
