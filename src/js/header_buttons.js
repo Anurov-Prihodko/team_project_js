@@ -11,19 +11,26 @@ function onClickLib() {
     btnList.classList.remove("visually-hidden");
     libButton.classList.add("current");
     homeButton.classList.remove("current");
+    headerDom.classList.add('lib-header');
 }
 function onClickHome() {
    searchInput.classList.toggle("visually-hidden");
     btnList.classList.toggle("visually-hidden");
     libButton.classList.remove("current");
     homeButton.classList.add("current");
+     headerDom.classList.remove('lib-header');
+
 }
 
-function onClickLibBtn() {
-    watchedButton.classList.toggle("Active");
-    queueButton.classList.toggle("Active");
+function onClickLibBtnWatched() {
+    watchedButton.classList.add("Active");
+    queueButton.classList.remove("Active");
+}
+function onClickLibBtnQueue() {
+    watchedButton.classList.remove("Active");
+    queueButton.classList.add("Active");
 }
 libButton.addEventListener('click', onClickLib)
 homeButton.addEventListener('click', onClickHome)
-watchedButton.addEventListener('click', onClickLibBtn)
-queueButton.addEventListener('click', onClickLibBtn)
+watchedButton.addEventListener('click', onClickLibBtnWatched)
+queueButton.addEventListener('click', onClickLibBtnQueue)

@@ -37,12 +37,16 @@ border-color: var(--accent-color);
   }
 }
 .Active{
+     -webkit-transition: background-color 0.2s ease-in-out;
+transition: background-color 0.2s ease-in-out;
      background-color: var(--accent-color);
      border-color: var(--accent-color);
      
+  
      
    &:hover,
    &:focus{
+       
         border-color: var(--the-lightest-text-color);
         
    }
