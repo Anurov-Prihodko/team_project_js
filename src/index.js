@@ -2,7 +2,7 @@
 import './sass/main.scss';
 let debounce = require('lodash.debounce');
 
-import genres from './genres.json';
+// import genres from './genres.json';
 import refs from './js/refs';
 
 import btnForLibrary from './templates/btn_for_library.hbs';
@@ -14,35 +14,35 @@ import { fetchMovieByKeyword, fetchMovieById, fetchTrendingMovie } from './js/ap
 import toggleSwitch from './js/toggleSwitch.js';
 import headerButtons from './js/header_buttons.js';
 import * as ourTeam from './js/our-team';
-// import NOTE from './js/notifications';
+import { noResults } from './js/notifications';
 
 // Уведомление об ошибке (pnotify)
-import '@pnotify/core/dist/BrightTheme.css';
-import { error } from '@pnotify/core';
-import '@pnotify/core/dist/PNotify.css';
-
-// Функция рендеринга галереи
-function makeCardTrendingMovie(films) {
-  const filmCards = galleryTpl(films);
-  refs.cardContainer.insertAdjacentHTML('beforeend', filmCards);
-  // refs.cardContainer.innerHTML = filmCards;
-}
-
-fetchTrendingMovie().then(makeCardTrendingMovie).catch(errorMessage);
-
-function errorMessage() {
-  error({
-    text: 'ERROR 404 NOT FOUND',
-    delay: 5000,
-  });
-}
+// import '@pnotify/core/dist/BrightTheme.css';
+// import { error } from '@pnotify/core';
+// import '@pnotify/core/dist/PNotify.css';
 
 //вызовы фетчей в консоль
 // fetchMovieById('496450').then(films => console.log(films));
 // fetchMovieByKeyword('cat').then(films => console.log(films));
 // fetchTrendingMovie().then(films => console.log(films));
 //
-// === GALLERY BLOCK
+// === GALLERY BLOCK === Функция рендеринга галереи
+function makeCardTrendingMovie(films) {
+  const filmCards = galleryTpl(films);
+  refs.cardContainer.insertAdjacentHTML('beforeend', filmCards);
+  // refs.cardContainer.innerHTML = filmCards;
+}
+
+fetchTrendingMovie().then(makeCardTrendingMovie).catch(noResults);
+
+// noResults(); ВЫЗЫВАЕТ НОТУ О ОШИБКЕ
+
+// function errorMessage() {
+//   error({
+//     text: 'ERROR 404 NOT FOUND',
+//     delay: 5000,
+//   });
+// }
 
 // === END GALLERY BLOCK
 
