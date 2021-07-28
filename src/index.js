@@ -3,6 +3,7 @@ import './sass/main.scss';
 let debounce = require('lodash.debounce');
 
 import genres from './genres.json';
+import refs from './js/refs';
 
 import btnForLibrary from './templates/btn_for_library.hbs';
 import inputHeader from './templates/input_header.hbs';
@@ -23,7 +24,8 @@ import '@pnotify/core/dist/PNotify.css';
 // Функция рендеринга галереи
 function makeCardTrendingMovie(films) {
   const filmCards = galleryTpl(films);
-  refs.cardContainer.innerHTML = filmCards;
+  refs.cardContainer.insertAdjacentHTML('beforeend', filmCards);
+  // refs.cardContainer.innerHTML = filmCards;
 }
 
 fetchTrendingMovie().then(makeCardTrendingMovie).catch(errorMessage);
@@ -34,10 +36,6 @@ function errorMessage() {
     delay: 5000,
   });
 }
-
-const refs = {
-  cardContainer: document.querySelector('.movie-gallery-list'),
-};
 
 //вызовы фетчей в консоль
 // fetchMovieById('496450').then(films => console.log(films));

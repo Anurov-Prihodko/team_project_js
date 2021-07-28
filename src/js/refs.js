@@ -19,5 +19,6 @@ const refs = {
   linkToOurTeam: document.querySelector('.about-us-link'),
   backdrop: document.querySelector('.backdrop-our-team'),
   ourTeamList: document.querySelector('.our-team-list'),
+  cardContainer: document.querySelector('.movie-gallery-list'),
 };
 export default refs;
