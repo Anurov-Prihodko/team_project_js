@@ -223,4 +223,22 @@ line-height: 1.188;
   }
 } 
 
+//   Плавающая кнопка «наверх»
+
+.footer {
+  position: relative;
+}
+
+#scrollToTopBtn {
+  
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 48px;
+  width: 48px;
+  position: absolute;
+  bottom: 70px;
+  right: 15px;
+}
 
