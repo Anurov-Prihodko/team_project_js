@@ -33,7 +33,34 @@ fetchTrendingMovie().then(makeCardTrendingMovie).catch(noResults);
 // noResults(); ВЫЗЫВАЕТ НОТУ О ОШИБКЕ
 
 // === END GALLERY BLOCK
+// SEARCH MOVIE
+refs.searchInput.addEventListener('submit', onSearch);
 
+// function onSearch(event) {
+//   event.preventDefault();
+//   console.log(event.currentTarget.query.value);
+//   console.log(fetchMovieByKeyword(event.currentTarget.query.value));
+// }
+function onSearch(e) {
+  e.preventDefault();
+  const form = e.currentTarget;
+  const searchKeyword = form.elements.query.value;
+  console.log(searchKeyword);
+  if (!searchKeyword) {
+    refs.notification.textContent =
+      'Search result not successfull. Enter correct movie name and try again';
+    return;
+  }
+  if (searchKeyword) {
+    refs.cardContainer.innerHTML = '';
+    fetchMovieByKeyword(searchKeyword).then(films => {
+      if (searchKeyword !== '') {
+        makeCardTrendingMovie(films);
+      }
+    });
+  }
+}
+// fetchMovieByKeyword('cat').then(films => console.log(films));
 // === PAGINATION BLOCK
 
 // === END PAGINATION BLOCK
