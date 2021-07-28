@@ -33,44 +33,44 @@ toggleSwitch.addEventListener('change', switchTheme, false);
 
 // Надоедалка
 
-// import BSN from 'bootstrap.native';
+import BSN from 'bootstrap.native';
 
 // ПЕРЕНЕСИ РЕФЫ В refs.js
-// const refs = {
-//   modal: document.querySelector('#subscription-modal'),
-//   subscribeBtn: document.querySelector('button[data-subscribe]'),
-// };
+const refs = {
+  modal: document.querySelector('#subscription-modal'),
+  subscribeBtn: document.querySelector('button[data-subscribe]'),
+};
 
-// const PROMPT_DELAY = 3000;
-// const MAX_PROMPT_ATTEMPTS = 3;
-// let promptCounter = 0;
-// let hasSubscribed = false;
-// const modal = new BSN.Modal('#subscription-modal');
-// const modalJoke = new BSN.Modal('#joke-modal');
+const PROMPT_DELAY = 3000;
+const MAX_PROMPT_ATTEMPTS = 3;
+let promptCounter = 0;
+let hasSubscribed = false;
+const modal = new BSN.Modal('#subscription-modal');
+const modalJoke = new BSN.Modal('#joke-modal');
 
-// openModal();
+openModal();
 
-// refs.modal.addEventListener('hide.bs.modal', openModal);
-// refs.subscribeBtn.addEventListener('click', onSubscribeBtnClick);
+refs.modal.addEventListener('hide.bs.modal', openModal);
+refs.subscribeBtn.addEventListener('click', onSubscribeBtnClick);
 
-// function openModal() {
-//   if (promptCounter === MAX_PROMPT_ATTEMPTS || hasSubscribed) {
-//     console.log('Максимальное кол-во надоеданий или подписался');
-//     return;
-//   }
+function openModal() {
+  if (promptCounter === MAX_PROMPT_ATTEMPTS || hasSubscribed) {
+    console.log('Максимальное кол-во надоеданий или подписался');
+    return;
+  }
 
-//   setTimeout(() => {
-//     // console.log('Открываем надоедалку');
-//     modal.show();
-//     promptCounter += 1;
-//   }, PROMPT_DELAY);
-// }
+  setTimeout(() => {
+    // console.log('Открываем надоедалку');
+    modal.show();
+    promptCounter += 1;
+  }, PROMPT_DELAY);
+}
 
-// function onSubscribeBtnClick() {
-//   hasSubscribed = true;
-//   //   modal.hide();
-//   modalJoke.show();
-// }
+function onSubscribeBtnClick() {
+  hasSubscribed = true;
+  //   modal.hide();
+  modalJoke.show();
+}
 
 // Плавающая кнопка «наверх»
 
