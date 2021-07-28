@@ -256,13 +256,13 @@ transition: background-image 0.4s ease-in-out;
 //   Переключатель темы
 
 body.light-theme {
-  background-color: #fff;
-  color: #FF6B08;
+  background-color: var(--minor-bcg-color);
+  color: var(--accent-color);
 }
 
 body.dark-theme {
-  background-color: #333333;
-  color: #fff;
+  background-color: var(--text-light-color);
+  color: var(--minor-bcg-color);
 }
 
 /* THEME SWITCH */
@@ -277,9 +277,9 @@ body.dark-theme {
 
 .theme-switch__icon {
   color: currentColor;
-  height: 18px;
-  width: 18px;
-  margin-right: 6px;
+  height: 12px;
+  width: 12px;
+  margin-right: 3px;
   margin-left: 6px;
 }
 
@@ -288,10 +288,10 @@ body.dark-theme {
   align-items: center;
   flex-shrink: 0;
   position: relative;
-  width: 40px;
+  width: 45px;
   height: 10px;
-  border-radius: 50em;
-  padding: 3px 0;
+  border-radius: 10em;
+  padding: 1px 0;
 }
 
 .theme-switch__toggle {
@@ -322,9 +322,9 @@ body.dark-theme {
 
 .theme-switch__marker {
   position: relative;
-  background-color: #fff;
-  width: 15px;
-  height: 15px;
+  background-color: var(--minor-bcg-color);
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   z-index: 2;
   pointer-events: none;
