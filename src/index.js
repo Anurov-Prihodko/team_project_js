@@ -16,16 +16,11 @@ import headerButtons from './js/header_buttons.js';
 import * as ourTeam from './js/our-team';
 import { noResults } from './js/notifications';
 
-// Уведомление об ошибке (pnotify)
-// import '@pnotify/core/dist/BrightTheme.css';
-// import { error } from '@pnotify/core';
-// import '@pnotify/core/dist/PNotify.css';
-
 //вызовы фетчей в консоль
 // fetchMovieById('496450').then(films => console.log(films));
 // fetchMovieByKeyword('cat').then(films => console.log(films));
 // fetchTrendingMovie().then(films => console.log(films));
-//
+
 // === GALLERY BLOCK === Функция рендеринга галереи
 function makeCardTrendingMovie(films) {
   const filmCards = galleryTpl(films);
@@ -36,13 +31,6 @@ function makeCardTrendingMovie(films) {
 fetchTrendingMovie().then(makeCardTrendingMovie).catch(noResults);
 
 // noResults(); ВЫЗЫВАЕТ НОТУ О ОШИБКЕ
-
-// function errorMessage() {
-//   error({
-//     text: 'ERROR 404 NOT FOUND',
-//     delay: 5000,
-//   });
-// }
 
 // === END GALLERY BLOCK
 
