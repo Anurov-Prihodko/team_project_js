@@ -11,7 +11,6 @@ const refs = {
   watchedButton: document.querySelector(
     'body > header > div.container > ul > li:nth-child(1) > button',
   ),
-
   queueButton: document.querySelector(
     'body > header > div.container > ul > li:nth-child(2) > button',
   ),
