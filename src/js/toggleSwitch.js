@@ -1,3 +1,4 @@
+'use strict';
 // Переключатель темы
 
 const Theme = {
@@ -25,7 +26,6 @@ function switchTheme(e) {
     themeClassContainer.classList.add(Theme.LIGHT);
     themeClassContainer.classList.remove(Theme.DARK);
     localStorage.setItem('theme', Theme.LIGHT);
-   
   }
 }
 
