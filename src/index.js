@@ -22,18 +22,18 @@ import { noResults, emptyQuery } from './js/notifications';
 // fetchTrendingMovie().then(films => console.log(films));
 
 // === GALLERY BLOCK === Функция рендеринга галереи
+
 function makeCardTrendingMovie(films) {
   const filmCards = galleryTpl(films);
   refs.cardContainer.insertAdjacentHTML('beforeend', filmCards);
   // refs.cardContainer.innerHTML = filmCards;
 }
-
-fetchTrendingMovie().then(makeCardTrendingMovie).catch(noResults);
+fetchTrendingMovie().then(makeCardTrendingMovie);
 
 // noResults(); ВЫЗЫВАЕТ НОТУ О ОШИБКЕ
 
 // === END GALLERY BLOCK
-// SEARCH MOVIE
+// SEARCH MOVIE by keyword
 refs.searchInput.addEventListener('submit', onSearch);
 
 function onSearch(event) {
@@ -42,26 +42,21 @@ function onSearch(event) {
   if (event.currentTarget.query.value.trim() !== '') {
     let currentValue = event.currentTarget.query.value.trim();
     clearFilmContainer();
-    fetchMovieByKeyword(currentValue).then(makeCardTrendingMovie);
+    fetchMovieByKeyword(currentValue).then(renderKeyWordCard);
   } else {
     emptyQuery();
   }
   return clearInput();
 }
-
-// console.log(noResults());
-// function onSearch(event) {
-//   event.preventDefault();
-
-//   const keyword = event.currentTarget.query.value;
-
-//   console.log(keyword);
-//   if (!keyword) {
-//     refs.notification.textContent =
-//       'Search result not successfull. Enter correct movie name and try again';
-//     return;
-//   }
-
+function renderKeyWordCard(films) {
+  if (films.results.length !== 0) {
+    const filmCards = galleryTpl(films);
+    refs.cardContainer.insertAdjacentHTML('beforeend', filmCards);
+  } else {
+    noResults();
+  }
+  return fetchTrendingMovie().then(makeCardTrendingMovie);
+}
 function clearFilmContainer() {
   refs.cardContainer.innerHTML = '';
 }
