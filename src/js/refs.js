@@ -20,5 +20,7 @@ const refs = {
   backdrop: document.querySelector('.backdrop-our-team'),
   ourTeamList: document.querySelector('.our-team-list'),
   cardContainer: document.querySelector('.movie-gallery-list'),
+  toggleSwitch: document.querySelector('.theme-switch__toggle'),
+  scrollToTopBtn: document.getElementById('scrollToTopBtn'),
 };
 export default refs;
