@@ -14,7 +14,7 @@ import { fetchMovieByKeyword, fetchMovieById, fetchTrendingMovie } from './js/ap
 import toggleSwitch from './js/toggleSwitch.js';
 import headerButtons from './js/header_buttons.js';
 import * as ourTeam from './js/our-team';
-import { noResults } from './js/notifications';
+import { noResults, emptyQuery } from './js/notifications';
 
 //вызовы фетчей в консоль
 // fetchMovieById('496450').then(films => console.log(films));
@@ -36,31 +36,38 @@ fetchTrendingMovie().then(makeCardTrendingMovie).catch(noResults);
 // SEARCH MOVIE
 refs.searchInput.addEventListener('submit', onSearch);
 
+function onSearch(event) {
+  event.preventDefault();
+
+  if (event.currentTarget.query.value.trim() !== '') {
+    let currentValue = event.currentTarget.query.value.trim();
+    clearFilmContainer();
+    fetchMovieByKeyword(currentValue).then(makeCardTrendingMovie);
+  } else {
+    emptyQuery();
+  }
+  return clearInput();
+}
+
+// console.log(noResults());
 // function onSearch(event) {
 //   event.preventDefault();
-//   console.log(event.currentTarget.query.value);
-//   console.log(fetchMovieByKeyword(event.currentTarget.query.value));
-// }
-function onSearch(e) {
-  e.preventDefault();
-  const form = e.currentTarget;
-  const searchKeyword = form.elements.query.value;
-  console.log(searchKeyword);
-  if (!searchKeyword) {
-    refs.notification.textContent =
-      'Search result not successfull. Enter correct movie name and try again';
-    return;
-  }
-  if (searchKeyword) {
-    refs.cardContainer.innerHTML = '';
-    fetchMovieByKeyword(searchKeyword).then(films => {
-      if (searchKeyword !== '') {
-        makeCardTrendingMovie(films);
-      }
-    });
-  }
+
+//   const keyword = event.currentTarget.query.value;
+
+//   console.log(keyword);
+//   if (!keyword) {
+//     refs.notification.textContent =
+//       'Search result not successfull. Enter correct movie name and try again';
+//     return;
+//   }
+
+function clearFilmContainer() {
+  refs.cardContainer.innerHTML = '';
 }
-// fetchMovieByKeyword('cat').then(films => console.log(films));
+function clearInput() {
+  refs.input.value = '';
+}
 // === PAGINATION BLOCK
 
 // === END PAGINATION BLOCK
