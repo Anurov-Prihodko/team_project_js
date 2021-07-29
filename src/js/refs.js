@@ -20,9 +20,10 @@ const refs = {
   backdrop: document.querySelector('.backdrop-our-team'),
   ourTeamList: document.querySelector('.our-team-list'),
   cardContainer: document.querySelector('.movie-gallery-list'),
-
   // Надоедалка
   modal: document.querySelector('#subscription-modal'),
   subscribeBtn: document.querySelector('button[data-subscribe]'),
+  toggleSwitch: document.querySelector('.theme-switch__toggle'),
+  scrollToTopBtn: document.getElementById('scrollToTopBtn'),
 };
 export default refs;
