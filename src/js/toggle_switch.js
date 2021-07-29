@@ -57,12 +57,19 @@ function openModal() {
     modal.show();
     promptCounter += 1;
   }, PROMPT_DELAY);
+
+  setTimeout(() => {
+    const themeClassContainer = document.body;
+    themeClassContainer.style.overflow = "visible";
+  }, 3050);
 }
 
 function onSubscribeBtnClick() {
   hasSubscribed = true;
   //   modal.hide();
   modalJoke.show();
+  const themeClassContainer = document.body;
+  themeClassContainer.style.overflow = "visible";
 }
 
 // Плавающая кнопка «наверх»
@@ -76,4 +83,8 @@ function scrollToTop() {
     behavior: 'smooth',
   });
 }
+
+scrollToTopBtn.addEventListener('click', scrollToTop);
+
 refs.scrollToTopBtn.addEventListener('click', scrollToTop);
+
