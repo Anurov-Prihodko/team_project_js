@@ -64,7 +64,7 @@
           }
 
           @media screen and (min-width: 1024px) {
-            left: 31%;
+            left: 26%;
           }
         
        
@@ -193,10 +193,12 @@
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
   padding: 15px;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .modal-body-img{
     display: block;
     padding-bottom: 15px;
 }
+
+
