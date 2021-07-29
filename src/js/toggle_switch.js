@@ -33,7 +33,6 @@ refs.toggleSwitch.addEventListener('change', switchTheme, false);
 // Надоедалка
 
 import BSN from 'bootstrap.native';
-import refs from './refs';
 
 const PROMPT_DELAY = 3000;
 const MAX_PROMPT_ATTEMPTS = 3;
@@ -65,7 +64,6 @@ function onSubscribeBtnClick() {
   //   modal.hide();
   modalJoke.show();
 }
-
 
 // Плавающая кнопка «наверх»
 

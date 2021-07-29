@@ -24,6 +24,7 @@ function onClickLibBtnQueue() {
   refs.watchedButton.classList.remove('active');
   refs.queueButton.classList.add('active');
 }
+
 refs.libButton.addEventListener('click', onClickLib);
 refs.homeButton.addEventListener('click', onClickHome);
 refs.watchedButton.addEventListener('click', onClickLibBtnWatched);
