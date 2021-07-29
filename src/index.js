@@ -16,7 +16,7 @@ import headerButtons from './js/header_buttons.js';
 import * as ourTeam from './js/our-team';
 import { noResults } from './js/notifications';
 
-//вызовы фетчей в консоль
+// === вызовы фетчей в консоль ===
 // fetchMovieById('496450').then(films => console.log(films));
 // fetchMovieByKeyword('cat').then(films => console.log(films));
 // fetchTrendingMovie().then(films => console.log(films));
