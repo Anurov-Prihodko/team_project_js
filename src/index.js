@@ -37,6 +37,7 @@ fetchTrendingMovie().then(makeCardTrendingMovie).catch(noResults);
 // === PAGINATION BLOCK
 
 // === END PAGINATION BLOCK
+import pagination from './js/pagination.js';
 
 // === lOCALSTORAGE BLOCK
 

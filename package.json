@@ -5,7 +5,7 @@
   "main": "index.js",
   "homepage": "https://Anurov-Prihodko.github.io/team_project_js",
   "scripts": {
-    "dev": "parcel src/*.html",
+    "dev": "parcel src/*.html --open",
     "build": "parcel build src/*.html --public-url /team_project_js/"
   },
   "repository": {
