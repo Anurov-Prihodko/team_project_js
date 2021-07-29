@@ -20,5 +20,9 @@ const refs = {
   backdrop: document.querySelector('.backdrop-our-team'),
   ourTeamList: document.querySelector('.our-team-list'),
   cardContainer: document.querySelector('.movie-gallery-list'),
+
+  // Надоедалка
+  modal: document.querySelector('#subscription-modal'),
+  subscribeBtn: document.querySelector('button[data-subscribe]'),
 };
 export default refs;

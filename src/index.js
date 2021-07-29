@@ -11,7 +11,7 @@ import severalFilmCard from './templates/several_film_card.hbs';
 import oneFilmCard from './templates/one_film_card.hbs';
 import galleryTpl from './templates/movie_gallery.hbs';
 import { fetchMovieByKeyword, fetchMovieById, fetchTrendingMovie } from './js/api_service';
-import toggleSwitch from './js/toggleSwitch.js';
+import toggleSwitch from './js/toggle_switch.js';
 import headerButtons from './js/header_buttons.js';
 import * as ourTeam from './js/our-team';
 import { noResults } from './js/notifications';
