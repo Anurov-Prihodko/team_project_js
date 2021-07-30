@@ -2,6 +2,9 @@
 import './sass/main.scss';
 let debounce = require('lodash.debounce');
 
+// Строка для импорта спинера, вызов startSpinner(); остановка stopSpinner();
+import { startSpinner, stopSpinner } from "./js/spinner/spiner";
+
 // import genres from './genres.json';
 import refs from './js/refs';
 
@@ -24,10 +27,13 @@ import { noResults, emptyQuery } from './js/notifications';
 // === GALLERY BLOCK === Функция рендеринга галереи
 
 function makeCardTrendingMovie(films) {
+  
   const filmCards = galleryTpl(films);
   refs.cardContainer.insertAdjacentHTML('beforeend', filmCards);
   // refs.cardContainer.innerHTML = filmCards;
+
 }
+  
 fetchTrendingMovie().then(makeCardTrendingMovie);
 
 // noResults(); ВЫЗЫВАЕТ НОТУ О ОШИБКЕ
@@ -42,9 +48,13 @@ function onSearch(event) {
   if (event.currentTarget.query.value.trim() !== '') {
     let currentValue = event.currentTarget.query.value.trim();
     clearFilmContainer();
-    fetchMovieByKeyword(currentValue).then(renderKeyWordCard);
+    startSpinner();
+    fetchMovieByKeyword(currentValue).then(renderKeyWordCard)
+      .then(stopSpinner);
+   
   } else {
     emptyQuery();
+    
   }
   return clearInput();
 }
@@ -70,3 +80,4 @@ function clearInput() {
 // === lOCALSTORAGE BLOCK
 
 // === END lOCALSTORAGE BLOCK
+
