@@ -2,6 +2,9 @@
 import './sass/main.scss';
 let debounce = require('lodash.debounce');
 
+// Строка для импорта спинера, вызов startSpinner(); остановка stopSpinner();
+import { startSpinner, stopSpinner } from "./js/spinner/spiner";
+
 // import genres from './genres.json';
 import refs from './js/refs';
 
@@ -25,11 +28,14 @@ import oneFilmCardJs from './js/one_film_card';
 // === GALLERY BLOCK === Функция рендеринга галереи
 
 function makeCardTrendingMovie(films) {
+  
   const filmCards = galleryTpl(films);
   refs.cardContainer.insertAdjacentHTML('beforeend', filmCards);
   refs.addError.classList.add('is-hidden');
   // refs.cardContainer.innerHTML = filmCards;
+
 }
+  
 fetchTrendingMovie().then(makeCardTrendingMovie);
 
 // ВЫЗЫВАЕТ НОТУ О ОШИБКЕ
@@ -50,9 +56,13 @@ function onSearch(event) {
   if (event.currentTarget.query.value.trim() !== '') {
     let currentValue = event.currentTarget.query.value.trim();
     clearFilmContainer();
-    fetchMovieByKeyword(currentValue).then(renderKeyWordCard);
+    startSpinner();
+    fetchMovieByKeyword(currentValue).then(renderKeyWordCard)
+      .then(stopSpinner);
+   
   } else {
     emptyQuery();
+    
   }
   return clearInput();
 }
@@ -63,6 +73,7 @@ function renderKeyWordCard(films) {
     refs.cardContainer.insertAdjacentHTML('beforeend', filmCards);
   } else {
     noResults();
+    errorMessage();
   }
   // return fetchTrendingMovie().then(makeCardTrendingMovie);
 }
@@ -81,3 +92,4 @@ function clearInput() {
 // === lOCALSTORAGE BLOCK
 
 // === END lOCALSTORAGE BLOCK
+

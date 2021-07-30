@@ -89,6 +89,10 @@
   padding: 4px 0;
   position: relative;
   cursor: pointer;
+  &:hover,
+  &:focus {
+    color: var(--accent-color);
+  }
 }
 // Подчеркивание текущей ссылки
 .site-nav-link.current::after {
@@ -347,4 +351,8 @@ body.dark-theme {
 .theme-switch__toggle:focus + .theme-switch__track,
 .theme-switch__toggle:active + .theme-switch__track {
   box-shadow: 0 0 0 3px #2196f3;
+}
+.spinner {
+  position: relative;
+  top: 280px;
 }
