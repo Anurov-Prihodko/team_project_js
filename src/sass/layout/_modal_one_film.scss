@@ -17,11 +17,11 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 568px;
-  width: 882px;
-  z-index: 3;
+  height: 100vh;
+  width: 280px;
+  z-index: 101;
 
-  padding: 10px;
+  //padding: 10px;
 
   background-color: #fff;
   border-radius: 2px;
@@ -29,9 +29,46 @@
   overflow: auto;
 }
 
-.card-film {
+.modal-movie-card {
   position: relative;
-  width: 280px;
+  padding-top: 48px;
+  padding-right: 20px;
+  padding-bottom: 41px;
+  padding-left: 20px;
+
+  max-width: 280px;
+  height: 100vh;
+  font-size: 12px;
+  font-weight: 500;
+  overflow: auto;
+
+  background-color: var(--the-lightest-text-color);
+  border-radius: 5px;
+  color: var(--text-light-color);
+}
+
+.modal-movie-card-image-wrapper {
+  position: relative;
+}
+
+.modal-movie-description {
+  padding-top: 30px;
+}
+
+.modal-movie-title {
+  font-size: 20px;
+  line-height: 1.17;
+  padding-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.modal-movie-details {
+  padding-bottom: 20px;
+}
+
+/*article.card-film {
+  position: relative;
+  max-width: 280px;
   height: 100vh;
   font-size: 12px;
   font-weight: 500;
@@ -39,54 +76,25 @@
   background-color: var(--the-lightest-text-color);
   border-radius: 5px;
   color: var(--text-dark-color);
-
-  @media screen and (min-width: 768px) {
-    display: flex;
-    width: 640px;
-    height: auto;
-  }
-
-  @media screen and (min-width: 1024px) {
-    display: flex;
-    width: 880px;
-    height: 570px;
-  }
 }
-​ .card-image {
+
+.
+​ div.card-image {
   margin-top: 40px;
   margin-left: 20px;
   margin-right: 20px;
   margin-bottom: 40px;
-
-  @media screen and (min-width: 768px) {
-    width: 50%;
-    margin-right: 10px;
-  }
-
-  @media screen and (min-width: 1024px) {
-    margin-left: 20px;
-    margin-right: 0px;
-  }
 }
+
 ​ .card-poster {
   display: block;
   border-radius: 5px;
-
-  @media screen and (min-width: 1024px) {
-    height: 100%;
-  }
 }
-​ .card-description {
+
+​ .card-description .block-right {
   margin: 0px 20px;
+  padding-top: 30px;
 
-  @media screen and (min-width: 768px) {
-    width: 50%;
-  }
-
-  @media screen and (min-width: 1024px) {
-    width: 70%;
-    //margin-right: 20px;
-  }
   ​ &-title {
     font-size: 20px;
     line-height: 1.17;
@@ -94,11 +102,6 @@
     padding-bottom: 20px;
     // margin-top: 30px;
     text-transform: uppercase;
-
-    @media screen and (min-width: 768px) {
-      font-size: 30px;
-      padding-top: 42px;
-    }
   }
   ​ &-content {
     padding-bottom: 20px;
@@ -113,10 +116,6 @@
     line-height: 16px;
     color: var(--film-details);
     padding-bottom: 10px;
-
-    @media screen and (min-width: 1024px) {
-      width: 152px;
-    }
   }
   ​ &-details {
     line-height: 14px;
@@ -126,10 +125,11 @@
     font-weight: 500;
     letter-spacing: 0em;
     text-align: left;
-    ​ &--title {
-      text-transform: uppercase;
-      padding-bottom: 12px;
-    }
+
+    // ​ &-title {
+    //   text-transform: uppercase;
+    //   padding-bottom: 12px;
+    // }
   }
 }
 ​ .movie-vote {
@@ -142,12 +142,8 @@
   height: 16px;
   padding-top: 1px;
   padding-bottom: 1px;
-
-  @media screen and (min-width: 1024px) {
-    padding-top: 1.5px;
-    padding-bottom: 1.5px;
-  }
 }
+
 ​ .movie-votes {
   background: var(--minor-bcg-color);
   color: var(--text-dark-color);
@@ -158,12 +154,8 @@
   height: 16px;
   padding-top: 1px;
   padding-bottom: 1px;
-
-  @media screen and (min-width: 1024px) {
-    padding-top: 1.5px;
-    padding-bottom: 1.5px;
-  }
 }
+
 ​ .movie-about {
   margin-bottom: 20px;
   font-style: normal;
@@ -180,10 +172,12 @@
     line-height: 1.67;
   }
 }
+
 ​ .modal-btns {
   display: flex;
   margin-bottom: 40px;
 }
+
 ​ .add-to-watched {
   width: 136px;
   height: 44px;
@@ -202,6 +196,7 @@
   padding: 14px, 10px, 12px;
   margin-right: 10px;
 }
+
 ​ .add-to-queue {
   width: 136px;
   height: 44px;
@@ -219,6 +214,7 @@
   cursor: pointer;
   margin-right: 10px;
 }
+
 ​ .watch-trailer {
   width: 136px;
   height: 44px;
@@ -235,6 +231,7 @@
   transition: 500;
   cursor: pointer;
 }
+
 ​ .modal-button-close {
   font-size: 18px;
   position: absolute;
@@ -248,10 +245,76 @@
   cursor: pointer;
   background-repeat: no-repeat;
   background-image: url('https://img.icons8.com/material-two-tone/24/000000/multiply.png');
-
   box-shadow: none;
+
   ​ &:hover,
   &:focus {
     box-shadow: 0 0 15px var(--btn-accent-color);
   }
 }
+
+@media screen and (min-width: 768px) {
+  .modal-movie-card-container {
+    width: 618px;
+    height: 562px;
+  }
+
+  .card-film {
+    display: flex;
+    width: 640px;
+    height: auto;
+  }
+
+  .card-image {
+    width: 50%;
+    margin-right: 10px;
+  }
+
+  .card-description {
+    width: 50%;
+    &-title {
+      font-size: 30px;
+      padding-top: 42px;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .modal-movie-card-container {
+    height: 568px;
+    width: 882px;
+  }
+
+  .card-film {
+    display: flex;
+    width: 880px;
+    height: 570px;
+  }
+
+  .card-image {
+    margin-left: 20px;
+    margin-right: 0px;
+  }
+
+  .card-poster {
+    height: 100%;
+  }
+
+  .card-description {
+    width: 70%;
+    //margin-right: 20px;
+    &-cell {
+      width: 152px;
+    }
+  }
+
+  .movie-vote {
+    padding-top: 1.5px;
+    padding-bottom: 1.5px;
+  }
+
+  .movie-votes {
+    padding-top: 1.5px;
+    padding-bottom: 1.5px;
+  }
+}*/
