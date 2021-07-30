@@ -25,6 +25,7 @@ import '@pnotify/core/dist/PNotify.css';
 function makeCardTrendingMovie(films) {
   const filmCards = galleryTpl(films);
   refs.cardContainer.insertAdjacentHTML('beforeend', filmCards);
+
   // refs.cardContainer.innerHTML = filmCards;
 }
 

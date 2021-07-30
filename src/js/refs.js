@@ -20,5 +20,6 @@ const refs = {
   backdrop: document.querySelector('.backdrop-our-team'),
   ourTeamList: document.querySelector('.our-team-list'),
   cardContainer: document.querySelector('.movie-gallery-list'),
+  addError: document.querySelector('[data-action="add-error"]'),
 };
 export default refs;
