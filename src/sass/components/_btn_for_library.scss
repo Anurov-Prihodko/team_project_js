@@ -1,4 +1,4 @@
-.btnForLibrary{
+.btn-for-library{
 font-family: Roboto;
 font-style: normal;
 font-weight: 500;
@@ -52,6 +52,8 @@ transition: background-color 0.2s ease-in-out;
    }
 }
 .btn-lib-list{
+     position: relative;
+
      display: flex;
      justify-content: center;
         :not(:last-child){
