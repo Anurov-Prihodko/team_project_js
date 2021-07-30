@@ -30,10 +30,12 @@ function makeCardTrendingMovie(films) {
 }
 fetchTrendingMovie().then(makeCardTrendingMovie);
 
-// noResults(); ВЫЗЫВАЕТ НОТУ О ОШИБКЕ
+// ВЫЗЫВАЕТ НОТУ О ОШИБКЕ
+// noResults();
 
 // === END GALLERY BLOCK
-// SEARCH MOVIE by keyword
+
+// === SEARCH MOVIE by keyword
 refs.searchInput.addEventListener('submit', onSearch);
 
 function onSearch(event) {
@@ -48,6 +50,7 @@ function onSearch(event) {
   }
   return clearInput();
 }
+
 function renderKeyWordCard(films) {
   if (films.results.length !== 0) {
     const filmCards = galleryTpl(films);
@@ -55,7 +58,7 @@ function renderKeyWordCard(films) {
   } else {
     noResults();
   }
-  return fetchTrendingMovie().then(makeCardTrendingMovie);
+  // return fetchTrendingMovie().then(makeCardTrendingMovie);
 }
 function clearFilmContainer() {
   refs.cardContainer.innerHTML = '';
@@ -63,6 +66,8 @@ function clearFilmContainer() {
 function clearInput() {
   refs.input.value = '';
 }
+// === END SEARCH MOVIE by keyword
+
 // === PAGINATION BLOCK
 
 // === END PAGINATION BLOCK
