@@ -26,9 +26,7 @@ function onOurTeamLinkClick(event) {
 
 /* Закрываем модалку при клике на бэкдроп или кнопку закрытия */
 function onbackdropClick(event) {
-  const closeTags = ['DIV', 'svg', 'use'];
-
-  if (!closeTags.includes(event.target.nodeName)) {
+  if(!event.target.hasAttribute('close-tag')) {
     return;
   }
 
