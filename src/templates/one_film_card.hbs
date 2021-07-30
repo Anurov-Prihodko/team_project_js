@@ -27,7 +27,7 @@
       </tr>
       <tr class='card-line'>
         <td class='card-description-cell'>Genre</td>
-        <td class='card-description-details'>{{genres}}</td>
+      {{#each this.genres}} <td class='card-description-details'>{{this.name}}</td>{{/each}}
       </tr>
     </table>
     <div class='movie-about'>
