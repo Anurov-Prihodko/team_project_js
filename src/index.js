@@ -17,25 +17,27 @@ import * as ourTeam from './js/our-team';
 // import NOTE from './js/notifications';
 
 // Уведомление об ошибке (pnotify)
-import '@pnotify/core/dist/BrightTheme.css';
-import { error } from '@pnotify/core';
-import '@pnotify/core/dist/PNotify.css';
+// import '@pnotify/core/dist/BrightTheme.css';
+// import { error } from '@pnotify/core';
+// import '@pnotify/core/dist/PNotify.css';
 
 // Функция рендеринга галереи
 function makeCardTrendingMovie(films) {
   const filmCards = galleryTpl(films);
   refs.cardContainer.insertAdjacentHTML('beforeend', filmCards);
-
+  refs.addError.classList.add('is-hidden');
   // refs.cardContainer.innerHTML = filmCards;
 }
 
 fetchTrendingMovie().then(makeCardTrendingMovie).catch(errorMessage);
 
 function errorMessage() {
-  error({
-    text: 'ERROR 404 NOT FOUND',
-    delay: 5000,
-  });
+  // error({
+  //   text: 'ERROR 404 NOT FOUND',
+  //   delay: 5000,
+  // });
+  refs.cardContainer.innerHTML = '';
+  refs.addError.classList.remove('is-hidden');
 }
 
 //вызовы фетчей в консоль
