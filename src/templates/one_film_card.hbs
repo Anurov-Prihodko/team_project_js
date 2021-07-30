@@ -1,38 +1,29 @@
-<article class='card-film'>
-  <div class='card-image'>
+<article class='modal-movie-card'>
+  <div class='modal-movie-card-image-wrapper'>
     {{#if poster_path}}
-      <img class='card-poster' src='https://image.tmdb.org/t/p/w300/{{poster_path}}' />
+      <img class='modal-movie-poster' src='https://image.tmdb.org/t/p/w300/{{poster_path}}' />
     {{/if}}
   </div>
-  <div class='card-description block-right'>
-    <h2 class='card-description-title'>{{original_title}}</h2>
-    <table class='card-description-content'>
-      <tr class='card-line'>
-        <td class='card-description-cell'>Vote / Votes</td>
-        <td class='card-description-details'>
-          <span class='movie-vote'>{{this.vote_average}}</span>
-          /
-          <span class='movie-votes'>{{this.vote_count}}</span>
-        </td>
-      </tr>
-      <tr class='card-line'>
-        <td class='card-description-cell'>Popularity</td>
-        <td class='card-description-details'>
-          {{this.popularity}}
-        </td>
-      </tr>
-      <tr class='card-line'>
-        <td class='card-description-cell'>Original title </td>
-        <td class='card-description-details--title'>{{this.original_title}}</td>
-      </tr>
-      <tr class='card-line'>
-        <td class='card-description-cell'>Genre</td>
-      {{#each this.genres}} <td class='card-description-details'>{{this.name}}</td>{{/each}}
-      </tr>
-    </table>
-    <div class='movie-about'>
-      <p class='movie-about-title'>About </p>
-      <p class='movie-about-description'>{{overview}}</p>
+  <div class='modal-movie-description block-right'>
+    <h2 class='modal-movie-title'>{{original_title}}</h2>
+    <ul class='modal-movie-details'>
+      <li class='modal-card-descriprion-item'>
+        Vote / Votes
+        <span class='modal-movie-rating'>{{this.vote_average}}</span>
+        /
+        <span class='modal-movie-votes'>{{this.vote_count}}</span>
+      </li>
+      <li class='modal-card-descriprion-item'>Popularity <span>{{this.popularity}}</span></li>
+      <li class='modal-card-descriprion-item'>Original title
+        <span>{{this.original_title}}</span>
+      </li>
+      <li class='modal-card-descriprion-item'>Genre
+        {{#each this.genres}}<span>{{this.name}}</span>{{/each}}
+      </li>
+    </ul>
+    <div class='modal-movie-about'>
+      <p class='modal-movie-about-title'>About </p>
+      <p class='modal-movie-about-description'>{{overview}}</p>
     </div>
     <div class='modal-btns' id='add-to-library'>
       <button type='button' class='add-to-watched' id='add-to-watched' data-act='{{id}}'>add to
