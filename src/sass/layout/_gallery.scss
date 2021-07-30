@@ -1,6 +1,55 @@
-// .movie-gallery {
-//   min-height: 500px;
-// }
+.movie-error {
+  // border: 1px solid white;
+  color: white;
+  background-color: lightgrey;
+  box-shadow: 5px 5px 15px 5px darkgrey;
+  border-radius: 8px;
+
+  font-family: Roboto;
+  font-style: normal;
+  text-transform: uppercase;
+  position: absolute;
+
+  font-weight: 350;
+  font-size: 20px;
+  line-height: 18px;
+  bottom: 205px;
+  left: 8px;
+  height: auto;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media screen and (min-width: 768px) {
+    font-weight: 350;
+    font-size: 28px;
+    line-height: 14px;
+    bottom: 195px;
+    left: 124px;
+    height: 76px;
+    padding: 30px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    font-weight: 450;
+    font-size: 42px;
+    line-height: 18px;
+    bottom: 180px;
+    left: 164px;
+    height: 96px;
+    padding: 38px;
+  }
+}
+
+.is-hidden {
+  opacity: 0;
+}
+
+.movie-gallery {
+  min-height: 400px;
+  position: relative;
+}
 
 .movie-gallery-list {
   margin-top: 20px;

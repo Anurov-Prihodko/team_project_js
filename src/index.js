@@ -26,6 +26,7 @@ import { noResults, emptyQuery } from './js/notifications';
 function makeCardTrendingMovie(films) {
   const filmCards = galleryTpl(films);
   refs.cardContainer.insertAdjacentHTML('beforeend', filmCards);
+  refs.addError.classList.add('is-hidden');
   // refs.cardContainer.innerHTML = filmCards;
 }
 fetchTrendingMovie().then(makeCardTrendingMovie);
@@ -33,6 +34,11 @@ fetchTrendingMovie().then(makeCardTrendingMovie);
 // ВЫЗЫВАЕТ НОТУ О ОШИБКЕ
 // noResults();
 
+
+function errorMessage() {
+  refs.cardContainer.innerHTML = '';
+  refs.addError.classList.remove('is-hidden');
+}
 // === END GALLERY BLOCK
 
 // === SEARCH MOVIE by keyword
