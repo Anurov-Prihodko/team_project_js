@@ -1,4 +1,5 @@
 'use strict';
+import refs from './refs';
 // Переключатель темы
 
 const Theme = {
@@ -6,15 +7,13 @@ const Theme = {
   DARK: 'dark-theme',
 };
 const { LIGHT, DARK } = Theme;
-
-const toggleSwitch = document.querySelector('.theme-switch__toggle');
 const themeClassContainer = document.body;
 
 themeClassContainer.classList.add(
   localStorage.getItem('theme') === null ? Theme.LIGHT : localStorage.getItem('theme'),
 );
 if (localStorage.getItem('theme') === Theme.DARK) {
-  toggleSwitch.checked = true;
+  refs.toggleSwitch.checked = true;
 }
 
 function switchTheme(e) {
@@ -29,17 +28,11 @@ function switchTheme(e) {
   }
 }
 
-toggleSwitch.addEventListener('change', switchTheme, false);
+refs.toggleSwitch.addEventListener('change', switchTheme, false);
 
 // Надоедалка
 
 // import BSN from 'bootstrap.native';
-
-// ПЕРЕНЕСИ РЕФЫ В refs.js
-// const refs = {
-//   modal: document.querySelector('#subscription-modal'),
-//   subscribeBtn: document.querySelector('button[data-subscribe]'),
-// };
 
 // const PROMPT_DELAY = 3000;
 // const MAX_PROMPT_ATTEMPTS = 3;
@@ -64,10 +57,33 @@ toggleSwitch.addEventListener('change', switchTheme, false);
 //     modal.show();
 //     promptCounter += 1;
 //   }, PROMPT_DELAY);
+
+//   setTimeout(() => {
+//     const themeClassContainer = document.body;
+//     themeClassContainer.style.overflow = "visible";
+//   }, 3050);
 // }
 
 // function onSubscribeBtnClick() {
 //   hasSubscribed = true;
 //   //   modal.hide();
 //   modalJoke.show();
+//   const themeClassContainer = document.body;
+//   themeClassContainer.style.overflow = "visible";
 // }
+
+// Плавающая кнопка «наверх»
+
+const rootElement = document.documentElement;
+
+function scrollToTop() {
+  // Scroll to top logic
+  rootElement.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+}
+
+scrollToTopBtn.addEventListener('click', scrollToTop);
+
+refs.scrollToTopBtn.addEventListener('click', scrollToTop);

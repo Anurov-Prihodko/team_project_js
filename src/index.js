@@ -2,7 +2,7 @@
 import './sass/main.scss';
 let debounce = require('lodash.debounce');
 
-import genres from './genres.json';
+// import genres from './genres.json';
 import refs from './js/refs';
 
 import btnForLibrary from './templates/btn_for_library.hbs';
@@ -11,43 +11,68 @@ import severalFilmCard from './templates/several_film_card.hbs';
 import oneFilmCard from './templates/one_film_card.hbs';
 import galleryTpl from './templates/movie_gallery.hbs';
 import { fetchMovieByKeyword, fetchMovieById, fetchTrendingMovie } from './js/api_service';
-import toggleSwitch from './js/toggleSwitch.js';
+import toggleSwitch from './js/toggle_switch.js';
 import headerButtons from './js/header_buttons.js';
 import * as ourTeam from './js/our-team';
-// import NOTE from './js/notifications';
+import { noResults, emptyQuery } from './js/notifications';
 
-// Уведомление об ошибке (pnotify)
-// import '@pnotify/core/dist/BrightTheme.css';
-// import { error } from '@pnotify/core';
-// import '@pnotify/core/dist/PNotify.css';
+// === вызовы фетчей в консоль ===
+// fetchMovieById('496450').then(films => console.log(films));
+// fetchMovieByKeyword('cat').then(films => console.log(films));
+// fetchTrendingMovie().then(films => console.log(films));
 
-// Функция рендеринга галереи
+// === GALLERY BLOCK === Функция рендеринга галереи
+
 function makeCardTrendingMovie(films) {
   const filmCards = galleryTpl(films);
   refs.cardContainer.insertAdjacentHTML('beforeend', filmCards);
   refs.addError.classList.add('is-hidden');
   // refs.cardContainer.innerHTML = filmCards;
 }
+fetchTrendingMovie().then(makeCardTrendingMovie);
 
-fetchTrendingMovie().then(makeCardTrendingMovie).catch(errorMessage);
+// ВЫЗЫВАЕТ НОТУ О ОШИБКЕ
+// noResults();
+
 
 function errorMessage() {
-  // error({
-  //   text: 'ERROR 404 NOT FOUND',
-  //   delay: 5000,
-  // });
   refs.cardContainer.innerHTML = '';
   refs.addError.classList.remove('is-hidden');
 }
-
-//вызовы фетчей в консоль
-// fetchMovieById('496450').then(films => console.log(films));
-// fetchMovieByKeyword('cat').then(films => console.log(films));
-// fetchTrendingMovie().then(films => console.log(films));
-//
-// === GALLERY BLOCK
-
 // === END GALLERY BLOCK
+
+// === SEARCH MOVIE by keyword
+refs.searchInput.addEventListener('submit', onSearch);
+
+function onSearch(event) {
+  event.preventDefault();
+
+  if (event.currentTarget.query.value.trim() !== '') {
+    let currentValue = event.currentTarget.query.value.trim();
+    clearFilmContainer();
+    fetchMovieByKeyword(currentValue).then(renderKeyWordCard);
+  } else {
+    emptyQuery();
+  }
+  return clearInput();
+}
+
+function renderKeyWordCard(films) {
+  if (films.results.length !== 0) {
+    const filmCards = galleryTpl(films);
+    refs.cardContainer.insertAdjacentHTML('beforeend', filmCards);
+  } else {
+    noResults();
+  }
+  // return fetchTrendingMovie().then(makeCardTrendingMovie);
+}
+function clearFilmContainer() {
+  refs.cardContainer.innerHTML = '';
+}
+function clearInput() {
+  refs.input.value = '';
+}
+// === END SEARCH MOVIE by keyword
 
 // === PAGINATION BLOCK
 
