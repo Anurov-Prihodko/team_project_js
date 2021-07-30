@@ -6,7 +6,7 @@
   // border: 1px solid white;
   color: var(--the-lightest-text-color);
   background-color: var(--movie-error-color);
-  box-shadow: 5px 5px 15px 5px rgb(131, 130, 127);
+  box-shadow: 5px 5px 15px 5px var(--error-shadow-color);
   border-radius: 8px;
 
   position: absolute;
