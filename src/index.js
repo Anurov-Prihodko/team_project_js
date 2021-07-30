@@ -16,7 +16,7 @@ import galleryTpl from './templates/movie_gallery.hbs';
 import { fetchMovieByKeyword, fetchMovieById, fetchTrendingMovie } from './js/api_service';
 import toggleSwitch from './js/toggle_switch.js';
 import headerButtons from './js/header_buttons.js';
-import * as ourTeam from './js/our-team';
+import * as ourTeam from './js/our_team';
 import { noResults, emptyQuery } from './js/notifications';
 
 // === вызовы фетчей в консоль ===
