@@ -34,7 +34,6 @@ fetchTrendingMovie().then(makeCardTrendingMovie);
 // ВЫЗЫВАЕТ НОТУ О ОШИБКЕ
 // noResults();
 
-
 function errorMessage() {
   refs.cardContainer.innerHTML = '';
   refs.addError.classList.remove('is-hidden');
@@ -63,6 +62,7 @@ function renderKeyWordCard(films) {
     refs.cardContainer.insertAdjacentHTML('beforeend', filmCards);
   } else {
     noResults();
+    errorMessage();
   }
   // return fetchTrendingMovie().then(makeCardTrendingMovie);
 }
