@@ -7,6 +7,7 @@ const refs = {
     'body > header > div.container > div > nav > ul > li:nth-child(1) > a',
   ),
   searchInput: document.querySelector('#search-form'),
+  input: document.querySelector('.search-input'),
   btnList: document.querySelector('body > header > div.container > ul'),
   watchedButton: document.querySelector(
     'body > header > div.container > ul > li:nth-child(1) > button',
