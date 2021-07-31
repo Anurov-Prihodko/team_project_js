@@ -23,7 +23,9 @@ const refs = {
   cardContainer: document.querySelector('.movie-gallery-list'),
 
   addError: document.querySelector('[data-action="add-error"]'),
-
+  //movie-card-modal
+  movieCardBackdrop: document.querySelector('.backdrop-movie-card'),
+  modalMovieCardContainer: document.querySelector('.modal-movie-card-container'),
   // Надоедалка
   modal: document.querySelector('#subscription-modal'),
   subscribeBtn: document.querySelector('button[data-subscribe]'),

@@ -18,6 +18,7 @@ import toggleSwitch from './js/toggle_switch.js';
 import headerButtons from './js/header_buttons.js';
 import * as ourTeam from './js/our_team';
 import { noResults, emptyQuery } from './js/notifications';
+import oneFilmCardJs from './js/one_film_card';
 
 // === вызовы фетчей в консоль ===
 // fetchMovieById('496450').then(films => console.log(films));
