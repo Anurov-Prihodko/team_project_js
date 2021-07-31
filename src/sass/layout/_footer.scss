@@ -19,7 +19,10 @@ ul {
     padding-top: 28.71px;
     padding-bottom: 29.7px;
 
+margin: auto;
+
     background-color: var(--minor-bcg-color);
+    max-width: 320px;
 }
 
 .footer .container {
@@ -53,6 +56,8 @@ color: var(--text-light-color);
 .footer {
     padding-top: 30px;
     padding-bottom: 28px;
+
+    max-width: 768px;
 }
 
 .container {
@@ -81,7 +86,11 @@ line-height: 1.188;
 
 /* ------------------DESKTOP ------------------*/
 
-  @media screen and (min-width: 1024px) {   
+  @media screen and (min-width: 1024px) {  
+.footer {
+max-width: 1024px;
+}
+
 .container {
     width: 880px;
 }
@@ -223,7 +232,7 @@ line-height: 1.188;
   }
 } 
 
-//   Плавающая кнопка «наверх»
+/* Плавающая кнопка «наверх»*/
 
 .footer {
   position: relative;
@@ -246,4 +255,4 @@ line-height: 1.188;
   #scrollToTopBtn {
     bottom: 85px;
   }
-}
+} 
