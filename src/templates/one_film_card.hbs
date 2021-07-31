@@ -6,29 +6,41 @@
   </div>
   <div class='modal-movie-description block-right'>
     <h2 class='modal-movie-title'>{{original_title}}</h2>
-    <ul class='modal-movie-details'>
+    <ul class='modal-movie-details list'>
       <li class='modal-card-descriprion-item'>
-        Vote / Votes
+        <span class='descriprion-category rating'>Vote / Votes</span>
         <span class='modal-movie-rating'>{{this.vote_average}}</span>
-        /
-        <span class='modal-movie-votes'>{{this.vote_count}}</span>
+
+        <span class='modal-movie-votes'> / {{this.vote_count}}</span>
       </li>
-      <li class='modal-card-descriprion-item'>Popularity <span>{{this.popularity}}</span></li>
-      <li class='modal-card-descriprion-item'>Original title
+      <li class='modal-card-descriprion-item'>
+        <span class='descriprion-category'>Popularity</span>
+        <span>{{this.popularity}}</span>
+      </li>
+      <li class='modal-card-descriprion-item'>
+        <span class='descriprion-category'>Original title</span>
         <span>{{this.original_title}}</span>
       </li>
-      <li class='modal-card-descriprion-item'>Genre
-        {{#each this.genres}}<span>{{this.name}}</span>{{/each}}
+      <li class='modal-card-descriprion-item genre'>
+        <span class='descriprion-category'>Genre</span>
+        <div class='generes-wrapper'>
+          {{#each this.genres}}<span class='modal-genre'>{{this.name}}</span>{{/each}}
+        </div>
       </li>
     </ul>
     <div class='modal-movie-about'>
       <p class='modal-movie-about-title'>About </p>
       <p class='modal-movie-about-description'>{{overview}}</p>
     </div>
-    <div class='modal-btns' id='add-to-library'>
-      <button type='button' class='add-to-watched' id='add-to-watched' data-act='{{id}}'>add to
-        watched</button>
-      <button type='button' class='add-to-queue' id='add-to-queue' data-act='{{id}}'>add to queue</button>
+    <div class='modal-btns-wrapper' id='add-to-library'>
+      <button
+        type='button'
+        class='modal-btn add-to-watched'
+        id='add-to-watched'
+        data-act='{{id}}'
+      >add to watched</button>
+      <button type='button' class='modal-btn add-to-queue' id='add-to-queue' data-act='{{id}}'>add
+        to queue</button>
     </div>
     <button type='button' class='modal-button-close'></button>
   </div>
