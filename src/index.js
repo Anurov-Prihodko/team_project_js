@@ -3,10 +3,10 @@ import './sass/main.scss';
 let debounce = require('lodash.debounce');
 
 // Строка для импорта спинера, вызов startSpinner(); остановка stopSpinner();
-import { startSpinner, stopSpinner } from "./js/spinner/spiner";
+import { startSpinner, stopSpinner } from './js/spinner/spiner';
 
-// import genres from './genres.json';
 import refs from './js/refs';
+import genres from './js/genres';
 
 import btnForLibrary from './templates/btn_for_library.hbs';
 import inputHeader from './templates/input_header.hbs';
@@ -16,7 +16,7 @@ import galleryTpl from './templates/movie_gallery.hbs';
 import { fetchMovieByKeyword, fetchMovieById, fetchTrendingMovie } from './js/api_service';
 import toggleSwitch from './js/toggle_switch.js';
 import headerButtons from './js/header_buttons.js';
-import * as ourTeam from './js/our-team';
+import * as ourTeam from './js/our_team';
 import { noResults, emptyQuery } from './js/notifications';
 import oneFilmCardJs from './js/one_film_card';
 
@@ -27,23 +27,65 @@ import oneFilmCardJs from './js/one_film_card';
 
 // === GALLERY BLOCK === Функция рендеринга галереи
 
-function makeCardTrendingMovie(films) {
-  
-  const filmCards = galleryTpl(films);
-  refs.cardContainer.insertAdjacentHTML('beforeend', filmCards);
-  refs.addError.classList.add('is-hidden');
-  // refs.cardContainer.innerHTML = filmCards;
+// function makeCardTrendingMovie(films) {
+//   const filmCards = galleryTpl(films);
+//   refs.cardContainer.insertAdjacentHTML('beforeend', filmCards);
+//   refs.addError.classList.add('visually-hidden');
+//   // refs.cardContainer.innerHTML = filmCards;
+// }
 
+// fetchTrendingMovie().then(makeCardTrendingMovie);
+
+function cardsMarkUpForMovie({
+  id,
+  original_title,
+  poster_path,
+  genre_ids,
+  release_date,
+  vote_average,
+}) {
+  return `<li class="movie-gallery-item" data-item="${id}">
+
+    <img class="movie-gallery-item-poster" src="https://image.tmdb.org/t/p/w500${poster_path}"
+        alt="image card movie" />
+
+    <div class="movie-gallery-item-description">
+        <h2 class="movie-gallery-item-title">${original_title}</h2>
+        <div class="movie-gallery-item-box">
+            <p class="movie-gallery-item-genre">${genre_ids.reduce((allGenres, id) => {
+              for (const genre of genres) {
+                if (id === genre.id) {
+                  id = genre.name;
+                }
+              }
+              allGenres.push(id);
+              // let twoGenres = [];
+              if (allGenres.length > 3) {
+                const twoGenres = allGenres.slice(0, 2);
+                twoGenres.push('Other');
+                return twoGenres;
+              }
+              return allGenres;
+            }, [])} | ${release_date}</p>
+            <span class="movie-gallery-item-rating">${vote_average}</span>
+        </div>
+
+    </div>
+</li>`;
 }
-  
-fetchTrendingMovie().then(makeCardTrendingMovie);
 
+fetchTrendingMovie()
+  .then(response => response.results)
+  .then(response => {
+    const cards = response.reduce((acc, film) => acc + cardsMarkUpForMovie(film), []);
+    refs.cardContainer.insertAdjacentHTML('beforeend', cards);
+  });
 // ВЫЗЫВАЕТ НОТУ О ОШИБКЕ
 // noResults();
 
 function errorMessage() {
   refs.cardContainer.innerHTML = '';
-  refs.addError.classList.remove('is-hidden');
+  refs.addError.classList.remove('visually-hidden');
 }
 // === END GALLERY BLOCK
 
@@ -57,12 +99,10 @@ function onSearch(event) {
     let currentValue = event.currentTarget.query.value.trim();
     clearFilmContainer();
     startSpinner();
-    fetchMovieByKeyword(currentValue).then(renderKeyWordCard)
-      .then(stopSpinner);
-   
+    refs.addError.classList.add('visually-hidden');
+    fetchMovieByKeyword(currentValue).then(renderKeyWordCard).then(stopSpinner);
   } else {
     emptyQuery();
-    
   }
   return clearInput();
 }
@@ -92,4 +132,3 @@ function clearInput() {
 // === lOCALSTORAGE BLOCK
 
 // === END lOCALSTORAGE BLOCK
-

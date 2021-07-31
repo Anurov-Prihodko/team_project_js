@@ -15,7 +15,7 @@ const refs = {
   queueButton: document.querySelector(
     'body > header > div.container > ul > li:nth-child(2) > button',
   ),
-  headerDom: document.querySelector('body > header'),
+  headerDom: document.querySelector("body > header > div.bg-container"),
   //   footer: document.querySelector('footer'),
   linkToOurTeam: document.querySelector('.about-us-link'),
   backdrop: document.querySelector('.backdrop-our-team'),
