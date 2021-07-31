@@ -44,9 +44,21 @@
   display: none;
 }
 .noActiv {
-  pointer-events: none;
+  // pointer-events: none;
+  cursor: unset;
 }
 
+.pagination_items.noActiv:hover,
+.pagination_items.noActiv:focus {
+  // pointer-events: none;
+  cursor: pointer;
+  border: 1px solid #ff6b08;
+  margin-left: 5px;
+  margin-right: 5px;
+
+  //   -webkit-transform-origin: 1px 60px;
+  transform-origin: 1px 60px;
+}
 .pagination_items:hover,
 .pagination_items:focus {
   cursor: pointer;
