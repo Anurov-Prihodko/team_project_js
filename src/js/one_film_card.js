@@ -31,27 +31,20 @@ function onMovieCardClick(event) {
   addEventListenerOnEscKey();
   addEventListenerOnModalBackdrop();
 
-  fetchMovieById(id)
-    .then(renderModalMovieCard)
-    .then(r => console.log(r));
+  fetchMovieById(id).then(renderModalMovieCard);
 
   refs.movieCardBackdrop.classList.remove('visually-hidden');
 }
 
 /* Закрываем модалку при клике на бэкдроп или кнопку закрытия */
 function onMovieCardBackdropClick(event) {
-  const closeTags = ['DIV', 'svg', 'use'];
-  console.log(event.target.hasAttribute('close-tag'))
+  //console.log(event.target.hasAttribute('close-tag'));
 
-  // if (!closeTags.includes(event.target.nodeName)) {
-  //   return;
-  // }
-
-    if (!event.target.hasAttribute('close-tag')) {
+  if (!event.target.hasAttribute('close-tag')) {
     return;
   }
 
-  console.log(event.target);
+  //console.log(event.target);
 
   removeEventListenerFromBackdrop();
   removeEventListenerFromEscKey();
