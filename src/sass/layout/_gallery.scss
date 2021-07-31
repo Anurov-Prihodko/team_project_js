@@ -162,11 +162,18 @@
   font-size: 12px;
   line-height: 14px;
   text-transform: uppercase;
-  color: #000000;
 
   @media screen and (min-width: 768px) {
     line-height: 16px;
   }
+}
+
+body.light-theme .color-text {
+  color: #11061b;
+}
+
+body.dark-theme .color-text {
+  color: white;
 }
 
 .movie-gallery-item-genre {
