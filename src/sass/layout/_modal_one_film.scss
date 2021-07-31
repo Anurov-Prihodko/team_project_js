@@ -193,11 +193,10 @@
   fill: var(--accent-color);
 }
 
+@media screen and (min-width: 768px) {
+}
+
 /*
-
-
-
-
 ​ .modal-button-close {
   font-size: 18px;
   position: absolute;
@@ -220,67 +219,8 @@
 }
 
 @media screen and (min-width: 768px) {
-  .modal-movie-card-container {
-    width: 618px;
-    height: 562px;
-  }
-
-  .card-film {
-    display: flex;
-    width: 640px;
-    height: auto;
-  }
-
-  .card-image {
-    width: 50%;
-    margin-right: 10px;
-  }
-
-  .card-description {
-    width: 50%;
-    &-title {
-      font-size: 30px;
-      padding-top: 42px;
-    }
-  }
-}
+ 
 
 @media screen and (min-width: 1024px) {
-  .modal-movie-card-container {
-    height: 568px;
-    width: 882px;
-  }
-
-  .card-film {
-    display: flex;
-    width: 880px;
-    height: 570px;
-  }
-
-  .card-image {
-    margin-left: 20px;
-    margin-right: 0px;
-  }
-
-  .card-poster {
-    height: 100%;
-  }
-
-  .card-description {
-    width: 70%;
-    //margin-right: 20px;
-    &-cell {
-      width: 152px;
-    }
-  }
-
-  .movie-vote {
-    padding-top: 1.5px;
-    padding-bottom: 1.5px;
-  }
-
-  .movie-votes {
-    padding-top: 1.5px;
-    padding-bottom: 1.5px;
-  }
+  
 }*/
