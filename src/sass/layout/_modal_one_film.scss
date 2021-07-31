@@ -168,12 +168,30 @@
   }
 }
 
-.close-btn {
+.modal-close-btn {
   position: absolute;
   top: 18px;
   right: 18px;
   width: 20px;
   height: 20px;
+  border-radius: 50%;
+  background-color: transparent;
+  z-index: 105;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+
+  transition: background-color var(--transition-time) var(--time-function);
+  &:hover,
+  &:focus {
+    background-color: var(--bcg-color);
+  }
+}
+
+.close-btn-icon {
+  position: absolute;
 }
 
 .close-btn-icon {
