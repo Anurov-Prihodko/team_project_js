@@ -1,11 +1,10 @@
 .movie-error {
-  // border: 1px solid white;
-  color: white;
-  background-color: lightgrey;
-  box-shadow: 5px 5px 15px 5px darkgrey;
+  color: var(--the-lightest-text-color);
+  background-color: var(--error-background-color);
+  box-shadow: var(--error-box-shadow);
   border-radius: 8px;
 
-  font-family: Roboto;
+  font-family: var(--text-main-font);
   font-style: normal;
   text-transform: uppercase;
   position: absolute;
@@ -46,10 +45,6 @@
   }
 }
 
-.is-hidden {
-  opacity: 0;
-}
-
 .movie-gallery {
   min-height: 400px;
   position: relative;
@@ -80,8 +75,8 @@
   margin-bottom: 20px;
 
   transition-property: transform;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: var(--transition-time);
+  transition-timing-function: --time-function;
 
   &:hover,
   &:focus {
@@ -156,7 +151,7 @@
 
 .movie-gallery-item-title {
   padding-top: 10px;
-  font-family: Roboto;
+  font-family: var(--text-main-font);
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -168,22 +163,22 @@
   }
 }
 
-body.light-theme .color-text {
-  color: #11061b;
+body.light-theme .movie-name-text-color {
+  color: var(--text-dark-color);
 }
 
-body.dark-theme .color-text {
-  color: white;
+body.dark-theme .movie-name-text-color {
+  color: var(--the-lightest-text-color);
 }
 
 .movie-gallery-item-genre {
   margin-right: 10px;
-  font-family: Roboto;
+  font-family: var(--text-main-font);
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
-  color: #ff6b08;
+  color: var(--accent-color);
 
   @media screen and (min-width: 768px) {
     line-height: 16px;
@@ -194,7 +189,7 @@ body.dark-theme .color-text {
   width: 36px;
   height: 16px;
   display: flex;
-  font-family: Roboto;
+  font-family: var(--text-main-font);
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -204,8 +199,8 @@ body.dark-theme .color-text {
   border-radius: 5px;
   text-transform: uppercase;
 
-  background-color: #ff6b08;
-  color: #ffffff;
+  background-color: var(--accent-color);
+  color: var(--the-lightest-text-color);
 }
 
 .movie-gallery-item-box {

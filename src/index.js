@@ -17,7 +17,7 @@ import { fetchMovieByKeyword, fetchMovieById, fetchTrendingMovie } from './js/ap
 import toggleSwitch from './js/toggle_switch.js';
 import headerButtons from './js/header_buttons.js';
 import * as ourTeam from './js/our-team';
-// import { noResults, emptyQuery } from './js/notifications';
+import { noResults, emptyQuery } from './js/notifications';
 
 // === вызовы фетчей в консоль ===
 // fetchMovieById('496450').then(films => console.log(films));
@@ -43,7 +43,7 @@ fetchTrendingMovie().then(makeCardTrendingMovie);
 
 function errorMessage() {
   refs.cardContainer.innerHTML = '';
-  refs.addError.classList.remove('is-hidden');
+  refs.addError.classList.remove('visually-hidden');
 }
 // === END GALLERY BLOCK
 
