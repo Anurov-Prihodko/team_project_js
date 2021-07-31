@@ -21,8 +21,6 @@
   width: 280px;
   z-index: 101;
 
-  //padding: 10px;
-
   background-color: #fff;
   border-radius: 2px;
 
@@ -36,7 +34,7 @@
   padding-bottom: 41px;
   padding-left: 20px;
 
-  max-width: 280px;
+  width: 280px;
   height: 100vh;
   font-size: 12px;
   font-weight: 500;
@@ -48,7 +46,9 @@
 }
 
 .modal-movie-card-image-wrapper {
-  position: relative;
+  width: 240px;
+  height: 355px;
+  border-radius: 5px;
 }
 
 .modal-movie-description {
@@ -152,7 +152,7 @@
   text-transform: uppercase;
   align-items: center;
   text-align: center;
-  // transition: 500;
+
   cursor: pointer;
 
   transition: color var(--transition-time) var(--time-function),
@@ -161,66 +161,92 @@
   &:not(:last-child) {
     margin-right: 15px;
   }
+  &:hover,
+  &:focus {
+    background-color: var(--accent-color);
+    color: var(--the-lightest-text-color);
+  }
 }
 
-.modal-btn:hover,
-.modal-btn:focus {
-  background-color: var(--accent-color);
-  color: var(--the-lightest-text-color);
-}
-
-.modal-button-close {
+.close-btn {
   position: absolute;
   top: 18px;
   right: 18px;
-  width: 25px;
-  height: 25px;
-
-  font-size: 18px;
-  border: 1px solid transparent;
-  border-radius: 50%;
-
-  background-color: var(--the-lightest-text-color);
-  background-repeat: no-repeat;
-  background-image: url('https://img.icons8.com/material-two-tone/24/000000/multiply.png');
-  box-shadow: none;
-
-  cursor: pointer;
+  width: 20px;
+  height: 20px;
 }
 
-.modal-button-close:hover,
-.modal-button-close:focus {
+.close-btn-icon {
+  cursor: pointer;
+
+  color: var(--text-dark-color);
+  z-index: 103;
+  fill: currentColor;
+}
+
+.close-btn:hover,
+.close-btn:focus {
   fill: var(--accent-color);
 }
 
 @media screen and (min-width: 768px) {
-}
+  .modal-movie-card-container {
+    height: 562px;
+    width: 618px;
+  }
 
-/*
-​ .modal-button-close {
-  font-size: 18px;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: var(--the-lightest-text-color);
-  border: 1px solid transparent;
-  border-radius: 50%;
-  width: 25px;
-  height: 25px;
-  cursor: pointer;
-  background-repeat: no-repeat;
-  background-image: url('https://img.icons8.com/material-two-tone/24/000000/multiply.png');
-  box-shadow: none;
+  .modal-movie-card {
+    display: flex;
+    height: 100%;
+    width: 618px;
+  }
 
-  ​ &:hover,
-  &:focus {
-    box-shadow: 0 0 15px var(--btn-accent-color);
+  img {
+    display: block;
+    max-width: 264px;
+    height: 375px;
+  }
+
+  .modal-movie-card-image-wrapper {
+    margin-right: 32px;
+    width: 264px;
+    height: 374px;
+  }
+
+  .modal-movie-description {
+    padding-top: 0px;
+  }
+  .modal-btn {
+    width: 136px;
+    height: 44px;
   }
 }
-
-@media screen and (min-width: 768px) {
- 
-
 @media screen and (min-width: 1024px) {
-  
-}*/
+  img {
+    display: block;
+    max-width: 396px;
+    height: 478px;
+  }
+
+  .modal-movie-card-container {
+    width: 882px;
+    height: 568px;
+  }
+
+  .modal-movie-card {
+    padding-top: 50px;
+    padding-left: 30px;
+    padding-bottom: 40px;
+    padding-right: 30px;
+    width: 882px;
+  }
+
+  .modal-movie-card-image-wrapper {
+    width: 396px;
+    height: 478px;
+  }
+  .modal-btn {
+    width: 136px;
+    height: 44px;
+  }
+}
