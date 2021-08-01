@@ -28,11 +28,15 @@ const refs = {
   movieCardBackdrop: doc.querySelector('.backdrop-movie-card'),
   modalMovieCardContainer: doc.querySelector('.modal-movie-card-container'),
   // Надоедалка
+
   modal: doc.querySelector('#subscription-modal'),
   subscribeBtn: doc.querySelector('button[data-subscribe]'),
   toggleSwitch: doc.querySelector('.theme-switch__toggle'),
   scrollToTopBtn: doc.getElementById('scrollToTopBtn'),
   //pag
   element_ul: doc.getElementById('pag_list_id'),
+  //Modal for one card
+ modalCardForOneFilm: document.getElementById('12398'),
+
 };
 export default refs;
