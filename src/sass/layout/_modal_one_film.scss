@@ -24,7 +24,7 @@
   background-color: #fff;
   border-radius: 2px;
 
-  overflow: auto;
+  overflow-y: auto;
 }
 
 .modal-movie-card {
@@ -38,7 +38,7 @@
   height: 100vh;
   font-size: 12px;
   font-weight: 500;
-  overflow: auto;
+  overflow-y: auto;
 
   background-color: var(--the-lightest-text-color);
   border-radius: 5px;
@@ -182,6 +182,7 @@
   justify-content: center;
   align-items: center;
   font-size: 14px;
+  cursor: pointer;
 
   transition: background-color var(--transition-time) var(--time-function);
   &:hover,
@@ -211,12 +212,14 @@
   .modal-movie-card-container {
     height: 562px;
     width: 618px;
+    //overflow-y: scroll;
   }
 
   .modal-movie-card {
     display: flex;
     height: 100%;
     width: 618px;
+    // overflow-y: scroll;
   }
 
   img {
