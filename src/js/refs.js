@@ -32,7 +32,7 @@ const refs = {
   toggleSwitch: document.querySelector('.theme-switch__toggle'),
   scrollToTopBtn: document.getElementById('scrollToTopBtn'),
   //Modal for one card
- modalCardForOneFilm: document.getElementById('123'),
+ modalCardForOneFilm: document.getElementById('12398'),
   
 };
 export default refs;
