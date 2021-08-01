@@ -96,7 +96,7 @@ const autoIn = arrey => {
   return arrey;
 };
 
-const realLaunch = pag => {
+const realLaunch = (pag = 1) => {
   fetchTrendingMovie(pag)
     .then(r => autoIn(r))
     .then(response => response.results)
