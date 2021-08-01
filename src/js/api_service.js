@@ -4,8 +4,8 @@ const BASE_URL = 'https://api.themoviedb.org/3/';
 const API_KEY = '980aef4f6602bffaf56ce8d4b0805479';
 export { fetchMovieByKeyword, fetchMovieById, fetchTrendingMovie };
 
-function fetchMovieByKeyword(keyword) {
-  let page = 1;
+function fetchMovieByKeyword(keyword, page = 1) {
+  // let page = 1;
   return fetch(`${BASE_URL}search/movie?api_key=${API_KEY}&query=${keyword}&page=${page}`).then(
     response => response.json(),
   );
@@ -14,8 +14,8 @@ function fetchMovieById(filmId) {
   return fetch(`${BASE_URL}movie/${filmId}?api_key=${API_KEY}`).then(response => response.json());
 }
 
-function fetchTrendingMovie() {
-  let page = 1;
+function fetchTrendingMovie(page = 1) {
+  // let page = 1;
   return fetch(`${BASE_URL}trending/movie/week?api_key=${API_KEY}&page=${page}`).then(response =>
     response.json(),
   );

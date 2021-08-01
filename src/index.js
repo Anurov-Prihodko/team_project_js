@@ -20,21 +20,31 @@ import * as ourTeam from './js/our_team';
 import { noResults, emptyQuery } from './js/notifications';
 import oneFilmCardJs from './js/one_film_card';
 
+//mark
+import { miniRender } from './js/pagination.js';
+export { maxPAGES,  paintedDots, PAGES }
+export { realLaunch }
+let maxPAGES = 1
+let paintedDots = 5 //тут можна змінити кількість відображених цифр (має бути /2 із решьою)
+let PAGES = 1 // початкова сторінка
+////
+
 // === вызовы фетчей в консоль ===
 // fetchMovieById('496450').then(films => console.log(films));
 // fetchMovieByKeyword('cat').then(films => console.log(films));
 // fetchTrendingMovie().then(films => console.log(films));
 
 // === GALLERY BLOCK === Функция рендеринга галереи
-
 // function makeCardTrendingMovie(films) {
+//   //mark
+//   PAGES = films.page
+//   maxPAGES = films.total_pages
+//   miniRender(PAGES)
+//   ////
 //   const filmCards = galleryTpl(films);
 //   refs.cardContainer.insertAdjacentHTML('beforeend', filmCards);
-//   refs.addError.classList.add('visually-hidden');
 //   // refs.cardContainer.innerHTML = filmCards;
 // }
-
-// fetchTrendingMovie().then(makeCardTrendingMovie);
 
 function cardsMarkUpForMovie({
   id,
@@ -77,12 +87,29 @@ function cardsMarkUpForMovie({
 </li>`;
 }
 
-fetchTrendingMovie()
+const autoIn = (arrey) => {
+ 
+  PAGES = arrey.page
+  maxPAGES = arrey.total_pages
+  miniRender(PAGES)
+  // console.log(PAGES)
+  // console.log(maxPAGES)
+  return arrey
+}
+ 
+const realLaunch = (pag) => {
+  fetchTrendingMovie(pag)
+  .then(r => autoIn(r))
   .then(response => response.results)
   .then(response => {
     const cards = response.reduce((acc, film) => acc + cardsMarkUpForMovie(film), []);
     refs.cardContainer.insertAdjacentHTML('beforeend', cards);
-  });
+  })
+  // .then(miniRender(PAGES))
+}
+
+realLaunch()
+
 // ВЫЗЫВАЕТ НОТУ О ОШИБКЕ
 // noResults();
 
@@ -131,7 +158,12 @@ function clearInput() {
 // === PAGINATION BLOCK
 
 // === END PAGINATION BLOCK
+import pagination from './js/pagination.js';
 
 // === lOCALSTORAGE BLOCK
 
 // === END lOCALSTORAGE BLOCK
+
+
+
+
