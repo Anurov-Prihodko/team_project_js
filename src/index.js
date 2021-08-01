@@ -19,12 +19,12 @@ import headerButtons from './js/header_buttons.js';
 import * as ourTeam from './js/our_team';
 import { noResults, emptyQuery } from './js/notifications';
 import oneFilmCardJs from './js/one_film_card';
-import watchAndQueueFromStorage from './js/watch_queue_render_func'
+import watchAndQueueFromStorage from './js/watch_queue_render_func';
 //mark
 import { miniRender } from './js/pagination.js';
 export { maxPAGES, paintedDots, PAGES, KeyAlpha };
 export { realLaunch, threeSearch };
-let KeyAlpha = ''  
+let KeyAlpha = '';
 let maxPAGES = 1;
 let paintedDots = 5; //тут можна змінити кількість відображених цифр (має бути /2 із решьою)
 let PAGES = 1; // початкова сторінка
@@ -36,17 +36,6 @@ let PAGES = 1; // початкова сторінка
 // fetchTrendingMovie().then(films => console.log(films));
 
 // === GALLERY BLOCK === Функция рендеринга галереи
-// function makeCardTrendingMovie(films) {
-//   //mark
-//   PAGES = films.page
-//   maxPAGES = films.total_pages
-//   miniRender(PAGES)
-//   ////
-//   const filmCards = galleryTpl(films);
-//   refs.cardContainer.insertAdjacentHTML('beforeend', filmCards);
-//   // refs.cardContainer.innerHTML = filmCards;
-// }
-
 function cardsMarkUpForMovie({
   id,
   original_title,
@@ -88,7 +77,7 @@ function cardsMarkUpForMovie({
 </li>`;
 }
 
-const autoIn = (arrey) => {
+const autoIn = arrey => {
   PAGES = arrey.page;
   maxPAGES = arrey.total_pages;
   miniRender();
@@ -122,60 +111,42 @@ function errorMessage() {
 // === SEARCH MOVIE by keyword
 refs.searchInput.addEventListener('submit', onSearch);
 
-
-
 function onSearch(event) {
-  threeSearch(twoSearch(event))
+  threeSearch(twoSearch(event));
 }
-
 
 function twoSearch(event) {
   event.preventDefault();
-  if (event.currentTarget.query.value.trim() !== '') 
-    KeyAlpha = event.currentTarget.query.value.trim()
-    else emptyQuery();
+  if (event.currentTarget.query.value.trim() !== '')
+    KeyAlpha = event.currentTarget.query.value.trim();
+  else emptyQuery();
   refs.input.value = '';
-  return KeyAlpha
+  return KeyAlpha;
 }
 
-
-
-
-
-
 function threeSearch(currentValue, p) {
-  
-    clearFilmContainer();
-    startSpinner();
-    refs.addError.classList.add('visually-hidden');
-    fetchMovieByKeyword(currentValue, p)
-      .then(r => autoIn(r, currentValue))
-      .then(response => response.results)
-      .then(response => {
-        if (response.length !== 0) {
-          const cards = response.reduce((acc, film) => acc + cardsMarkUpForMovie(film), []);
-          refs.cardContainer.insertAdjacentHTML('beforeend', cards);
-        } else {
-          noResults();
-          errorMessage();
-        }
-      })
-      .then(stopSpinner);
-  
-  return 
+  clearFilmContainer();
+  startSpinner();
+  refs.addError.classList.add('visually-hidden');
+  fetchMovieByKeyword(currentValue, p)
+    .then(r => autoIn(r, currentValue))
+    .then(response => response.results)
+    .then(response => {
+      if (response.length !== 0) {
+        const cards = response.reduce((acc, film) => acc + cardsMarkUpForMovie(film), []);
+        refs.cardContainer.insertAdjacentHTML('beforeend', cards);
+      } else {
+        noResults();
+        errorMessage();
+      }
+    })
+    .then(stopSpinner);
+
+  return;
   // return clearInput();
 }
 
-
-
-
-
-
-
-
-
 // function onSearch(event) {
-
 
 //   event.preventDefault();
 
