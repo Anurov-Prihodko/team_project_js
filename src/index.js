@@ -79,7 +79,7 @@ function cardsMarkUpForMovie({
       return allGenres;
     },
     [],
-  )} | ${release_date}</p>
+  )} | ${release_date.slice(0, 4)}</p>
             <span class="movie-gallery-item-rating">${vote_average}</span>
         </div>
 
