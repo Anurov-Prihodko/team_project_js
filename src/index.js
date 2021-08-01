@@ -22,11 +22,11 @@ import oneFilmCardJs from './js/one_film_card';
 
 //mark
 import { miniRender } from './js/pagination.js';
-export { maxPAGES,  paintedDots, PAGES }
-export { realLaunch }
-let maxPAGES = 1
-let paintedDots = 5 //тут можна змінити кількість відображених цифр (має бути /2 із решьою)
-let PAGES = 1 // початкова сторінка
+export { maxPAGES, paintedDots, PAGES };
+export { realLaunch };
+let maxPAGES = 1;
+let paintedDots = 5; //тут можна змінити кількість відображених цифр (має бути /2 із решьою)
+let PAGES = 1; // початкова сторінка
 ////
 
 // === вызовы фетчей в консоль ===
@@ -87,28 +87,27 @@ function cardsMarkUpForMovie({
 </li>`;
 }
 
-const autoIn = (arrey) => {
- 
-  PAGES = arrey.page
-  maxPAGES = arrey.total_pages
-  miniRender(PAGES)
+const autoIn = arrey => {
+  PAGES = arrey.page;
+  maxPAGES = arrey.total_pages;
+  miniRender(PAGES);
   // console.log(PAGES)
   // console.log(maxPAGES)
-  return arrey
-}
- 
-const realLaunch = (pag) => {
-  fetchTrendingMovie(pag)
-  .then(r => autoIn(r))
-  .then(response => response.results)
-  .then(response => {
-    const cards = response.reduce((acc, film) => acc + cardsMarkUpForMovie(film), []);
-    refs.cardContainer.insertAdjacentHTML('beforeend', cards);
-  })
-  // .then(miniRender(PAGES))
-}
+  return arrey;
+};
 
-realLaunch()
+const realLaunch = pag => {
+  fetchTrendingMovie(pag)
+    .then(r => autoIn(r))
+    .then(response => response.results)
+    .then(response => {
+      const cards = response.reduce((acc, film) => acc + cardsMarkUpForMovie(film), []);
+      refs.cardContainer.insertAdjacentHTML('beforeend', cards);
+    });
+  // .then(miniRender(PAGES))
+};
+
+realLaunch();
 
 // ВЫЗЫВАЕТ НОТУ О ОШИБКЕ
 // noResults();
@@ -130,23 +129,34 @@ function onSearch(event) {
     clearFilmContainer();
     startSpinner();
     refs.addError.classList.add('visually-hidden');
-    fetchMovieByKeyword(currentValue).then(renderKeyWordCard).then(stopSpinner);
+    fetchMovieByKeyword(currentValue)
+      .then(response => response.results)
+      .then(response => {
+        if (response.length !== 0) {
+          const cards = response.reduce((acc, film) => acc + cardsMarkUpForMovie(film), []);
+          refs.cardContainer.insertAdjacentHTML('beforeend', cards);
+        } else {
+          noResults();
+          errorMessage();
+        }
+      })
+      .then(stopSpinner);
   } else {
     emptyQuery();
   }
   return clearInput();
 }
 
-function renderKeyWordCard(films) {
-  if (films.results.length !== 0) {
-    const filmCards = galleryTpl(films);
-    refs.cardContainer.insertAdjacentHTML('beforeend', filmCards);
-  } else {
-    noResults();
-    errorMessage();
-  }
-  // return fetchTrendingMovie().then(makeCardTrendingMovie);
-}
+// function renderKeyWordCard(films) {
+//   if (films.results.length !== 0) {
+//     const filmCards = cardsMarkUpForMovie();
+//     refs.cardContainer.insertAdjacentHTML('beforeend', filmCards);
+//   } else {
+//     noResults();
+//     errorMessage();
+//   }
+// return fetchTrendingMovie().then(makeCardTrendingMovie);
+// }
 function clearFilmContainer() {
   refs.cardContainer.innerHTML = '';
 }
@@ -163,7 +173,3 @@ import pagination from './js/pagination.js';
 // === lOCALSTORAGE BLOCK
 
 // === END lOCALSTORAGE BLOCK
-
-
-
-
