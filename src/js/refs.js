@@ -37,6 +37,13 @@ const refs = {
   element_ul: doc.getElementById('pag_list_id'),
   //Modal for one card
  modalCardForOneFilm: document.getElementById('12398'),
-
+//myLib
+  buttons: document.querySelector('.btn-lib-list'),
+  myLibBtn: document.querySelector('#my-library'),
+  homeBtn: document.querySelector('#home'),
+  mobileWidht: 768,
+  tabletWidth: 1024,
+  watchedKey: 'filmIdWatched',
+  queueKey: 'filmIdQueue'
 };
 export default refs;
