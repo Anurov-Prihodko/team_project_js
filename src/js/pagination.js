@@ -1,10 +1,11 @@
 "use strict";
 
-import { maxPAGES, paintedDots, PAGES } from '../index.js';
-import { realLaunch } from '../index.js';
+import { maxPAGES, paintedDots, PAGES, KeyAlpha } from '../index.js';
+import { realLaunch, threeSearch } from '../index.js';
 export { dotsArrayNext, miniRender }
 // const doc = refs.doc
 const doc = document
+
 
 const dotsArrayNext = () => {
   let dots = [];
@@ -28,6 +29,8 @@ const dotsArrayNext = () => {
 
 
 const miniRender = () => {
+  // KeyAlpha = key
+  // console.log(KeyAlpha)
   const element_ul = doc.getElementById('pag_list_id')
   element_ul.innerHTML = '';
 
@@ -53,17 +56,24 @@ const miniRender = () => {
   })
 
 
-  return element_ul
+  // return element_ul
+  return 
 }
 
 
 doc.querySelector(".pagination_list").addEventListener("click", (e, p = PAGES) => {
     const event = e.path[0].textContent
   
-      if (event === '->' || event === '.. .') {
+      if (event === '->') {
+         ++p
+       }
+       else if (event === '<-') {
+         --p
+       }
+       else if (event === '.. .') {
          p += 3
        }
-       else if (event === '. ..' || event === '<-') {
+       else if (event === '. ..') {
          p -= 3
       }
     
@@ -72,10 +82,16 @@ doc.querySelector(".pagination_list").addEventListener("click", (e, p = PAGES) =
   }
   doc.getElementById('mov_gall').innerHTML = '';  
 
+  if (KeyAlpha !== '') {
+    // console.log(KeyAlpha, p)
+    threeSearch(KeyAlpha, p)
+  }
+    else
     realLaunch(p)
     
         
 });
+
 
 
 
