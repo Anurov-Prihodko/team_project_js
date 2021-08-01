@@ -55,20 +55,19 @@ function cardsMarkUpForMovie({
     (allGenres, id) => {
       for (const genre of genres) {
         if (id === genre.id) {
-          id = genre.name;
+          id = " "+genre.name;
         }
       }
       allGenres.push(id);
       // let twoGenres = [];
       if (allGenres.length > 3) {
         const twoGenres = allGenres.slice(0, 2);
-        twoGenres.push('Other');
+        twoGenres.push(' Other');
         return twoGenres;
       }
       return allGenres;
     },
-    [],
-  )} | ${release_date}</p>
+    [])} | ${release_date}</p>
             <span class="movie-gallery-item-rating">${vote_average}</span>
         </div>
 
