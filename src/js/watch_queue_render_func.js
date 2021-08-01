@@ -1,4 +1,4 @@
-import watchAndQueueTpl from './watched_and_queue._tpl';
+import watchAndQueueTpl from './watched_and_queue_tpl';
 import refs from './refs';
 import {fetchMovieById} from './api_service';
 import { realLaunch } from '../index.js';
