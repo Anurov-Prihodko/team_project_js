@@ -35,17 +35,6 @@ let PAGES = 1; // початкова сторінка
 // fetchTrendingMovie().then(films => console.log(films));
 
 // === GALLERY BLOCK === Функция рендеринга галереи
-// function makeCardTrendingMovie(films) {
-//   //mark
-//   PAGES = films.page
-//   maxPAGES = films.total_pages
-//   miniRender(PAGES)
-//   ////
-//   const filmCards = galleryTpl(films);
-//   refs.cardContainer.insertAdjacentHTML('beforeend', filmCards);
-//   // refs.cardContainer.innerHTML = filmCards;
-// }
-
 function cardsMarkUpForMovie({
   id,
   original_title,
@@ -177,7 +166,7 @@ refs.modalCardForOneFilm.addEventListener('click', onClickInModal);
 function onClickInModal(event) {
   const btnWatched = document.getElementById('add-to-watched');
   const btnAddToQueue = document.getElementById('add-to-queue');
- 
+
   if (event.target === btnWatched) {
     const idFilmWatched = btnWatched.dataset.act;
     if (massivFfilmsWatched.includes(idFilmWatched)) {
@@ -188,7 +177,6 @@ function onClickInModal(event) {
     massivFfilmsWatched.push(idFilmWatched);
     localStorage.setItem('watched', massivFfilmsWatched);
     btnWatched.textContent = 'delete from watched';
-    
   }
   if (event.target === btnAddToQueue) {
     const idFilm = btnAddToQueue.dataset.act;
