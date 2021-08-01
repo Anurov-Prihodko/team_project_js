@@ -171,5 +171,35 @@ function clearInput() {
 import pagination from './js/pagination.js';
 
 // === lOCALSTORAGE BLOCK
+let massivFfilmsWatched = [];
+let massivFfilmsQueue = [];
+refs.modalCardForOneFilm.addEventListener('click', onClickInModal);
+function onClickInModal(event) {
+  const btnWatched = document.getElementById('add-to-watched');
+  const btnAddToQueue = document.getElementById('add-to-queue');
+ 
+  if (event.target === btnWatched) {
+    const idFilmWatched = btnWatched.dataset.act;
+    if (massivFfilmsWatched.includes(idFilmWatched)) {
+      const indexFilm = massivFfilmsWatched.indexOf(idFilmWatched);
+      massivFfilmsWatched.splice(indexFilm, 1);
+    }
+
+    massivFfilmsWatched.push(idFilmWatched);
+    localStorage.setItem('watched', massivFfilmsWatched);
+    btnWatched.textContent = 'delete from watched';
+    
+  }
+  if (event.target === btnAddToQueue) {
+    const idFilm = btnAddToQueue.dataset.act;
+    if (massivFfilmsQueue.includes(idFilm)) {
+      const indexFilm = massivFfilmsQueue.indexOf(idFilm);
+      massivFfilmsQueue.splice(indexFilm, 1);
+    }
+    massivFfilmsQueue.push(idFilm);
+    localStorage.setItem('queue', massivFfilmsQueue);
+    btnAddToQueue.textContent = 'delete from Queue';
+  }
+}
 
 // === END lOCALSTORAGE BLOCK
