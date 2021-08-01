@@ -56,7 +56,7 @@ function cardsMarkUpForMovie({
     (allGenres, id) => {
       for (const genre of genres) {
         if (id === genre.id) {
-          id = genre.name;
+          id = genre.id;
         }
       }
       allGenres.push(id);
@@ -133,5 +133,36 @@ function clearInput() {
 // === END PAGINATION BLOCK
 
 // === lOCALSTORAGE BLOCK
-
+let massivFfilmsWatched = []
+let massivFfilmsQueue = []
+refs.modalCardForOneFilm.addEventListener('click', onClickInModal)
+function onClickInModal(event) {
+  const btnWatched = document.getElementById('add-to-watched')
+  const btnAddToQueue = document.getElementById('add-to-queue')
+  if (event.target === btnWatched) {
+    
+    //const linkOnidFilm = document.querySelector('.modal-movie-title')
+    const idFilm = btnWatched.dataset.act;
+    if (massivFfilmsWatched.includes(idFilm)) {
+      const indexFilm = massivFfilmsWatched.indexOf(idFilm)
+      massivFfilmsWatched.splice(indexFilm, 1)
+    }
+    massivFfilmsWatched.push(idFilm)
+    localStorage.setItem('idFilmAddToWatched', massivFfilmsWatched)
+    
+  }
+  if (event.target === btnAddToQueue) {
+    
+    //const linkOnidFilm = document.querySelector('.modal-movie-title')
+    const idFilm = btnAddToQueue.dataset.act;
+    if (massivFfilmsQueue.includes(idFilm)) {
+      const indexFilm = massivFfilmsQueue.indexOf(idFilm)
+      massivFfilmsQueue.splice(indexFilm, 1)
+    }
+    massivFfilmsQueue.push(idFilm)
+    localStorage.setItem('idFilmAddToQueue', massivFfilmsQueue)
+    
+  }
+  
+}
 // === END lOCALSTORAGE BLOCK
