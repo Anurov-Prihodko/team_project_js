@@ -5,7 +5,7 @@ import { fetchMovieById } from './api_service';
 import refs from './refs';
 
 //1. По умолчанию на <div class="backdrop-movie-card> висит класс visually-hidden
-//2. При клике на <list class="movie-gallery-list"> класс visually-hidden убирается
+//2. При клике на <ul class="movie-gallery-list"> класс visually-hidden убирается
 //3. Отрисовывается модалка
 //4. По нажатию на Esc и клику на крестик добавляется класс visually-hidden и модалка скрывается
 
@@ -17,7 +17,6 @@ function renderModalMovieCard(data) {
   const card = filmTpl(data);
   refs.modalMovieCardContainer.insertAdjacentHTML('beforeend', card);
 }
-//fetchMovieById(filmId).then(renderModalMovieCard).catch(noResults);
 
 function clearModalMovieCard() {
   refs.modalMovieCardContainer.innerHTML = '';
@@ -45,8 +44,6 @@ function onMovieCardBackdropClick(event) {
   if (!event.target.hasAttribute('close-tag')) {
     return;
   }
-
-  // console.log(event.target);
 
   removeEventListenerFromBackdrop();
   removeEventListenerFromEscKey();
