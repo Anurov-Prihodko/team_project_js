@@ -19,7 +19,7 @@ import headerButtons from './js/header_buttons.js';
 import * as ourTeam from './js/our_team';
 import { noResults, emptyQuery } from './js/notifications';
 import oneFilmCardJs from './js/one_film_card';
-
+import watchAndQueueFromStorage from './js/watch_queue_render_func'
 //mark
 import { miniRender } from './js/pagination.js';
 export { maxPAGES, paintedDots, PAGES };
