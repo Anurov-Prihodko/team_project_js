@@ -22,8 +22,9 @@ import oneFilmCardJs from './js/one_film_card';
 
 //mark
 import { miniRender } from './js/pagination.js';
-export { maxPAGES, paintedDots, PAGES };
-export { realLaunch };
+export { maxPAGES, paintedDots, PAGES, KeyAlpha };
+export { realLaunch, threeSearch };
+let KeyAlpha = ''  
 let maxPAGES = 1;
 let paintedDots = 5; //тут можна змінити кількість відображених цифр (має бути /2 із решьою)
 let PAGES = 1; // початкова сторінка
@@ -35,6 +36,17 @@ let PAGES = 1; // початкова сторінка
 // fetchTrendingMovie().then(films => console.log(films));
 
 // === GALLERY BLOCK === Функция рендеринга галереи
+// function makeCardTrendingMovie(films) {
+//   //mark
+//   PAGES = films.page
+//   maxPAGES = films.total_pages
+//   miniRender(PAGES)
+//   ////
+//   const filmCards = galleryTpl(films);
+//   refs.cardContainer.insertAdjacentHTML('beforeend', filmCards);
+//   // refs.cardContainer.innerHTML = filmCards;
+// }
+
 function cardsMarkUpForMovie({
   id,
   original_title,
@@ -76,10 +88,10 @@ function cardsMarkUpForMovie({
 </li>`;
 }
 
-const autoIn = arrey => {
+const autoIn = (arrey) => {
   PAGES = arrey.page;
   maxPAGES = arrey.total_pages;
-  miniRender(PAGES);
+  miniRender();
   // console.log(PAGES)
   // console.log(maxPAGES)
   return arrey;
@@ -87,7 +99,7 @@ const autoIn = arrey => {
 
 const realLaunch = (pag = 1) => {
   fetchTrendingMovie(pag)
-    .then(r => autoIn(r))
+    .then(r => autoIn(r, ''))
     .then(response => response.results)
     .then(response => {
       const cards = response.reduce((acc, film) => acc + cardsMarkUpForMovie(film), []);
@@ -110,15 +122,34 @@ function errorMessage() {
 // === SEARCH MOVIE by keyword
 refs.searchInput.addEventListener('submit', onSearch);
 
-function onSearch(event) {
-  event.preventDefault();
 
-  if (event.currentTarget.query.value.trim() !== '') {
-    let currentValue = event.currentTarget.query.value.trim();
+
+function onSearch(event) {
+  threeSearch(twoSearch(event))
+}
+
+
+function twoSearch(event) {
+  event.preventDefault();
+  if (event.currentTarget.query.value.trim() !== '') 
+    KeyAlpha = event.currentTarget.query.value.trim()
+    else emptyQuery();
+  refs.input.value = '';
+  return KeyAlpha
+}
+
+
+
+
+
+
+function threeSearch(currentValue, p) {
+  
     clearFilmContainer();
     startSpinner();
     refs.addError.classList.add('visually-hidden');
-    fetchMovieByKeyword(currentValue)
+    fetchMovieByKeyword(currentValue, p)
+      .then(r => autoIn(r, currentValue))
       .then(response => response.results)
       .then(response => {
         if (response.length !== 0) {
@@ -130,11 +161,47 @@ function onSearch(event) {
         }
       })
       .then(stopSpinner);
-  } else {
-    emptyQuery();
-  }
-  return clearInput();
+  
+  return 
+  // return clearInput();
 }
+
+
+
+
+
+
+
+
+
+// function onSearch(event) {
+
+
+//   event.preventDefault();
+
+//   if (event.currentTarget.query.value.trim() !== '') {
+//     let currentValue = event.currentTarget.query.value.trim();
+//     clearFilmContainer();
+//     startSpinner();
+//     refs.addError.classList.add('visually-hidden');
+//     fetchMovieByKeyword(currentValue)
+//       .then(r => autoIn(r, currentValue))
+//       .then(response => response.results)
+//       .then(response => {
+//         if (response.length !== 0) {
+//           const cards = response.reduce((acc, film) => acc + cardsMarkUpForMovie(film), []);
+//           refs.cardContainer.insertAdjacentHTML('beforeend', cards);
+//         } else {
+//           noResults();
+//           errorMessage();
+//         }
+//       })
+//       .then(stopSpinner);
+//   } else {
+//     emptyQuery();
+//   }
+//   return clearInput();
+// }
 
 // function renderKeyWordCard(films) {
 //   if (films.results.length !== 0) {
@@ -149,45 +216,16 @@ function onSearch(event) {
 function clearFilmContainer() {
   refs.cardContainer.innerHTML = '';
 }
-function clearInput() {
-  refs.input.value = '';
-}
+// function clearInput() {
+//   refs.input.value = '';
+// }
 // === END SEARCH MOVIE by keyword
 
 // === PAGINATION BLOCK
 
 // === END PAGINATION BLOCK
-import pagination from './js/pagination.js';
+// import pagination from './js/pagination.js';
 
 // === lOCALSTORAGE BLOCK
-let massivFfilmsWatched = [];
-let massivFfilmsQueue = [];
-refs.modalCardForOneFilm.addEventListener('click', onClickInModal);
-function onClickInModal(event) {
-  const btnWatched = document.getElementById('add-to-watched');
-  const btnAddToQueue = document.getElementById('add-to-queue');
-
-  if (event.target === btnWatched) {
-    const idFilmWatched = btnWatched.dataset.act;
-    if (massivFfilmsWatched.includes(idFilmWatched)) {
-      const indexFilm = massivFfilmsWatched.indexOf(idFilmWatched);
-      massivFfilmsWatched.splice(indexFilm, 1);
-    }
-
-    massivFfilmsWatched.push(idFilmWatched);
-    localStorage.setItem('watched', massivFfilmsWatched);
-    btnWatched.textContent = 'delete from watched';
-  }
-  if (event.target === btnAddToQueue) {
-    const idFilm = btnAddToQueue.dataset.act;
-    if (massivFfilmsQueue.includes(idFilm)) {
-      const indexFilm = massivFfilmsQueue.indexOf(idFilm);
-      massivFfilmsQueue.splice(indexFilm, 1);
-    }
-    massivFfilmsQueue.push(idFilm);
-    localStorage.setItem('queue', massivFfilmsQueue);
-    btnAddToQueue.textContent = 'delete from Queue';
-  }
-}
 
 // === END lOCALSTORAGE BLOCK
