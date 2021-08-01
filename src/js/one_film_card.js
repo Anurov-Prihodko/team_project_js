@@ -27,6 +27,10 @@ function clearModalMovieCard() {
 function onMovieCardClick(event) {
   event.preventDefault();
 
+  if (event.target === event.currentTarget) {
+    return;
+  }
+
   const id = event.target.getAttribute('data-item');
   addEventListenerOnEscKey();
   addEventListenerOnModalBackdrop();
@@ -38,13 +42,6 @@ function onMovieCardClick(event) {
 
 /* Закрываем модалку при клике на бэкдроп или кнопку закрытия */
 function onMovieCardBackdropClick(event) {
-  const closeTags = ['DIV', 'svg', 'use'];
-  // console.log(event.target.hasAttribute('close-tag'));
-
-  // if (!closeTags.includes(event.target.nodeName)) {
-  //   return;
-  // }
-
   if (!event.target.hasAttribute('close-tag')) {
     return;
   }
