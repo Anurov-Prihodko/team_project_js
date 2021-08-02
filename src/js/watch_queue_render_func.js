@@ -76,6 +76,8 @@ function correctionStyles() {
 
 function renderNotificationLibIsEmpty() {
   refs.cardContainer.innerHTML = '';
+  refs.addError.classList.add('visually-hidden');
+  // refs.notification.removeEventListener();
   refs.cardContainer.insertAdjacentHTML('beforeend',`
     <div class="library-is-empty">
       <strong>this list is empty...</strong>
