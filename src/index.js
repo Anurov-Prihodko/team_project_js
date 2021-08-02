@@ -44,16 +44,23 @@ function cardsMarkUpForMovie({
   release_date,
   vote_average,
 }) {
-  return `<li class="movie-gallery-item" data-item="${id}">
-        <img class="movie-gallery-item-poster" src="https://image.tmdb.org/t/p/w500${(poster_path =
-          poster_path ? poster_path : `/5qHIqiFpYXrgguBZWAiKOE1Uryf.jpg`)}"
-        alt="image card movie" data-item="${id}" />
 
-    <div class="movie-gallery-item-description" data-item="${id}">
-        <h2 class="movie-gallery-item-title" data-item="${id}">${original_title}</h2>
-        <div class="movie-gallery-item-box" data-item="${id}">
-            <p class="movie-gallery-item-genre" data-item="${id}">${genre_ids.reduce(
-    (allGenres, id) => {
+  // return `<li class="movie-gallery-item" data-item="${id}">
+  //       <img class="movie-gallery-item-poster" src="https://${(poster_path =
+  //         poster_path ? `image.tmdb.org/t/p/w500$${poster_path}` : `lorempixel.com/640/360`)}"
+  //       alt="image card movie" data-item="${id}" />
+  // return `<li class="movie-gallery-item" data-item="${id}">
+  //       <img class="movie-gallery-item-poster" src="https://image.tmdb.org/t/p/w500${(poster_path =
+  //         poster_path ? poster_path : `/5qHIqiFpYXrgguBZWAiKOE1Uryf.jpg`)}"
+  //       alt="image card movie" data-item="${id}" />
+
+  // логіка
+  id = id ? id : 'Technical works are underway!'
+  original_title = original_title ? original_title : 'not yet announced'
+  poster_path = poster_path ? `image.tmdb.org/t/p/w500/${poster_path}` : 'placeimg.com/270/340/any'
+  vote_average = vote_average ? vote_average : '-/-'
+  release_date = release_date ? release_date.substring(0, release_date.length - 6) : 'Year not yet specified'
+  genre_ids = genre_ids.reduce((allGenres, id) => {
       for (const genre of genres) {
         if (id === genre.id) {
           id = genre.name;
@@ -70,15 +77,26 @@ function cardsMarkUpForMovie({
     },
 
     [],
-  )} | ${(release_date = release_date
-    ? release_date.substring(0, release_date.length - 6)
-    : release_date)}</p>
-            <span class="movie-gallery-item-rating">${vote_average}</span>
+  )
+
+  //конструктор
+  return `<li class="movie-gallery-item" data-item="${id}">
+        <img class="movie-gallery-item-poster" src="https://${(poster_path)}"
+        alt="image card movie" data-item="${id}" />
+    <div class="movie-gallery-item-description" data-item="${id}">
+        <h2 class="movie-gallery-item-title" data-item="${id}">${original_title}</h2>
+        <div class="movie-gallery-item-box" data-item="${id}">
+            <p class="movie-gallery-item-genre" data-item="${id}">${genre_ids} | ${(release_date)}</p>
+            <span class="movie-gallery-item-rating">${(vote_average)}</span>
         </div>
 
     </div>
 </li>`;
 }
+
+
+
+
 
 const autoIn = arrey => {
   PAGES = arrey.page;
