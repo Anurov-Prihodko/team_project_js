@@ -43,7 +43,6 @@ const refs = {
   homeBtn: document.querySelector('#home'),
   mobileWidht: 768,
   tabletWidth: 1024,
-  watchedKey: 'filmIdWatched',
-  queueKey: 'filmIdQueue'
+  pagination: document.querySelector('.pagination_box')
 };
 export default refs;

@@ -16,6 +16,7 @@ function onHomeBtnClick() {
 
 function onMyLibClick() {
   refs.cardContainer.innerHTML = '';
+  setTimeout(() => refs.pagination.classList.add('visually-hidden'), 200);
 
   let ids = getItemsFromStorage('watched')
 
@@ -66,4 +67,5 @@ function correctionStyles() {
 
   refs.watchedButton.classList.add('active');
   refs.queueButton.classList.remove('active');
+  setTimeout(() => refs.pagination.classList.remove('visually-hidden'), 200);
 }
