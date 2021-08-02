@@ -58,7 +58,7 @@ function cardsMarkUpForMovie({
   id = id ? id : 'Technical works are underway!'
   original_title = original_title ? original_title : 'not yet announced'
   poster_path = poster_path ? `image.tmdb.org/t/p/w500/${poster_path}` : 'placeimg.com/270/340/any'
-  vote_average = vote_average ? vote_average : '-/-'
+  vote_average = vote_average ? vote_average : '--/--'
   release_date = release_date ? release_date.substring(0, release_date.length - 6) : 'Year not yet specified'
   genre_ids = genre_ids.reduce((allGenres, id) => {
       for (const genre of genres) {
