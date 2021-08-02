@@ -7,6 +7,8 @@ refs.buttons.addEventListener('click', onMyLibBtnsClick);
 refs.myLibBtn.addEventListener('click', onMyLibClick);
 refs.homeBtn.addEventListener('click', onHomeBtnClick);
 
+
+
 function onHomeBtnClick() {
   refs.cardContainer.innerHTML = '';
 
@@ -18,23 +20,25 @@ function onMyLibClick() {
   refs.cardContainer.innerHTML = '';
   setTimeout(() => refs.pagination.classList.add('visually-hidden'), 200);
 
-  let ids = getItemsFromStorage('watched')
+  let ids = getItemsFromStorage('watched');
 
   if (!ids) {
+    renderNotificationLibIsEmpty();
     return;
   }
 
-  fetchMoviesOnMyLibBtnsClick(ids)
+  fetchMoviesOnMyLibBtnsClick(ids);
 }
 
 function onMyLibBtnsClick(event) {
   let ids = getItemsFromStorage(event.target.textContent)
 
   if (!ids) {
+    renderNotificationLibIsEmpty();
     return;
   }
 
-  fetchMoviesOnMyLibBtnsClick(ids)
+  fetchMoviesOnMyLibBtnsClick(ids);
 }
 
 function fetchMoviesOnMyLibBtnsClick(idsForFetch) {
@@ -68,4 +72,13 @@ function correctionStyles() {
   refs.watchedButton.classList.add('active');
   refs.queueButton.classList.remove('active');
   setTimeout(() => refs.pagination.classList.remove('visually-hidden'), 200);
+}
+
+function renderNotificationLibIsEmpty() {
+  refs.cardContainer.innerHTML = '';
+  refs.cardContainer.insertAdjacentHTML('beforeend',`
+    <div class="library-is-empty">
+      <strong>this list is empty...</strong>
+    </div>
+`);
 }
