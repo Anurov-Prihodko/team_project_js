@@ -26,7 +26,7 @@ function onOurTeamLinkClick(event) {
 
 /* Закрываем модалку при клике на бэкдроп или кнопку закрытия */
 function onbackdropClick(event) {
-  if(!event.target.hasAttribute('close-tag')) {
+  if (!event.target.hasAttribute('data-close-tag')) {
     return;
   }
 
