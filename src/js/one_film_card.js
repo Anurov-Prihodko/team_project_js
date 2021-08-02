@@ -42,7 +42,7 @@ function onMovieCardClick(event) {
 
 /* Закрываем модалку при клике на бэкдроп или кнопку закрытия */
 function onMovieCardBackdropClick(event) {
-  if (!event.target.hasAttribute('close-tag')) {
+  if (!event.target.hasAttribute('data-close')) {
     return;
   }
 
