@@ -45,8 +45,8 @@ function cardsMarkUpForMovie({
   vote_average,
 }) {
   return `<li class="movie-gallery-item" data-item="${id}">
-
-    <img class="movie-gallery-item-poster" src="https://image.tmdb.org/t/p/w500${poster_path}"
+        <img class="movie-gallery-item-poster" src="https://image.tmdb.org/t/p/w500${(poster_path =
+          poster_path ? poster_path : `/5qHIqiFpYXrgguBZWAiKOE1Uryf.jpg`)}"
         alt="image card movie" data-item="${id}" />
 
     <div class="movie-gallery-item-description" data-item="${id}">
