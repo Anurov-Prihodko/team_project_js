@@ -9,8 +9,8 @@ function onClickLib() {
   refs.headerDom.classList.add('lib-header');
 }
 function onClickHome() {
-  refs.searchInput.classList.toggle('visually-hidden');
-  refs.btnList.classList.toggle('visually-hidden');
+  refs.searchInput.classList.add('visually-hidden');
+  refs.btnList.classList.remove('visually-hidden');
   refs.libButton.classList.remove('current');
   refs.homeButton.classList.add('current');
   refs.headerDom.classList.remove('lib-header');

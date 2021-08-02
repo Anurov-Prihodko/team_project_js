@@ -10,7 +10,8 @@ import refs from './refs';
 //4. По нажатию на Esc и клику на крестик добавляется класс visually-hidden и модалка скрывается
 
 refs.cardContainer.addEventListener('click', onMovieCardClick); //тут слушатель на галерее.
-//нам нужно отлавливать event.target, брать у него id (берём id дата атрубута тега, на который кликнул пользователь)и прокидывть его в fetchMovieById
+/* нам нужно отлавливать event.target, брать у него id (берём id дата атрубута тега, 
+ на который кликнул пользователь) и прокидывть его в fetchMovieById */
 
 /*Создаёт разметку карточки по шаблону*/
 function renderModalMovieCard(data) {
