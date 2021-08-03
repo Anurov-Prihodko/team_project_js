@@ -1,6 +1,12 @@
 .movie-gallery {
+  padding-top: 20px;
+  padding-bottom: 40px;
   min-height: 400px;
   position: relative;
+  @media screen and(min-width:768px) {
+    padding-top: 60px;
+    padding-bottom: 50px;
+  }
 }
 .movie-error {
   color: var(--the-lightest-text-color);
@@ -47,14 +53,10 @@
 }
 
 .movie-gallery-list {
-  margin-top: 20px;
-  margin-bottom: 40px;
   width: 280px;
   height: auto;
 
   @media screen and (min-width: 768px) {
-    margin-top: 60px;
-    margin-bottom: 50px;
     display: flex;
     flex-wrap: wrap;
     width: 618px;
