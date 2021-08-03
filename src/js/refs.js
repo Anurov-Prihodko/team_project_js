@@ -37,14 +37,14 @@ const refs = {
   //pag
   element_ul: doc.getElementById('pag_list_id'),
   //Modal for one card
- modalCardForOneFilm: document.getElementById('12398'),
+ modalCardForOneFilm: doc.getElementById('12398'),
 //myLib
-  buttons: document.querySelector('.btn-lib-list'),
-  myLibBtn: document.querySelector('#my-library'),
-  homeBtn: document.querySelector('#home'),
+  buttons: doc.querySelector('.btn-lib-list'),
+  myLibBtn: doc.querySelector('#my-library'),
+  homeBtn: doc.querySelector('#home'),
   mobileWidht: 768,
   tabletWidth: 1024,
-  pagination: document.querySelector('.pagination_box'),
-  notification: document.querySelector('.library-is-empty')
+  pagination: doc.querySelector('.pagination_box'),
+  notification: doc.querySelector('.library-is-empty')
 };
 export default refs;

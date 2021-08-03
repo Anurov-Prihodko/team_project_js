@@ -1,20 +1,16 @@
 'use strict';
 import refs from './refs';
-const doc = document
-// Переключатель темы
 
-const Theme = {
-  LIGHT: 'light-theme',
-  DARK: 'dark-theme',
-};
-const { LIGHT, DARK } = Theme;
-const themeClassContainer = doc.body;
+const doc = document,
+ LIGHT = 'light-theme',
+ DARK = 'dark-theme',
+ themeClassContainer = doc.body.classList;
 // const pag_mark = doc.getElementById("pag_list_id").classList
 
-themeClassContainer.classList.add(
-  localStorage.getItem('theme') === null ? Theme.LIGHT : localStorage.getItem('theme'),
+themeClassContainer.add(
+  localStorage.getItem('theme') === null ? LIGHT : localStorage.getItem('theme'),
 );
-if (localStorage.getItem('theme') === Theme.DARK) {
+if (localStorage.getItem('theme') === DARK) {
   refs.toggleSwitch.checked = true;
 }
 
@@ -23,18 +19,18 @@ function switchTheme(e) {
     // pag_mark.add('dark')
     // pag_mark.remove('light')
 
-    themeClassContainer.classList.add(Theme.DARK);
-    themeClassContainer.classList.remove(Theme.LIGHT);
+    themeClassContainer.add(DARK);
+    themeClassContainer.remove(LIGHT);
 
-    localStorage.setItem('theme', Theme.DARK);
+    localStorage.setItem('theme', DARK);
   } else {
     // pag_mark.add('light')
-    // pag_mark.remove('dark')
+    // pag_mark.remove('dark')    
 
-    themeClassContainer.classList.add(Theme.LIGHT);
-    themeClassContainer.classList.remove(Theme.DARK);
+    themeClassContainer.add(LIGHT);
+    themeClassContainer.remove(DARK);
 
-    localStorage.setItem('theme', Theme.LIGHT);
+    localStorage.setItem('theme', LIGHT);
   }
 }
 

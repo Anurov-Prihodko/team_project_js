@@ -1,4 +1,5 @@
 'use strict';
+const doc = document
 import './sass/main.scss';
 let debounce = require('lodash.debounce');
 
@@ -173,8 +174,8 @@ let massivFfilmsQueue = [];
 refs.modalCardForOneFilm.addEventListener('click', onClickInModal);
 function onClickInModal(event) {
   const savedFilms = localStorage.getItem('watched')
-  const btnWatched = document.getElementById('add-to-watched');
-  const btnAddToQueue = document.getElementById('add-to-queue');
+  const btnWatched = doc.getElementById('add-to-watched');
+  const btnAddToQueue = doc.getElementById('add-to-queue');
   const idFilmWatched = btnWatched.dataset.act;
   const idFilmQ = btnAddToQueue.dataset.act;
   
