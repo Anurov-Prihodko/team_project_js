@@ -175,73 +175,49 @@ function onClickInModal(event) {
   const savedFilms = localStorage.getItem('watched');
   const btnWatched = document.getElementById('add-to-watched');
   const btnAddToQueue = document.getElementById('add-to-queue');
-  const idFilmWatched = btnWatched.dataset.act;
-  const idFilmQ = btnAddToQueue.dataset.act;
 
-  if (event.target === btnWatched && btnWatched.textContent === 'add to watched') {
-    const savedFilms = localStorage.getItem('watched');
-    if (savedFilms) {
-      let newListFilms = [];
-      newListFilms.push(savedFilms);
-      newListFilms.push(idFilmWatched);
-      localStorage.setItem('watched', newListFilms);
-      btnWatched.textContent = 'delete from watched';
-      return;
-    }
-    massivFfilmsWatched = [];
-    massivFfilmsWatched.push(idFilmWatched);
+  //const getMassivFfilmsWatchedFromLocal = localStorage.getItem('watched')
+  const filmId = btnWatched.dataset.act;
+  console.log(localStorage.getItem('watched'))
+  if (event.target === btnWatched && localStorage.getItem('watched')?.indexOf(filmId + '') > -1) {
+    const indexFilm = massivFfilmsWatched.indexOf(filmId);
+    console.log(massivFfilmsWatched);
+    massivFfilmsWatched.splice(indexFilm, 1);
+    localStorage.setItem('watched', massivFfilmsWatched);
+    btnWatched.textContent = 'add to watched';
+  }
+  else if (event.target === btnWatched) {
+    const filmId = btnWatched.dataset.act;
+    massivFfilmsWatched.push(filmId);
     localStorage.setItem('watched', massivFfilmsWatched);
     btnWatched.textContent = 'delete from watched';
-    return;
+  
   }
-  if (event.target === btnWatched && btnWatched.textContent === 'delete from watched') {
-    const getFilms = localStorage.getItem('watched');
-    const stringForObj = getFilms.split(',');
-    stringForObj.forEach(el => {
-      if (idFilmWatched === el) {
-        const indexEl = stringForObj.indexOf(idFilmWatched);
-        stringForObj.splice(indexEl, 1);
-        localStorage.setItem('watched', stringForObj);
-        btnWatched.textContent = 'add to watched';
-        if (stringForObj.length === 0) {
-          localStorage.removeItem('watched');
-        }
-      }
-      return;
-    });
+  // if (event.target === btnWatched) {
+  //   // const filmId = btnWatched.dataset.act;
+  //   massivFfilmsWatched.push(filmId);
+  //   localStorage.setItem('watched', massivFfilmsWatched);
+  //   btnWatched.textContent = 'delete from watched';
+  // }
+  
+  if (event.target === btnAddToQueue && localStorage.getItem('queue')?.indexOf(filmId + '') > -1) {
+    console.log('test 1');
+    const indexFilm = massivFfilmsQueue.indexOf(filmId);
+    console.log(massivFfilmsQueue);
+    massivFfilmsQueue.splice(indexFilm, 1);
+    localStorage.setItem('queue', massivFfilmsQueue);
+    btnAddToQueue.textContent = 'add to queue';
   }
-  if (event.target === btnAddToQueue && btnAddToQueue.textContent === 'add to queue') {
-    const savedFilmsQ = localStorage.getItem('queue');
-    if (savedFilmsQ) {
-      let newListFilmsQ = [];
-      newListFilmsQ.push(savedFilmsQ);
-      newListFilmsQ.push(idFilmQ);
-      localStorage.setItem('queue', newListFilmsQ);
-      btnAddToQueue.textContent = 'delete from queue';
-      return;
-    }
-
-    massivFfilmsQueue = [];
-    massivFfilmsQueue.push(idFilmQ);
+  else if (event.target === btnAddToQueue) {
+    const filmId = btnWatched.dataset.act;
+    massivFfilmsQueue.push(filmId);
     localStorage.setItem('queue', massivFfilmsQueue);
     btnAddToQueue.textContent = 'delete from queue';
-    return;
+   console.log('test 2');
   }
-  if (event.target === btnAddToQueue && btnAddToQueue.textContent === 'delete from queue') {
-    const getFilmsQ = localStorage.getItem('queue');
-    const stringForObjQ = getFilmsQ.split(',');
-    stringForObjQ.forEach(el => {
-      if (idFilmQ === el) {
-        const indexElQ = stringForObjQ.indexOf(idFilmQ);
-        stringForObjQ.splice(indexElQ, 1);
-        localStorage.setItem('queue', stringForObjQ);
-        btnAddToQueue.textContent = 'add to queue';
-        if (stringForObjQ.length === 0) {
-          localStorage.removeItem('queue');
-        }
-      }
-      return;
-    });
-  }
+
 }
+
 // === END lOCALSTORAGE BLOCK
+    
+

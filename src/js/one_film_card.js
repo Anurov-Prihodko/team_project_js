@@ -15,8 +15,18 @@ refs.cardContainer.addEventListener('click', onMovieCardClick); //тут слу�
 
 /*Создаёт разметку карточки по шаблону*/
 function renderModalMovieCard(data) {
-  const card = filmTpl(data);
+  const storageStatus = {queue:false,watched:false}
+  if (localStorage.getItem('queue')?.indexOf(data.id + "") >= 0) {
+    storageStatus.queue = true;
+  
+  }
+  if (localStorage.getItem('watched')?.indexOf(data.id + "") >= 0) {
+    storageStatus.watched = true;
+  
+  }
+  const card = filmTpl({ filmData:data, storageStatus });
   refs.modalMovieCardContainer.insertAdjacentHTML('beforeend', card);
+  
 }
 
 function clearModalMovieCard() {
