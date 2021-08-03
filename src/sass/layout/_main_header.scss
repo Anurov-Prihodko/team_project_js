@@ -14,7 +14,7 @@
     max-width: 768px;
   }
   @media screen and (min-width: 1024px) {
-    max-width: 1024px;
+    max-width: 1400px;
   }
 }
 .gradient-container {
@@ -230,7 +230,7 @@
     }
   }
   @media screen and (min-width: 1024px) {
-    max-width: 1024px;
+    max-width: 1400px;
     background-image: url('../images/header-library-desktop@1x.jpg');
     @media screen and (min-device-pixel-ratio: 2) and (min-width: 1024px),
       screen and (min-resolution: 192dpi) and (min-width: 1024px),
@@ -293,14 +293,14 @@ body.dark-theme {
   justify-content: flex-end;
   position: absolute;
   top: 20px;
-  right: 20px;
+  right: 15px;
   @media screen and (min-width: 768px) {
     top: 30px;
-    right: 72px;
+    right: 14px;
   }
   @media screen and (min-width: 1024px) {
     top: 30px;
-    right: 70px;
+    right: 175px;
   }
 }
 .theme-switch__icon {
