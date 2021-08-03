@@ -17,12 +17,13 @@ const refs = {
     'body > header > div.container > ul > li:nth-child(2) > button',
   ),
   headerDom: doc.querySelector("body > header > div.bg-container"),
+  
   //   footer: doc.querySelector('footer'),
   linkToOurTeam: doc.querySelector('.about-us-link'),
   backdrop: doc.querySelector('.backdrop-our-team'),
   ourTeamList: doc.querySelector('.our-team-list'),
   cardContainer: doc.querySelector('.movie-gallery-list'),
-
+  
   addError: doc.querySelector('[data-action="add-error"]'),
   //movie-card-modal
   movieCardBackdrop: doc.querySelector('.backdrop-movie-card'),
