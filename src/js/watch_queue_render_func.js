@@ -7,9 +7,13 @@ refs.buttons.addEventListener('click', onMyLibBtnsClick);
 refs.myLibBtn.addEventListener('click', onMyLibClick);
 refs.homeBtn.addEventListener('click', onHomeBtnClick);
 
+
+
 function onHomeBtnClick() {
   refs.cardContainer.innerHTML = '';
 
+  hideMyLibNotification();
+  setTimeout(() => setHomeHeight(), 200);
   correctionStyles();
   realLaunch(1);
 }
@@ -17,24 +21,30 @@ function onHomeBtnClick() {
 function onMyLibClick() {
   refs.cardContainer.innerHTML = '';
   setTimeout(() => refs.pagination.classList.add('visually-hidden'), 200);
+  refs.addError.classList.add('visually-hidden');
 
-  let ids = getItemsFromStorage('watched')
+  let ids = getItemsFromStorage('watched');
+
+  setTimeout(() => setMyLibHeight(), 200);
 
   if (!ids) {
+    showMyLibNotification();
     return;
   }
-
-  fetchMoviesOnMyLibBtnsClick(ids)
+  hideMyLibNotification();
+  fetchMoviesOnMyLibBtnsClick(ids);
 }
 
 function onMyLibBtnsClick(event) {
   let ids = getItemsFromStorage(event.target.textContent)
 
   if (!ids) {
+    showMyLibNotification();
     return;
   }
 
-  fetchMoviesOnMyLibBtnsClick(ids)
+  hideMyLibNotification();
+  fetchMoviesOnMyLibBtnsClick(ids);
 }
 
 function fetchMoviesOnMyLibBtnsClick(idsForFetch) {
@@ -68,4 +78,23 @@ function correctionStyles() {
   refs.watchedButton.classList.add('active');
   refs.queueButton.classList.remove('active');
   setTimeout(() => refs.pagination.classList.remove('visually-hidden'), 200);
+}
+
+function setMyLibHeight() {
+  refs.gallery.classList.remove('calc-height-1');
+  refs.gallery.classList.add('calc-height-2');
+}
+
+function setHomeHeight() {
+  refs.gallery.classList.add('calc-height-1');
+  refs.gallery.classList.remove('calc-height-2');
+}
+
+function showMyLibNotification() {
+  refs.cardContainer.innerHTML = '';
+  refs.notification.classList.remove('visually-hidden');
+}
+
+function hideMyLibNotification() {
+  refs.notification.classList.add('visually-hidden');
 }

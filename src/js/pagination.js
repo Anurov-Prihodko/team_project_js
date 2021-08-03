@@ -61,36 +61,49 @@ const miniRender = () => {
 }
 
 
-doc.querySelector(".pagination_list").addEventListener("click", (e, p = PAGES) => {
-    const event = e.path[0].textContent
-  
-      if (event === '->') {
-         ++p
-       }
-       else if (event === '<-') {
-         --p
-       }
-       else if (event === '.. .') {
-         p += 3
-       }
-       else if (event === '. ..') {
-         p -= 3
-      }
-    
-  else{
-      p = Number(event)
-  }
-  doc.getElementById('mov_gall').innerHTML = '';  
 
-  if (KeyAlpha !== '') {
-    // console.log(KeyAlpha, p)
-    threeSearch(KeyAlpha, p)
-  }
-    else
-    realLaunch(p)
+// console.log(doc.querySelectorAll(".pagination_items"))
+doc.getElementById("pag_list_id").addEventListener("click", (e) => { AutoProofreader(e) });
+
+
+
+
+const AutoProofreader = (e, p = PAGES) => {
+ 
+  const event = e.path[0].textContent
+  // console.log('event = ', event)
+  // console.log('doc.getElementById("pag_list_id") = ', doc.getElementById("pag_list_id").textContent)
+  
+  if (event !== doc.getElementById("pag_list_id").textContent) {
+  
+    if (event === '->') {
+      ++p
+    }
+    else if (event === '<-') {
+      --p
+    }
+    else if (event === '.. .') {
+      p += 3
+    }
+    else if (event === '. ..') {
+      p -= 3
+    }
     
+    else {
+      p = Number(event)
+    }
+    doc.getElementById('mov_gall').innerHTML = '';
+
+    if (KeyAlpha !== '') {
+      // console.log(KeyAlpha, p)
+      threeSearch(KeyAlpha, p)
+    }
+    else
+      realLaunch(p)
+  }
+  return
         
-});
+}
 
 
 
