@@ -43,8 +43,8 @@ const miniRender = () => {
     if (
       value === '. ..' ||
       value === '.. .' ||
-      value === '<-' ||
-      value === '->' ||
+      // value === '<-' ||
+      // value === '->' ||
       value === maxPAGES ||
       (value === 1 && index !== 0)
       ) element_li.classList = 'pagination_items noActiv'
