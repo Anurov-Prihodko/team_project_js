@@ -203,33 +203,86 @@ function clearFilmContainer() {
 // === lOCALSTORAGE BLOCK
 let massivFfilmsWatched = [];
 let massivFfilmsQueue = [];
+
 refs.modalCardForOneFilm.addEventListener('click', onClickInModal);
 function onClickInModal(event) {
+  const savedFilms = localStorage.getItem('watched')
   const btnWatched = document.getElementById('add-to-watched');
   const btnAddToQueue = document.getElementById('add-to-queue');
-  //const getMassivFfilmsWatchedFromLocal = localStorage.getItem('watched')
   const idFilmWatched = btnWatched.dataset.act;
-  if (event.target === btnWatched && btnWatched.textContent === 'delete from watched') {
-    const indexFilm = massivFfilmsWatched.indexOf(idFilmWatched);
-    console.log(massivFfilmsWatched);
-    massivFfilmsWatched.splice(indexFilm, 1);
-    localStorage.removeItem('watched');
-  }
-  if (event.target === btnWatched) {
-    // const idFilmWatched = btnWatched.dataset.act;
-    massivFfilmsWatched.push(idFilmWatched);
-    localStorage.setItem('watched', massivFfilmsWatched);
-    btnWatched.textContent = 'delete from watched';
-  }
-  if (event.target === btnAddToQueue) {
-    const idFilm = btnAddToQueue.dataset.act;
-    if (massivFfilmsQueue.includes(idFilm)) {
-      const indexFilm = massivFfilmsQueue.indexOf(idFilm);
-      massivFfilmsQueue.splice(indexFilm, 1);
+  const idFilmQ = btnAddToQueue.dataset.act;
+  
+  
+  if (event.target === btnWatched && btnWatched.textContent === 'add to watched') {
+    const savedFilms = localStorage.getItem('watched')
+    if (savedFilms) {
+      let newListFilms = []
+      newListFilms.push(savedFilms)
+      newListFilms.push(idFilmWatched)
+      localStorage.setItem('watched', newListFilms)
+      btnWatched.textContent = 'delete from watched';
+      return
     }
-    massivFfilmsQueue.push(idFilm);
-    localStorage.setItem('queue', massivFfilmsQueue);
-    btnAddToQueue.textContent = 'delete from Queue';
+    massivFfilmsWatched =[]
+    massivFfilmsWatched.push(idFilmWatched);
+    localStorage.setItem('watched', massivFfilmsWatched)
+    btnWatched.textContent = 'delete from watched';
+    return
+  }
+  if (event.target === btnWatched && btnWatched.textContent === 'delete from watched') {
+    const getFilms = localStorage.getItem('watched')
+    const stringForObj = getFilms.split(',')
+    stringForObj.forEach((el) => {
+      if (idFilmWatched === el) {
+        const indexEl = stringForObj.indexOf(idFilmWatched)
+        stringForObj.splice(indexEl, 1)
+        localStorage.setItem('watched', stringForObj)
+        btnWatched.textContent = 'add to watched'
+        if (stringForObj.length === 0) {
+          localStorage.removeItem('watched')
+        }
+      } return
+      
+    })
+
+  }
+   if (event.target === btnAddToQueue && btnAddToQueue.textContent==='add to queue') {
+    const savedFilmsQ = localStorage.getItem('queue')
+    if (savedFilmsQ) {
+      let newListFilmsQ = []
+      newListFilmsQ.push(savedFilmsQ)
+      newListFilmsQ.push(idFilmQ)
+      localStorage.setItem('queue', newListFilmsQ)
+      btnAddToQueue.textContent = 'delete from queue';
+      return
+    }
+     
+    massivFfilmsQueue = []
+    massivFfilmsQueue.push(idFilmQ);
+    localStorage.setItem('queue', massivFfilmsQueue)
+    btnAddToQueue.textContent = 'delete from queue';
+    return
+  }
+  if (event.target === btnAddToQueue && btnAddToQueue.textContent === 'delete from queue') {
+    const getFilmsQ = localStorage.getItem('queue')
+    const stringForObjQ = getFilmsQ.split(',')
+    stringForObjQ.forEach((el) => {
+      if (idFilmQ === el) {
+        const indexElQ = stringForObjQ.indexOf(idFilmQ)
+        stringForObjQ.splice(indexElQ, 1)
+        localStorage.setItem('queue', stringForObjQ)
+        btnAddToQueue.textContent = 'add to queue'
+        if (stringForObjQ.length === 0) {
+          localStorage.removeItem('queue')
+        }
+      } return
+      
+    })
+
   }
 }
-// === END lOCALSTORAGE BLOCK
+    
+
+
+  // === END lOCALSTORAGE BLOCK
+
