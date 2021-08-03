@@ -1,5 +1,6 @@
 html {
   box-sizing: border-box;
+  min-height: 100vh;
 }
 
 *,
@@ -39,6 +40,7 @@ body {
   color: var(--text-light-color);
   font-weight: 500;
   font-size: 12px;
+  min-height: 100vh;
 }
 
 // body.modal-open {

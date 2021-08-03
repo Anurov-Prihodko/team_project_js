@@ -12,6 +12,8 @@ refs.homeBtn.addEventListener('click', onHomeBtnClick);
 function onHomeBtnClick() {
   refs.cardContainer.innerHTML = '';
 
+  hideMyLibNotification();
+  setTimeout(() => setHomeHeight(), 200);
   correctionStyles();
   realLaunch(1);
 }
@@ -19,14 +21,17 @@ function onHomeBtnClick() {
 function onMyLibClick() {
   refs.cardContainer.innerHTML = '';
   setTimeout(() => refs.pagination.classList.add('visually-hidden'), 200);
+  refs.addError.classList.add('visually-hidden');
 
   let ids = getItemsFromStorage('watched');
 
+  setTimeout(() => setMyLibHeight(), 200);
+
   if (!ids) {
-    renderNotificationLibIsEmpty();
+    showMyLibNotification();
     return;
   }
-
+  hideMyLibNotification();
   fetchMoviesOnMyLibBtnsClick(ids);
 }
 
@@ -34,10 +39,11 @@ function onMyLibBtnsClick(event) {
   let ids = getItemsFromStorage(event.target.textContent)
 
   if (!ids) {
-    renderNotificationLibIsEmpty();
+    showMyLibNotification();
     return;
   }
 
+  hideMyLibNotification();
   fetchMoviesOnMyLibBtnsClick(ids);
 }
 
@@ -74,13 +80,21 @@ function correctionStyles() {
   setTimeout(() => refs.pagination.classList.remove('visually-hidden'), 200);
 }
 
-function renderNotificationLibIsEmpty() {
+function setMyLibHeight() {
+  refs.gallery.classList.remove('calc-height-1');
+  refs.gallery.classList.add('calc-height-2');
+}
+
+function setHomeHeight() {
+  refs.gallery.classList.add('calc-height-1');
+  refs.gallery.classList.remove('calc-height-2');
+}
+
+function showMyLibNotification() {
   refs.cardContainer.innerHTML = '';
-  refs.addError.classList.add('visually-hidden');
-  // refs.notification.removeEventListener();
-  refs.cardContainer.insertAdjacentHTML('beforeend',`
-    <div class="library-is-empty">
-      <strong>this list is empty...</strong>
-    </div>
-`);
+  refs.notification.classList.remove('visually-hidden');
+}
+
+function hideMyLibNotification() {
+  refs.notification.classList.add('visually-hidden');
 }
