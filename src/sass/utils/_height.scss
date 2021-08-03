@@ -1,0 +1,29 @@
+
+.calc-height-1 {
+    min-height: calc(100vh - 230px - 100.391px - 60px);
+}
+
+.calc-height-2 {
+    min-height: calc(100vh - 230px - 100.391px);
+}
+
+
+@media screen and (min-width: 768px) {
+.calc-height-1 {
+    min-height: calc(100vh - 230px - 77px - 60px);
+}
+
+.calc-height-2 {
+    min-height: calc(100vh - 230px - 77px);
+}
+}
+
+@media screen and (min-width: 1024px) {
+.calc-height-1 {
+    min-height: calc(100vh - 230px - 77px - 60px);
+}
+
+.calc-height-2 {
+    min-height: calc(100vh - 230px - 77px);
+    }
+}

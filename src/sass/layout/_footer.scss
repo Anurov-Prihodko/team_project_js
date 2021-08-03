@@ -22,7 +22,6 @@ ul {
 margin: auto;
 
     background-color: var(--minor-bcg-color);
-    max-width: 320px;
 }
 
 .footer .container {
@@ -59,8 +58,6 @@ color: var(--text-light-color);
 .footer {
     padding-top: 30px;
     padding-bottom: 28px;
-
-    max-width: 768px;
 }
 
 .container {
@@ -90,10 +87,6 @@ line-height: 1.188;
 /* ------------------DESKTOP ------------------*/
 
   @media screen and (min-width: 1024px) {  
-.footer {
-max-width: 1024px;
-}
-
 .container {
     width: 880px;
 }

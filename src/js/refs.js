@@ -45,6 +45,7 @@ const refs = {
   mobileWidht: 768,
   tabletWidth: 1024,
   pagination: document.querySelector('.pagination_box'),
-  notification: document.querySelector('.library-is-empty')
+  notification: document.querySelector('.library-is-empty'),
+  gallery: document.querySelector('.movie-gallery'),
 };
 export default refs;
