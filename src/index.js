@@ -172,9 +172,10 @@ let massivFfilmsQueue = [];
 
 refs.modalCardForOneFilm.addEventListener('click', onClickInModal);
 function onClickInModal(event) {
-  const savedFilms = localStorage.getItem('watched')
+  const savedFilms = localStorage.getItem('watched');
   const btnWatched = document.getElementById('add-to-watched');
   const btnAddToQueue = document.getElementById('add-to-queue');
+
   //const getMassivFfilmsWatchedFromLocal = localStorage.getItem('watched')
   const filmId = btnWatched.dataset.act;
   console.log(localStorage.getItem('watched'))
@@ -219,3 +220,4 @@ function onClickInModal(event) {
 
 // === END lOCALSTORAGE BLOCK
     
+
