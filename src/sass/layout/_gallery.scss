@@ -3,7 +3,6 @@
   position: relative;
 }
 .movie-error {
-  // border: 1px solid white;
   color: var(--the-lightest-text-color);
   background-color: var(--movie-error-color);
   box-shadow: 5px 5px 15px 5px var(--error-shadow-color);
@@ -18,8 +17,7 @@
   font-weight: 350;
   font-size: 20px;
   line-height: 18px;
-  // bottom: 205px;
-  // left: 8px;
+
   width: 280px;
   height: auto;
   padding: 20px;
@@ -31,8 +29,7 @@
     font-weight: 350;
     font-size: 28px;
     line-height: 14px;
-    // bottom: 195px;
-    // left: 124px;
+
     width: 480px;
     height: 76px;
     padding: 30px;
@@ -42,8 +39,7 @@
     font-weight: 450;
     font-size: 36px;
     line-height: 18px;
-    // bottom: 180px;
-    // left: 164px;
+
     width: 620px;
     height: 96px;
     padding: 38px;
@@ -75,8 +71,8 @@
   margin-bottom: 20px;
 
   transition-property: transform;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: var(--transition-time);
+  transition-timing-function: var(--time-function);
 
   &:hover,
   &:focus {
@@ -151,27 +147,31 @@
 
 .movie-gallery-item-title {
   padding-top: 10px;
-  font-family: Roboto;
+  font-family: var(--text-main-font);
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
   text-transform: uppercase;
-  color: #000000;
+  color: var(--text-dark-color);
 
   @media screen and (min-width: 768px) {
     line-height: 16px;
   }
 }
 
+body.dark-theme .movie-gallery-item-title {
+  color: var(--the-lightest-text-color);
+}
+
 .movie-gallery-item-genre {
   margin-right: 10px;
-  font-family: Roboto;
+  font-family: var(--text-main-font);
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
-  color: #ff6b08;
+  color: var(--accent-color);
 
   @media screen and (min-width: 768px) {
     line-height: 16px;
@@ -182,7 +182,7 @@
   width: 36px;
   height: 16px;
   display: flex;
-  font-family: Roboto;
+  font-family: var(--text-main-font);
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -192,8 +192,8 @@
   border-radius: 5px;
   text-transform: uppercase;
 
-  background-color: #ff6b08;
-  color: #ffffff;
+  background-color: var(--accent-color);
+  color: var(--the-lightest-text-color);
 }
 
 .movie-gallery-item-box {
