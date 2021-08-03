@@ -59,11 +59,11 @@ function cardsMarkUpForMovie({
           id = genre.name;
         }
       }
-      allGenres.push(id);
+      allGenres.push(' ' + id);
       // let twoGenres = [];
       if (allGenres.length > 3) {
         const twoGenres = allGenres.slice(0, 2);
-        twoGenres.push('Other');
+        twoGenres.push(' ' + 'Other');
         return twoGenres;
       }
       return allGenres;
