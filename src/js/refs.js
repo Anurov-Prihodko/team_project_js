@@ -44,6 +44,7 @@ const refs = {
   homeBtn: document.querySelector('#home'),
   mobileWidht: 768,
   tabletWidth: 1024,
-  pagination: document.querySelector('.pagination_box')
+  pagination: document.querySelector('.pagination_box'),
+  notification: document.querySelector('.library-is-empty')
 };
 export default refs;
