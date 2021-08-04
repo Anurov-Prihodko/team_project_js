@@ -5,31 +5,25 @@
   max-width: 480px;
   height: 230px;
   position: relative;
-  background-color: var(--minor-bcg-color);
+  background-color: rgb(36, 35, 35);
   -webkit-transition: background-image 0.4s ease-in-out;
-
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
   @media screen and (min-width: 768px) {
     max-width: 768px;
   }
   @media screen and (min-width: 1024px) {
-    max-width: 1600px;
+    max-width: 100%;
   }
 }
 .gradient-container {
   position: absolute;
-  max-width: 1600px;
+  width: 100%;
   height: 100%;
-
   background: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56));
 }
-
 .bg-container {
   position: absolute;
-  left: 50%;
-  transform: translatex(-50%);
-  width: 1600px;
+  width: 100%;
   height: 100%;
   -webkit-transition: background-image 0.4s ease-in-out;
   transition: background-image 0.4s ease-in-out;
@@ -37,7 +31,6 @@
   background-size: cover;
   background-position: center;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
   @media screen and (max-width: 767px) {
     @media screen and (min-device-pixel-ratio: 2) and (min-width: 320px),
       screen and (min-resolution: 192dpi) and (min-width: 320px),
@@ -77,7 +70,6 @@
     }
   }
 }
-
 .site-nav-item,
 .logo,
 .site-nav-link {
@@ -90,7 +82,6 @@
   align-items: center;
   text-align: center;
   z-index: 2;
-
   color: var(--the-lightest-text-color);
 }
 .site-nav-item {
@@ -127,12 +118,10 @@
   animation-fill-mode: forwards;
   transform-origin: center left;
 }
-
 @keyframes scale {
   0% {
     transform: scaleX(0);
   }
-
   100% {
     transform: scaleX(1);
   }
@@ -148,7 +137,6 @@
   }
   margin-left: 10px;
 }
-
 .container-navigation {
   display: flex;
   justify-content: space-between;
@@ -156,12 +144,10 @@
   padding-top: 41px;
   margin-bottom: 41px;
 }
-
 .site-nav {
   position: relative;
   display: flex;
 }
-
 .search {
   position: relative;
   margin: 0 auto;
@@ -182,24 +168,20 @@
   box-shadow: none;
   border-bottom: 0.5px solid var(--the-lightest-text-color);
   color: var(--the-lightest-text-color);
-
   &::placeholder {
     font-weight: normal;
     color: var(--the-lightest-text-color);
     opacity: 1;
     transition: opacity var(--transition-time) var(--time-function);
   }
-
   &:focus::placeholder {
     opacity: 0;
   }
-
   @media screen and(min-width: 768px) {
     width: 336px;
     font-size: 16px;
   }
 }
-
 .lib-header {
   -webkit-transition: background-image 0.4s ease-in-out;
   transition: background-image 0.4s ease-in-out;
@@ -246,7 +228,6 @@
     }
   }
 }
-
 .search-btn {
   position: absolute;
   outline: none;
@@ -256,7 +237,6 @@
   cursor: pointer;
   transform: scale(1);
   transition: transform var(--transition-time) var(--time-function);
-
   &:hover,
   &:focus {
     transform: scale(1.1);
@@ -270,24 +250,19 @@
   font-weight: 400;
   color: var(--alert-color);
 }
-
 //   Переключатель темы
-
 body {
   transition: color 1000ms cubic-bezier(0.4, 0, 0.2, 1),
     background-color 1000ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 body.light-theme {
   background-color: var(--minor-bcg-color);
   color: var(--accent-color);
 }
-
 body.dark-theme {
   background-color: var(--text-light-color);
   color: var(--minor-bcg-color);
 }
-
 /* THEME SWITCH */
 .theme-switch {
   display: flex;
@@ -312,7 +287,6 @@ body.dark-theme {
   margin-right: 3px;
   margin-left: 6px;
 }
-
 .theme-switch__control {
   display: flex;
   align-items: center;
@@ -323,7 +297,6 @@ body.dark-theme {
   border-radius: 10em;
   padding: 1px 0;
 }
-
 .theme-switch__toggle {
   position: absolute;
   left: 0;
@@ -335,7 +308,6 @@ body.dark-theme {
   width: 0;
   pointer-events: none;
 }
-
 .theme-switch__track {
   position: absolute;
   left: 0;
@@ -349,7 +321,6 @@ body.dark-theme {
   z-index: 1;
   cursor: pointer;
 }
-
 .theme-switch__marker {
   position: relative;
   background-color: var(--minor-bcg-color);
@@ -362,20 +333,16 @@ body.dark-theme {
   transform: translateX(1px);
   transition: transform 250ms var(--timing-function);
 }
-
 .theme-switch__toggle:checked + .theme-switch__track {
   background-color: #d3d3d4;
 }
-
 .theme-switch__toggle:checked ~ .theme-switch__marker {
   transform: translateX(15px);
 }
-
 .theme-switch__toggle:focus + .theme-switch__track,
 .theme-switch__toggle:active + .theme-switch__track {
   box-shadow: 0 0 0 3px #2196f3;
 }
-
 .spinner {
   position: relative;
   top: 280px;
