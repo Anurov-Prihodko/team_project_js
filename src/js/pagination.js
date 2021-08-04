@@ -75,6 +75,7 @@ const AutoProofreader = (e, p = PAGES) => {
   // console.log('doc.getElementById("pag_list_id") = ', doc.getElementById("pag_list_id").textContent)
   
   if (event !== doc.getElementById("pag_list_id").textContent) {
+    
   
     if (event === '->') {
       ++p
@@ -92,14 +93,20 @@ const AutoProofreader = (e, p = PAGES) => {
     else {
       p = Number(event)
     }
+    localStorage.setItem('home page main', p)
     doc.getElementById('mov_gall').innerHTML = '';
 
     if (KeyAlpha !== '') {
       // console.log(KeyAlpha, p)
       threeSearch(KeyAlpha, p)
     }
-    else
+    else      
       realLaunch(p)
+      doc.documentElement.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    
   }
   return
         
