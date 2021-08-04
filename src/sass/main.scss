@@ -9,8 +9,6 @@
 
 // COMPONENTS тут общие стили секций/блоков
 @import './components/btn_for_library';
-@import './components/logo';
-@import './components/modal_btn';
 @import './components/_annoying';
 
 // LAYOUT тут стили секций/блоков
@@ -20,7 +18,6 @@
 @import './layout/modal_one_film';
 @import './layout/gallery';
 @import './layout/main_header';
-//@import './layout/modal_one_film';
 @import './components/_my_library_notif.scss';
 @import './utils/_height.scss';
 

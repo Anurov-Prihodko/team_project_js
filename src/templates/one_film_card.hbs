@@ -1,7 +1,10 @@
 <article class='modal-movie-card'>
   <div class='modal-movie-card-image-wrapper'>
     {{#if filmData.poster_path}}
-      <img class='modal-movie-poster' src='https://image.tmdb.org/t/p/w300/{{filmData.poster_path}}' />
+      <img
+        class='modal-movie-poster'
+        src='https://image.tmdb.org/t/p/w300/{{filmData.poster_path}}'
+      />
     {{/if}}
   </div>
   <div class='modal-movie-description block-right'>
@@ -40,24 +43,29 @@
         id='add-to-watched'
         data-act='{{filmData.id}}'
       >
-   
-      {{#if storageStatus.watched}}
-      delete from watched
-      {{else}}
-      add to watched
-    {{/if}}
-      </button>
-      <button type='button' class='modal-btn add-to-queue' id='add-to-queue' data-act='{{filmData.id}}'>
 
-{{#if storageStatus.queue}}
-      delete from library
-      {{else}}
-      add to queue
-    {{/if}}
+        {{#if storageStatus.watched}}
+          delete from watched
+        {{else}}
+          add to watched
+        {{/if}}
+      </button>
+      <button
+        type='button'
+        class='modal-btn add-to-queue'
+        id='add-to-queue'
+        data-act='{{filmData.id}}'
+      >
+
+        {{#if storageStatus.queue}}
+          delete from library
+        {{else}}
+          add to queue
+        {{/if}}
 
       </button>
 
     </div>
-    <span class='modal-close-btn' filmData-close='close-tag'>&#10005;</span>
+    <span class='modal-close-btn' data-close='data-close'>&#10005;</span>
   </div>
 </article>

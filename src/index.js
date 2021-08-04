@@ -8,9 +8,6 @@ import { startSpinner, stopSpinner } from './js/spinner/spiner';
 import refs from './js/refs';
 import genres from './js/genres';
 
-import btnForLibrary from './templates/btn_for_library.hbs';
-import inputHeader from './templates/input_header.hbs';
-import severalFilmCard from './templates/several_film_card.hbs';
 import oneFilmCard from './templates/one_film_card.hbs';
 import galleryTpl from './templates/movie_gallery.hbs';
 import { fetchMovieByKeyword, fetchMovieById, fetchTrendingMovie } from './js/api_service';
@@ -80,9 +77,8 @@ function cardsMarkUpForMovie({
         <h2 class="movie-gallery-item-title" data-item="${id}">${original_title}</h2>
         <div class="movie-gallery-item-box" data-item="${id}">
             <p class="movie-gallery-item-genre" data-item="${id}">${genre_ids} | ${release_date}</p>
-            <span class="movie-gallery-item-rating">${vote_average}</span>
+            <span class="movie-gallery-item-rating" data-item="${id}">${vote_average}</span>
         </div>
-
     </div>
 </li>`;
 }
@@ -118,7 +114,7 @@ function errorMessage() {
 }
 // === END GALLERY BLOCK
 
-// === SEARCH MOVIE by keyword
+// === SEARCH MOVIE by keyword BLOCK
 refs.searchInput.addEventListener('submit', onSearch);
 
 function onSearch(event) {
@@ -153,18 +149,12 @@ function threeSearch(currentValue, p) {
     .then(stopSpinner);
 
   return;
-  // return clearInput();
 }
 
 function clearFilmContainer() {
   refs.cardContainer.innerHTML = '';
 }
-
-// === END SEARCH MOVIE by keyword
-
-// === PAGINATION BLOCK
-
-// === END PAGINATION BLOCK
+// === END SEARCH MOVIE by keyword BLOCK
 
 // === lOCALSTORAGE BLOCK
 let massivFfilmsWatched = [];
@@ -178,28 +168,20 @@ function onClickInModal(event) {
 
   //const getMassivFfilmsWatchedFromLocal = localStorage.getItem('watched')
   const filmId = btnWatched.dataset.act;
-  console.log(localStorage.getItem('watched'))
+  // console.log(localStorage.getItem('watched'));
   if (event.target === btnWatched && localStorage.getItem('watched')?.indexOf(filmId + '') > -1) {
     const indexFilm = massivFfilmsWatched.indexOf(filmId);
-    console.log(massivFfilmsWatched);
+    // console.log(massivFfilmsWatched);
     massivFfilmsWatched.splice(indexFilm, 1);
     localStorage.setItem('watched', massivFfilmsWatched);
     btnWatched.textContent = 'add to watched';
-  }
-  else if (event.target === btnWatched) {
+  } else if (event.target === btnWatched) {
     const filmId = btnWatched.dataset.act;
     massivFfilmsWatched.push(filmId);
     localStorage.setItem('watched', massivFfilmsWatched);
     btnWatched.textContent = 'delete from watched';
-  
   }
-  // if (event.target === btnWatched) {
-  //   // const filmId = btnWatched.dataset.act;
-  //   massivFfilmsWatched.push(filmId);
-  //   localStorage.setItem('watched', massivFfilmsWatched);
-  //   btnWatched.textContent = 'delete from watched';
-  // }
-  
+
   if (event.target === btnAddToQueue && localStorage.getItem('queue')?.indexOf(filmId + '') > -1) {
     console.log('test 1');
     const indexFilm = massivFfilmsQueue.indexOf(filmId);
@@ -207,17 +189,12 @@ function onClickInModal(event) {
     massivFfilmsQueue.splice(indexFilm, 1);
     localStorage.setItem('queue', massivFfilmsQueue);
     btnAddToQueue.textContent = 'add to queue';
-  }
-  else if (event.target === btnAddToQueue) {
+  } else if (event.target === btnAddToQueue) {
     const filmId = btnWatched.dataset.act;
     massivFfilmsQueue.push(filmId);
     localStorage.setItem('queue', massivFfilmsQueue);
     btnAddToQueue.textContent = 'delete from queue';
-   console.log('test 2');
+    console.log('test 2');
   }
-
 }
-
 // === END lOCALSTORAGE BLOCK
-    
-
