@@ -189,6 +189,7 @@ function onClickInModal(event) {
     massivFfilmsQueue.splice(indexFilm, 1);
     localStorage.setItem('queue', massivFfilmsQueue);
     btnAddToQueue.textContent = 'add to queue';
+    
   } else if (event.target === btnAddToQueue) {
     const filmId = btnWatched.dataset.act;
     massivFfilmsQueue.push(filmId);
