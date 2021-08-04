@@ -183,7 +183,7 @@ function onClickInModal(event) {
   }
 
   if (event.target === btnAddToQueue && localStorage.getItem('queue')?.indexOf(filmId + '') > -1) {
-    console.log('test 1');
+    // console.log('test 1');
     const indexFilm = massivFfilmsQueue.indexOf(filmId);
     console.log(massivFfilmsQueue);
     massivFfilmsQueue.splice(indexFilm, 1);
@@ -195,7 +195,7 @@ function onClickInModal(event) {
     massivFfilmsQueue.push(filmId);
     localStorage.setItem('queue', massivFfilmsQueue);
     btnAddToQueue.textContent = 'delete from queue';
-    console.log('test 2');
+    // console.log('test 2');
   }
 }
 // === END lOCALSTORAGE BLOCK
