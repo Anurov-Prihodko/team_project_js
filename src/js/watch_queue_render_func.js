@@ -27,7 +27,8 @@ function onHomeBtnClick() {
   hideMyLibNotification();
   setTimeout(() => setHomeHeight(), 200);
   correctionStyles();
-  realLaunch(1);
+  // realLaunch(1); !!!!!
+  realLaunch(Number(localStorage.getItem('home page main')))
 }
 
 function onMyLibClick() {

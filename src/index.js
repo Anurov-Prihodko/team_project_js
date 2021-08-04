@@ -114,9 +114,11 @@ const realLaunch = (pag = 1) => {
 };
 
 const PG = localStorage.getItem('home page main')
-console.log(PG)
+// console.log(PG)
 if (PG) realLaunch(Number(PG))
 else realLaunch()
+
+
 
 // ВЫЗЫВАЕТ НОТУ О ОШИБКЕ
 // noResults();
