@@ -36,9 +36,14 @@ const refs = {
   modalCardForOneFilm: doc.getElementById('12398'),
   modalCloseBtn: doc.querySelector('modal-close-btn'),
   //myLib
+  //mark//
+  watched: document.getElementById('watched'),
+  queue: document.getElementById('queue'),
+  //mark//
   buttons: doc.querySelector('.btn-lib-list'),
   myLibBtn: doc.querySelector('#my-library'),
   homeBtn: doc.querySelector('#home'),
+
   mobileWidht: 768,
   tabletWidth: 1024,
   pagination: doc.querySelector('.pagination_box'),

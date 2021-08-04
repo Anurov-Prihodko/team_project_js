@@ -84,6 +84,6 @@ function scrollToTop() {
   });
 }
 
-scrollToTopBtn.addEventListener('click', scrollToTop);
+// scrollToTopBtn.addEventListener('click', scrollToTop);
 
 refs.scrollToTopBtn.addEventListener('click', scrollToTop);

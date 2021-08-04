@@ -38,6 +38,7 @@ function onMovieCardClick(event) {
   }
 
   const id = event.target.getAttribute('data-item');
+  localStorage.setItem('current card', id)//! зловили картку
   addEventListenerOnEscKey();
   addEventListenerOnModalBackdrop();
 

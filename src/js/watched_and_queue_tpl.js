@@ -8,10 +8,10 @@ export default function renderWatchedAndQueue({
   release_date,
   vote_average,
 }) {
-  id = id ? id : 'Technical works are underway!';
+  id = id ? id : 'Technical works are underway!'; // ьак працювати не буде, проте смішно))
   original_title = original_title ? original_title : 'not yet announced';
   poster_path = poster_path ? `image.tmdb.org/t/p/w500/${poster_path}` : 'placeimg.com/270/340/any';
-  vote_average = vote_average ? vote_average : '-/-';
+  vote_average = vote_average ? vote_average : '--/--';
   release_date = release_date
     ? release_date.substring(0, release_date.length - 6)
     : 'Year not yet specified';
@@ -30,7 +30,7 @@ export default function renderWatchedAndQueue({
     return allGenres;
   }, []);
 
-  return `<li class="movie-gallery-item" data-item="${id}">
+  return `<li id="${id}" class="movie-gallery-item" data-item="${id}">
 
     <img class="movie-gallery-item-poster" src="https://image.tmdb.org/t/p/w500${poster_path}"
         alt="image card movie" data-item="${id}" />
