@@ -25,10 +25,8 @@ let KeyAlpha = '';
 let maxPAGES = 1;
 let paintedDots = 5; //тут можна змінити кількість відображених цифр (має бути /2 із решьою)
 let PAGES = 1; // початкова сторінка
-const doc = document
+const doc = document;
 ////
-
-  
 
 // === вызовы фетчей в консоль ===
 // fetchMovieById('496450').then(films => console.log(films));
@@ -89,12 +87,12 @@ function cardsMarkUpForMovie({
 const autoIn = arrey => {
   PAGES = arrey.page;
   maxPAGES = arrey.total_pages;
-  const pagItem = localStorage.getItem('home page main')
+  const pagItem = localStorage.getItem('home page main');
 
-  if (!pagItem) localStorage.setItem('home page main', PAGES) 
-    // realLaunch(pagItem)
+  if (!pagItem) localStorage.setItem('home page main', PAGES);
+  // realLaunch(pagItem)
   // else console.log(maxPAGES)
-  
+
   // localStorage.setItem('home page main', PAGES)
   miniRender();
   // console.log(PAGES)
@@ -113,12 +111,10 @@ const realLaunch = (pag = 1) => {
   // .then(miniRender(PAGES))
 };
 
-const PG = localStorage.getItem('home page main')
+const PG = localStorage.getItem('home page main');
 // console.log(PG)
-if (PG) realLaunch(Number(PG))
-else realLaunch()
-
-
+if (PG) realLaunch(Number(PG));
+else realLaunch();
 
 // ВЫЗЫВАЕТ НОТУ О ОШИБКЕ
 // noResults();
@@ -185,21 +181,20 @@ function onClickInModal(event) {
   const filmId = btnWatched.dataset.act;
   // console.log(localStorage.getItem('watched'));
   if (event.target === btnWatched && localStorage.getItem('watched')?.indexOf(filmId + '') > -1) {
-
     //! видалятор по кнопці add-to-watched
     // delCard('watched')
 
     const indexFilm = massivFfilmsWatched.indexOf(filmId);
-    
+
     massivFfilmsWatched.splice(indexFilm, 1);
     localStorage.setItem('watched', massivFfilmsWatched);
     btnWatched.textContent = 'add to watched';
 
     //mark//
-    const position = localStorage.getItem('position')
+    const position = localStorage.getItem('position');
     if (position === 'watched') {
-      console.log(position)
-      doc.getElementById(localStorage.getItem('current card')).remove()
+      console.log(position);
+      doc.getElementById(localStorage.getItem('current card')).remove();
     }
     //mark//
   } else if (event.target === btnWatched) {
@@ -207,7 +202,7 @@ function onClickInModal(event) {
     const filmId = btnWatched.dataset.act;
     massivFfilmsWatched.push(filmId);
     localStorage.setItem('watched', massivFfilmsWatched);
-    btnWatched.textContent = 'delete from watched';    
+    btnWatched.textContent = 'delete from watched';
   }
 
   if (event.target === btnAddToQueue && localStorage.getItem('queue')?.indexOf(filmId + '') > -1) {
@@ -219,14 +214,12 @@ function onClickInModal(event) {
     localStorage.setItem('queue', massivFfilmsQueue);
     btnAddToQueue.textContent = 'add to queue';
     //mark//
-    const position = localStorage.getItem('position')
+    const position = localStorage.getItem('position');
     if (position === 'queue') {
-      console.log(position)
-      doc.getElementById(localStorage.getItem('current card')).remove()
+      console.log(position);
+      doc.getElementById(localStorage.getItem('current card')).remove();
     }
     //mark//
-
-    
   } else if (event.target === btnAddToQueue) {
     const filmId = btnWatched.dataset.act;
     massivFfilmsQueue.push(filmId);
@@ -237,40 +230,30 @@ function onClickInModal(event) {
 }
 // === END lOCALSTORAGE BLOCK
 
-const delCard = (posi) => {
-  const position = localStorage.getItem('position')
-  const card = localStorage.getItem('current card')
-  console.log('posi = ', posi)
-  console.log('position = ', position)
+const delCard = posi => {
+  const position = localStorage.getItem('position');
+  const card = localStorage.getItem('current card');
+  console.log('posi = ', posi);
+  console.log('position = ', position);
 
   if (position === 'watched' && card) {
     // const watched = localStorage.getItem('watched')
-    const watched = JSON.parse(localStorage.getItem('watched'))
-    console.log(JSON.parse(watched))
-
-
-
+    const watched = JSON.parse(localStorage.getItem('watched'));
+    console.log(JSON.parse(watched));
 
     // doc.getElementById(card).remove()
     // localStorage.removeItem('current card')
 
-    console.log('watched')
+    console.log('watched');
     // console.log('card = ', card)
     // console.log(localStorage.getItem('position'))
-    
-    
   }
   if (position === 'queue' && card) {
     // console.log('card = ', card)
     // console.log(localStorage.getItem('position'))
-    console.log('queue')
-  
-    doc.getElementById(card).remove()
-    localStorage.removeItem('current card')
+    console.log('queue');
+
+    doc.getElementById(card).remove();
+    localStorage.removeItem('current card');
   }
-
-  
-  
-  
-
-}
+};
