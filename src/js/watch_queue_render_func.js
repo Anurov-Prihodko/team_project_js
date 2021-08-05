@@ -1,42 +1,57 @@
 import watchAndQueueTpl from './watched_and_queue_tpl';
 import refs from './refs';
-import { fetchMovieById } from './api_service';
+import {fetchMovieById} from './api_service';
 import { realLaunch } from '../index.js';
+const doc = document
 
 refs.buttons.addEventListener('click', onMyLibBtnsClick);
 refs.myLibBtn.addEventListener('click', onMyLibClick);
 refs.homeBtn.addEventListener('click', onHomeBtnClick);
 
+doc.querySelector('.logo').addEventListener('click', initial)
+
+function initial() {
+  localStorage.setItem('home page main', '')
+}
+
 //mark//
 refs.watched.addEventListener('click', watched);
 refs.queue.addEventListener('click', queue);
 
-function queue() {
-  localStorage.setItem('position', 'queue');
-  // console.log('queue!!!!')
+function queue() {   
+  localStorage.setItem('position', 'queue')
 }
 function watched() {
-  localStorage.setItem('position', 'watched');
-  // console.log('watched!!!!')
+  localStorage.setItem('position', 'watched') 
 }
 //mark//
 
 function onHomeBtnClick() {
+  doc.getElementById('home').lastChild.textContent = 'HOME'
+  localStorage.setItem('position', '')  
+  // refs.homeLab.textContent = 'HOME'
+  
   refs.cardContainer.innerHTML = '';
 
   hideMyLibNotification();
   setTimeout(() => setHomeHeight(), 200);
   correctionStyles();
   // realLaunch(1); !!!!!
-  realLaunch(Number(localStorage.getItem('home page main')));
+  // localStorage.setItem('watched')
+
+  realLaunch(Number(localStorage.getItem('home page main')))
 }
+
+
 
 function onMyLibClick() {
   //mark//
-  localStorage.setItem('position', 'watched');
-  refs.watchedButton.classList.add('active');
+  localStorage.setItem('position', 'watched')
+  refs.watchedButton.classList.add('active');  
   refs.queueButton.classList.remove('active');
-  //mark//
+  document.getElementById('home').lastChild.textContent = 'BACK'  
+
+  //mark// 
 
   refs.cardContainer.innerHTML = '';
   setTimeout(() => refs.pagination.classList.add('visually-hidden'), 200);
@@ -54,30 +69,34 @@ function onMyLibClick() {
   fetchMoviesOnMyLibBtnsClick(ids);
 }
 
-function onMyLibBtnsClick(event) {
-  // localStorage.setItem('position', 'watched')
-
-  let ids = getItemsFromStorage(event.target.textContent);
-  console.log('ids = ', ids);
+function onMyLibBtnsClick(event) {  
+  
+  let ids = getItemsFromStorage(event.target.textContent)
 
   if (!ids) {
-    showMyLibNotification();
+    showMyLibNotification();    
     return;
-  } else hideMyLibNotification();
+  }
+  else  
+
+  hideMyLibNotification();
   fetchMoviesOnMyLibBtnsClick(ids);
 }
 
 function fetchMoviesOnMyLibBtnsClick(idsForFetch) {
-  refs.cardContainer.innerHTML = '';
+    refs.cardContainer.innerHTML = '';
 
   const allPromises = idsForFetch.map(id => fetchMovieById(id));
 
-  Promise.all(allPromises).then(response => response.map(result => renderCardsFromStorage(result)));
+  Promise.all(allPromises)
+    .then(response => response.map(result => renderCardsFromStorage(result)));
 }
 
+
+  
 function getItemsFromStorage(key) {
   const idFromStorage = localStorage.getItem(key);
-  if (!idFromStorage) return;
+  if (!idFromStorage) return
   return idFromStorage.split(',');
 }
 
@@ -91,7 +110,7 @@ function correctionStyles() {
   refs.libButton.classList.remove('current');
   refs.homeButton.classList.add('current');
   refs.headerDom.classList.remove('lib-header');
-  refs.watchedButton.classList.add('active');
+  refs.watchedButton.classList.add('active');  
   refs.queueButton.classList.remove('active');
   setTimeout(() => refs.pagination.classList.remove('visually-hidden'), 200);
 }
@@ -113,4 +132,5 @@ function showMyLibNotification() {
 
 function hideMyLibNotification() {
   refs.notification.classList.add('visually-hidden');
+
 }
