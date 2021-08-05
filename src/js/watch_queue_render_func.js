@@ -78,7 +78,7 @@ function onMyLibBtnsClick(event) {
   
   
   let ids = getItemsFromStorage(event.target.textContent)
-  console.log('ids = ', ids)
+  // console.log('ids = ', ids)
 
   if (!ids) {
     showMyLibNotification();    

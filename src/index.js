@@ -183,6 +183,7 @@ function clearFilmContainer() {
 let massivFfilmsWatched = localStorage.getItem('watched') === null ? [] : localStorage.getItem('watched').split(',')
 let massivFfilmsQueue = localStorage.getItem('queue') === null ? [] : localStorage.getItem('queue').split(',')
 
+
 refs.modalCardForOneFilm.addEventListener('click', onClickInModal);
 function onClickInModal(event) {
   const savedFilms = localStorage.getItem('watched');
@@ -195,17 +196,21 @@ function onClickInModal(event) {
   if (event.target === btnWatched && localStorage.getItem('watched')?.indexOf(filmId + '') > -1) {
     //! видалятор по кнопці add-to-watched
     // delCard('watched')
+    // document.querySelector('.library-is-empty').classList.remove('visually-hidden')///////////////
 
     const indexFilm = massivFfilmsWatched.indexOf(filmId);
+    // console.log(document.querySelector('.library-is-empty'))
 
     massivFfilmsWatched.splice(indexFilm, 1);
+    if (massivFfilmsWatched.length === 0)
+      document.querySelector('.library-is-empty').classList.remove('visually-hidden')
     localStorage.setItem('watched', massivFfilmsWatched);
     btnWatched.textContent = 'add to watched';
 
     //mark//
     const position = localStorage.getItem('position');
     if (position === 'watched') {
-      console.log(position);
+      // console.log(position);
       doc.getElementById(localStorage.getItem('current card')).remove();
     }
 
@@ -226,11 +231,13 @@ function onClickInModal(event) {
     // console.log(massivFfilmsQueue);
     massivFfilmsQueue.splice(indexFilm, 1);
     localStorage.setItem('queue', massivFfilmsQueue);
+    if (massivFfilmsQueue.length === 0)
+      document.querySelector('.library-is-empty').classList.remove('visually-hidden')
     btnAddToQueue.textContent = 'add to queue';
     //mark//
     const position = localStorage.getItem('position');
     if (position === 'queue') {
-      console.log(position);
+      // console.log(position);
       doc.getElementById(localStorage.getItem('current card')).remove();
       // localStorage.setItem('current card', '')
     }
@@ -245,30 +252,4 @@ function onClickInModal(event) {
 }
 // === END lOCALSTORAGE BLOCK
 
-const delCard = posi => {
-  const position = localStorage.getItem('position');
-  const card = localStorage.getItem('current card');
-  console.log('posi = ', posi);
-  console.log('position = ', position);
 
-  if (position === 'watched' && card) {
-    // const watched = localStorage.getItem('watched')
-    const watched = JSON.parse(localStorage.getItem('watched'));
-    console.log(JSON.parse(watched));
-
-    // doc.getElementById(card).remove()
-    // localStorage.removeItem('current card')
-
-    console.log('watched');
-    // console.log('card = ', card)
-    // console.log(localStorage.getItem('position'))
-  }
-  if (position === 'queue' && card) {
-    // console.log('card = ', card)
-    // console.log(localStorage.getItem('position'))
-    console.log('queue');
-
-    doc.getElementById(card).remove();
-    localStorage.removeItem('current card');
-  }
-};
