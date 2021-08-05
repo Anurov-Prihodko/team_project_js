@@ -7,6 +7,13 @@ refs.buttons.addEventListener('click', onMyLibBtnsClick);
 refs.myLibBtn.addEventListener('click', onMyLibClick);
 refs.homeBtn.addEventListener('click', onHomeBtnClick);
 
+document.querySelector('.logo').addEventListener('click', initial)
+
+function initial() {
+  localStorage.setItem('home page main', '')
+  // console.log('ok')
+}
+
 //mark//
 refs.watched.addEventListener('click', watched);
 refs.queue.addEventListener('click', queue);
@@ -22,6 +29,9 @@ function watched() {
 //mark//
 
 function onHomeBtnClick() {
+  document.getElementById('home').lastChild.textContent = 'HOME'
+  localStorage.setItem('position', '')
+  
   refs.cardContainer.innerHTML = '';
 
   hideMyLibNotification();
@@ -31,11 +41,20 @@ function onHomeBtnClick() {
   realLaunch(Number(localStorage.getItem('home page main')))
 }
 
+
+// console.log(document.getElementsByClassName('.modal-movie-card-container'))
+
 function onMyLibClick() {
   //mark//
   localStorage.setItem('position', 'watched')
   refs.watchedButton.classList.add('active');  
   refs.queueButton.classList.remove('active');
+
+  document.getElementById('home').lastChild.textContent = 'BACK'
+
+  
+  // console.log(document.getElementsByClassName('.site-nav-link'))
+  // console.log(refs.homeBtn.textContent = 'BACK')
   //mark// 
 
   refs.cardContainer.innerHTML = '';

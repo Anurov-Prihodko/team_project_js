@@ -113,8 +113,15 @@ const realLaunch = (pag = 1) => {
 
 const PG = localStorage.getItem('home page main');
 // console.log(PG)
-if (PG) realLaunch(Number(PG));
-else realLaunch();
+if (PG) {
+  localStorage.setItem('position', '')
+  realLaunch(Number(PG))
+
+}
+else {
+  localStorage.setItem('position', '')
+  realLaunch()
+}
 
 // ВЫЗЫВАЕТ НОТУ О ОШИБКЕ
 // noResults();
@@ -167,6 +174,9 @@ function clearFilmContainer() {
 }
 // === END SEARCH MOVIE by keyword BLOCK
 
+// console.log(document.getElementById('my-library').lastChild.textContent = 'adasdlk')
+// document.getElementById('home').lastChild.textContent = 'BACK'
+
 // === lOCALSTORAGE BLOCK
 // let massivFfilmsWatched = []
 // let massivFfilmsQueue = []
@@ -198,6 +208,8 @@ function onClickInModal(event) {
       console.log(position);
       doc.getElementById(localStorage.getItem('current card')).remove();
     }
+
+    
     //mark//
   } else if (event.target === btnWatched) {
     // console.log('btnWatched = ', btnWatched);
@@ -220,6 +232,7 @@ function onClickInModal(event) {
     if (position === 'queue') {
       console.log(position);
       doc.getElementById(localStorage.getItem('current card')).remove();
+      // localStorage.setItem('current card', '')
     }
     //mark//
   } else if (event.target === btnAddToQueue) {
