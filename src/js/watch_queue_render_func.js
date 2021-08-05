@@ -28,7 +28,8 @@ function watched() {
 
 function onHomeBtnClick() {
   doc.getElementById('home').lastChild.textContent = 'HOME'
-  localStorage.setItem('position', '')
+  localStorage.setItem('position', '')  
+  // refs.homeLab.textContent = 'HOME'
   
   refs.cardContainer.innerHTML = '';
 
@@ -36,6 +37,8 @@ function onHomeBtnClick() {
   setTimeout(() => setHomeHeight(), 200);
   correctionStyles();
   // realLaunch(1); !!!!!
+  // localStorage.setItem('watched')
+
   realLaunch(Number(localStorage.getItem('home page main')))
 }
 
@@ -46,10 +49,8 @@ function onMyLibClick() {
   localStorage.setItem('position', 'watched')
   refs.watchedButton.classList.add('active');  
   refs.queueButton.classList.remove('active');
+  document.getElementById('home').lastChild.textContent = 'BACK'  
 
-  document.getElementById('home').lastChild.textContent = 'BACK'
-
-  
   //mark// 
 
   refs.cardContainer.innerHTML = '';

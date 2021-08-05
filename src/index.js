@@ -27,6 +27,20 @@ let paintedDots = 5; //тут можна змінити кількість ві�
 let PAGES = 1; // початкова сторінка
 const doc = document;
 
+// localStorage.setItem('position', '')
+// doc.getElementById(beginning)
+doc.getElementById('beginning').addEventListener('click', beginningOne);
+
+function beginningOne () {
+  localStorage.setItem('position', '')
+  localStorage.setItem('home page main', '')
+}
+
+
+// === вызовы фетчей в консоль ===
+// fetchMovieById('496450').then(films => console.log(films));
+// fetchMovieByKeyword('cat').then(films => console.log(films));
+// fetchTrendingMovie().then(films => console.log(films));
 
 // === GALLERY BLOCK === Функция рендеринга галереи
 function cardsMarkUpForMovie({
@@ -80,12 +94,11 @@ function cardsMarkUpForMovie({
 }
 
 const autoIn = arrey => {
-  PAGES = arrey.page;
-  maxPAGES = arrey.total_pages;
+  PAGES = arrey.page
+  maxPAGES = arrey.total_pages
   const pagItem = localStorage.getItem('home page main')
 
   if (!pagItem) localStorage.setItem('home page main', PAGES)
-
   miniRender()
   return arrey
 };
@@ -116,13 +129,13 @@ else {
 // noResults();
 
 function errorMessage() {
-  refs.cardContainer.innerHTML = '';
-  refs.addError.classList.remove('visually-hidden');
+  refs.cardContainer.innerHTML = ''
+  refs.addError.classList.remove('visually-hidden')
 }
 // === END GALLERY BLOCK
 
 // === SEARCH MOVIE by keyword BLOCK
-refs.searchInput.addEventListener('submit', onSearch);
+refs.searchInput.addEventListener('submit', onSearch)
 
 function onSearch(event) {
   threeSearch(twoSearch(event));
@@ -209,6 +222,9 @@ function onClickInModal(event) {
   if (event.target === btnAddToQueue && localStorage.getItem('queue')?.indexOf(filmId + '') > -1) {
     const indexFilm = massivFfilmsQueue.indexOf(filmId);
     massivFfilmsQueue.splice(indexFilm, 1);
+    
+    
+    
     localStorage.setItem('queue', massivFfilmsQueue);
     if (massivFfilmsQueue.length === 0) {
       localStorage.removeItem('queue')
@@ -225,10 +241,9 @@ function onClickInModal(event) {
   } else if (event.target === btnAddToQueue) {
     const filmId = btnWatched.dataset.act;
     massivFfilmsQueue.push(filmId);
-    localStorage.setItem('queue', massivFfilmsQueue);
+    localStorage.setItem('queue', massivFfilmsQueue);    
     btnAddToQueue.textContent = 'delete from queue';
   }
 }
 // === END lOCALSTORAGE BLOCK
-
 

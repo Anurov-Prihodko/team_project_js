@@ -8,6 +8,8 @@ const refs = {
     'body > header > div.container > div > nav > ul > li:nth-child(1) > a',
   ),
   searchInput: doc.querySelector('#search-form'),
+  // doc: doc,
+  homeLab: doc.querySelector('.site-nav-link'),
   input: doc.querySelector('.search-input'),
   btnList: doc.querySelector('body > header > div.container > ul'),
   watchedButton: doc.querySelector('body > header > div.container > ul > li:nth-child(1) > button'),
