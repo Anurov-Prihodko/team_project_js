@@ -21,8 +21,9 @@ function onOurTeamLinkClick(event) {
   addEventListenerOnBackdrop();
 
   renderOurTeamCards(ourTeamCards);
-  refs.backdrop.classList.remove('visually-hidden');
   refs.body.classList.add('scroll-hidden');
+  refs.backdrop.classList.remove('visually-hidden');
+  
 }
 
 /* Закрываем модалку при клике на бэкдроп или кнопку закрытия */
