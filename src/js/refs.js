@@ -37,8 +37,8 @@ const refs = {
   modalCloseBtn: doc.querySelector('modal-close-btn'),
   //myLib
   //mark//
-  watched: document.getElementById('watched'),
-  queue: document.getElementById('queue'),
+  watched: doc.getElementById('watched'),
+  queue: doc.getElementById('queue'),
   //mark//
   buttons: doc.querySelector('.btn-lib-list'),
   myLibBtn: doc.querySelector('#my-library'),

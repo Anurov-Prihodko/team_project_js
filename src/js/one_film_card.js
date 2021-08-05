@@ -23,7 +23,6 @@ function renderModalMovieCard(data) {
   }
   const card = filmTpl({ filmData: data, storageStatus });
   refs.modalMovieCardContainer.insertAdjacentHTML('beforeend', card);
-  // console.log(refs.modalMovieCardContainer)
   
 
 }
