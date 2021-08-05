@@ -1,6 +1,5 @@
 'use strict';
 import refs from './refs';
-const doc = document
 // Переключатель темы
 
 const Theme = {
@@ -8,7 +7,7 @@ const Theme = {
   DARK: 'dark-theme',
 };
 const { LIGHT, DARK } = Theme;
-const themeClassContainer = doc.body;
+const themeClassContainer = document.body;
 
 themeClassContainer.classList.add(
   localStorage.getItem('theme') === null ? Theme.LIGHT : localStorage.getItem('theme'),
@@ -33,49 +32,49 @@ refs.toggleSwitch.addEventListener('change', switchTheme, false);
 
 // Надоедалка
 
-// import BSN from 'bootstrap.native';
+import BSN from 'bootstrap.native';
 
-// const PROMPT_DELAY = 3000;
-// const MAX_PROMPT_ATTEMPTS = 3;
-// let promptCounter = 0;
-// let hasSubscribed = false;
-// const modal = new BSN.Modal('#subscription-modal');
-// const modalJoke = new BSN.Modal('#joke-modal');
+const PROMPT_DELAY = 120000;
+const MAX_PROMPT_ATTEMPTS = 3;
+let promptCounter = 0;
+let hasSubscribed = false;
+const modal = new BSN.Modal('#subscription-modal');
+const modalJoke = new BSN.Modal('#joke-modal');
 
-// openModal();
+openModal();
 
-// refs.modal.addEventListener('hide.bs.modal', openModal);
-// refs.subscribeBtn.addEventListener('click', onSubscribeBtnClick);
+refs.modal.addEventListener('hide.bs.modal', openModal);
+refs.subscribeBtn.addEventListener('click', onSubscribeBtnClick);
 
-// function openModal() {
-//   if (promptCounter === MAX_PROMPT_ATTEMPTS || hasSubscribed) {
-//     console.log('Максимальное кол-во надоеданий или подписался');
-//     return;
-//   }
+function openModal() {
+  if (promptCounter === MAX_PROMPT_ATTEMPTS || hasSubscribed) {
+    
+    return;
+  }
 
-//   setTimeout(() => {
-//     // console.log('Открываем надоедалку');
-//     modal.show();
-//     promptCounter += 1;
-//   }, PROMPT_DELAY);
+  setTimeout(() => {
+    
+    modal.show();
+    promptCounter += 1;
+  }, PROMPT_DELAY);
 
-//   setTimeout(() => {
-//     const themeClassContainer = doc.body;
-//     themeClassContainer.style.overflow = "visible";
-//   }, 3050);
-// }
+  // setTimeout(() => {
+  //   const themeClassContainer = document.body;
+  //   themeClassContainer.style.overflow = "visible";
+  // }, 3050);
+}
 
-// function onSubscribeBtnClick() {
-//   hasSubscribed = true;
-//   //   modal.hide();
-//   modalJoke.show();
-//   const themeClassContainer = doc.body;
-//   themeClassContainer.style.overflow = "visible";
-// }
+function onSubscribeBtnClick() {
+  hasSubscribed = true;
+  //   modal.hide();
+  modalJoke.show();
+  // const themeClassContainer = document.body;
+  // themeClassContainer.style.overflow = "visible";
+}
 
 // Плавающая кнопка «наверх»
 
-const rootElement = doc.documentElement;
+const rootElement = document.documentElement;
 
 function scrollToTop() {
   // Scroll to top logic
@@ -85,6 +84,6 @@ function scrollToTop() {
   });
 }
 
-// scrollToTopBtn.addEventListener('click', scrollToTop);
+scrollToTopBtn.addEventListener('click', scrollToTop);
 
 refs.scrollToTopBtn.addEventListener('click', scrollToTop);
