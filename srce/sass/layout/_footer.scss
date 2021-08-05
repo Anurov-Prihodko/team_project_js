@@ -1,0 +1,261 @@
+/* ------------------MOBILE ------------------*/
+
+ul {
+  list-style: none;
+}
+
+.hearts-container {
+  position: relative;
+
+  width: 14px;
+  margin: 0 10px;
+}
+
+.hearts-container svg {
+  fill: var(--accent-color);
+}
+
+.footer {
+  padding-top: 28.71px;
+  padding-bottom: 29.7px;
+  max-width: 480px;
+  margin: auto;
+
+  background-color: var(--minor-bcg-color);
+}
+
+.footer .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-left: 28px;
+  padding-right: 16px;
+}
+
+.footer p,
+.footer a {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.143;
+
+  color: var(--text-light-color);
+}
+
+.developed-with {
+  display: flex;
+  flex-direction: row;
+
+  margin-top: 10px;
+}
+
+.pre {
+  white-space: pre;
+}
+/* ------------------TABLET ------------------*/
+
+@media screen and (min-width: 768px) {
+  .footer {
+    padding-top: 30px;
+    padding-bottom: 28px;
+
+    max-width: 768px;
+  }
+
+  .container {
+    width: 620px;
+  }
+
+  .footer .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    padding-left: 69px;
+    padding-right: 69px;
+  }
+
+  .footer p,
+  .footer a {
+    font-size: 16px;
+    line-height: 1.188;
+  }
+
+  .developed-with {
+    margin-top: 0;
+  }
+}
+
+/* ------------------DESKTOP ------------------*/
+@media screen and (min-width: 1024px) {
+  .footer {
+    padding-top: 30px;
+    padding-bottom: 28px;
+
+    max-width: 1600px;
+  }
+
+  .container {
+    width: 880px;
+  }
+
+  .footer .container {
+    padding-left: 72px;
+    padding-right: 72px;
+  }
+}
+
+/* ------------------ANIMATION ------------------*/
+
+.heart-static {
+  position: absolute;
+}
+
+.heart-animated1 {
+  position: absolute;
+
+  animation-name: move1;
+  animation-duration: 1.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.heart-animated2 {
+  position: absolute;
+
+  animation-name: move2;
+  animation-duration: 1.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-delay: 500ms;
+}
+
+.heart-animated3 {
+  position: absolute;
+
+  animation-name: move3;
+  animation-duration: 1.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-delay: 1000ms;
+}
+
+@keyframes move1 {
+  0% {
+    opacity: 0.8;
+    transform: translateX(-0px) translateY(0);
+  }
+
+  20% {
+    opacity: 0.6;
+    transform: translateX(-2px) translateY(-6px);
+  }
+
+  40% {
+    opacity: 0.4;
+    transform: translateX(-4px) translateY(-12px);
+  }
+
+  60% {
+    opacity: 0.2;
+    transform: translateX(-6px) translateY(-18px);
+  }
+
+  80% {
+    opacity: 0.1;
+    transform: translateX(-8px) translateY(-24px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-10px) translateY(-30px);
+  }
+}
+
+@keyframes move2 {
+  0% {
+    opacity: 0.8;
+    transform: translateY(0);
+  }
+
+  20% {
+    opacity: 0.6;
+    transform: translateY(-6px);
+  }
+
+  40% {
+    opacity: 0.4;
+    transform: translateY(-12px);
+  }
+
+  60% {
+    opacity: 0.2;
+    transform: translateY(-18px);
+  }
+
+  80% {
+    opacity: 0.1;
+    transform: translateY(-24px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+}
+
+@keyframes move3 {
+  0% {
+    opacity: 0.8;
+    transform: translateX(0px) translateY(0);
+  }
+
+  20% {
+    opacity: 0.6;
+    transform: translateX(2px) translateY(-6px);
+  }
+
+  40% {
+    opacity: 0.4;
+    transform: translateX(4px) translateY(-12px);
+  }
+
+  60% {
+    opacity: 0.2;
+    transform: translateX(6px) translateY(-18px);
+  }
+
+  80% {
+    opacity: 0.1;
+    transform: translateX(8px) translateY(-24px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(10px) translateY(-30px);
+  }
+}
+
+/* Плавающая кнопка «наверх»*/
+
+.footer {
+  position: relative;
+}
+
+#scrollToTopBtn {
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 48px;
+  width: 48px;
+  position: absolute;
+  bottom: 105px;
+  right: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  #scrollToTopBtn {
+    bottom: 85px;
+  }
+}

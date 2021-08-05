@@ -1,0 +1,71 @@
+<article class='modal-movie-card'>
+  <div class='modal-movie-card-image-wrapper'>
+    {{#if filmData.poster_path}}
+      <img
+        class='modal-movie-poster'
+        src='https://image.tmdb.org/t/p/w300/{{filmData.poster_path}}'
+      />
+    {{/if}}
+  </div>
+  <div class='modal-movie-description block-right'>
+    <h2 class='modal-movie-title'>{{filmData.original_title}}</h2>
+    <ul class='modal-movie-details list'>
+      <li class='modal-card-descriprion-item'>
+        <span class='descriprion-category rating'>Vote / Votes</span>
+        <span class='modal-movie-rating'>{{filmData.vote_average}}</span>
+
+        <span class='modal-movie-votes'> / {{filmData.vote_count}}</span>
+      </li>
+      <li class='modal-card-descriprion-item'>
+        <span class='descriprion-category'>Popularity</span>
+        <span>{{test.zhopa}}</span>
+        <span>{{filmData.popularity}}</span>
+      </li>
+      <li class='modal-card-descriprion-item'>
+        <span class='descriprion-category'>Original title</span>
+        <span>{{filmData.original_title}}</span>
+      </li>
+      <li class='modal-card-descriprion-item genre'>
+        <span class='descriprion-category'>Genre</span>
+        <div class='generes-wrapper'>
+          {{#each filmData.genres}}<span class='modal-genre'>{{this.name}}</span>{{/each}}
+        </div>
+      </li>
+    </ul>
+    <div class='modal-movie-about'>
+      <p class='modal-movie-about-title'>About </p>
+      <p class='modal-movie-about-description'>{{filmData.overview}}</p>
+    </div>
+    <div class='modal-btns-wrapper' id='add-to-library'>
+      <button
+        type='button'
+        class='modal-btn add-to-watched'
+        id='add-to-watched'
+        data-act='{{filmData.id}}'
+      >
+
+        {{#if storageStatus.watched}}
+          delete from watched
+        {{else}}
+          add to watched
+        {{/if}}
+      </button>
+      <button
+        type='button'
+        class='modal-btn add-to-queue'
+        id='add-to-queue'
+        data-act='{{filmData.id}}'
+      >
+
+        {{#if storageStatus.queue}}
+          delete from queue
+        {{else}}
+          add to queue
+        {{/if}}
+
+      </button>
+
+    </div>
+    <span class='modal-close-btn' data-close='data-close'>&#10005;</span>
+  </div>
+</article>

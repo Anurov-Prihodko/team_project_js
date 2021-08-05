@@ -1,0 +1,111 @@
+.pagination_box {
+  padding-bottom: 60px;
+  display: flex;
+}
+
+.pagination_div {
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pagination_list {
+  display: flex;
+}
+
+.pagination_items {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  margin-left: 5px;
+  margin-right: 5px;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.05);
+  }
+}
+
+// @media screen and (max-width: 760px) {
+//   // .pagination_list {
+//   //   max-width: 320px;
+//   // }
+// }
+@media screen and (max-width: 765px) {
+  .pagination_list {
+    max-width: 320px;
+  }
+  .pagination_items.noActiv {
+    // visibility: hidden;
+    display: none;
+  }
+}
+
+.pagination_items.center {
+  background: var(--accent-color);
+  color: var(--the-lightest-text-color);
+}
+.pagination_items.center:hover,
+.pagination_items.center:focus {
+  border: 1px solid var(--the-lightest-text-color);
+}
+.none {
+  display: none;
+}
+.noActiv {
+  // pointer-events: none;
+  cursor: unset;
+}
+
+.pagination_items.noActiv:hover,
+.pagination_items.noActiv:focus {
+  // pointer-events: none;
+  cursor: pointer;
+  border: 1px solid var(--accent-color);
+  // margin-left: 5px;
+  // margin-right: 5px;
+
+  //   -webkit-transform-origin: 1px 60px;
+  transform-origin: 1px 60px;
+}
+.pagination_items:hover,
+.pagination_items:focus {
+  cursor: pointer;
+  border: 1px solid var(--accent-color);
+  // margin-left: 5px;
+  // margin-right: 5px;
+
+  //   -webkit-transform-origin: 1px 60px;
+  transform-origin: 1px 60px;
+}
+.pagination_items:last-child,
+.pagination_items:first-child {
+  margin: 0px;
+}
+body.light-theme {
+  .pagination_list {
+    // border: 1px solid black;
+    color: var(--text-dark-color);
+  }
+}
+
+body.dark-theme {
+  .pagination_list {
+    // border: 1px solid var(--accent-color);
+    color: var(--the-lightest-text-color);
+    background: none;
+    .pagination_items.center {
+      color: var(--text-dark-color);
+      border: 1px solid var(--the-lightest-text-color);
+      background: none;
+    }
+  }
+}

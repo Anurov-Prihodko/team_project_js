@@ -1,0 +1,48 @@
+.library-is-empty {
+  color: var(--the-lightest-text-color);
+  background-color: var(--movie-error-color);
+  box-shadow: 5px 5px 15px 5px var(--error-shadow-color);
+  border-radius: 8px;
+
+  margin: auto;
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  font-weight: 350;
+  font-size: 20px;
+  line-height: 18px;
+  width: 280px;
+  height: auto;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  pointer-events: none;
+}
+
+
+@media screen and (min-width: 768px) {
+.library-is-empty {
+font-weight: 350;
+font-size: 28px;
+line-height: 14px;
+width: 480px;
+height: 76px;
+padding: 30px;
+}
+}
+
+@media screen and (min-width: 1024px) {
+.library-is-empty {
+font-weight: 450;
+font-size: 36px;
+line-height: 18px;
+width: 620px;
+height: 96px;
+padding: 38px;
+}
+}

@@ -2,10 +2,17 @@ import watchAndQueueTpl from './watched_and_queue_tpl';
 import refs from './refs';
 import {fetchMovieById} from './api_service';
 import { realLaunch } from '../index.js';
+const doc = document
 
 refs.buttons.addEventListener('click', onMyLibBtnsClick);
 refs.myLibBtn.addEventListener('click', onMyLibClick);
 refs.homeBtn.addEventListener('click', onHomeBtnClick);
+
+doc.querySelector('.logo').addEventListener('click', initial)
+
+function initial() {
+  localStorage.setItem('home page main', '')
+}
 
 //mark//
 refs.watched.addEventListener('click', watched);
@@ -13,29 +20,37 @@ refs.queue.addEventListener('click', queue);
 
 function queue() {   
   localStorage.setItem('position', 'queue')
-  // console.log('queue!!!!')
 }
 function watched() {
   localStorage.setItem('position', 'watched') 
-  // console.log('watched!!!!')
 }
 //mark//
 
 function onHomeBtnClick() {
+  doc.getElementById('home').lastChild.textContent = 'HOME'
+  localStorage.setItem('position', '')  
+  // refs.homeLab.textContent = 'HOME'
+  
   refs.cardContainer.innerHTML = '';
 
   hideMyLibNotification();
   setTimeout(() => setHomeHeight(), 200);
   correctionStyles();
   // realLaunch(1); !!!!!
+  // localStorage.setItem('watched')
+
   realLaunch(Number(localStorage.getItem('home page main')))
 }
+
+
 
 function onMyLibClick() {
   //mark//
   localStorage.setItem('position', 'watched')
   refs.watchedButton.classList.add('active');  
   refs.queueButton.classList.remove('active');
+  document.getElementById('home').lastChild.textContent = 'BACK'  
+
   //mark// 
 
   refs.cardContainer.innerHTML = '';
@@ -54,12 +69,9 @@ function onMyLibClick() {
   fetchMoviesOnMyLibBtnsClick(ids);
 }
 
-function onMyLibBtnsClick(event) {
-  // localStorage.setItem('position', 'watched')
-  
+function onMyLibBtnsClick(event) {  
   
   let ids = getItemsFromStorage(event.target.textContent)
-  console.log('ids = ', ids)
 
   if (!ids) {
     showMyLibNotification();    

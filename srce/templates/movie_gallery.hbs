@@ -1,0 +1,18 @@
+{{#each this.results}}
+
+<li class="movie-gallery-item" data-item="{{id}}">
+
+    <img class="movie-gallery-item-poster" src="https://image.tmdb.org/t/p/w500{{poster_path}}"
+        alt="image card movie" data-item="{{id}}" />
+
+    <div class="movie-gallery-item-description" data-item="{{id}}">
+        <h2 class="movie-gallery-item-title white-text" data-item="{{id}}">{{original_title}}</h2>
+        <div class="movie-gallery-item-box" data-item="{{id}}">
+            <p class="movie-gallery-item-genre" data-item="{{id}}">{{genre_ids}} | {{release_date}}</p>
+            <span class="movie-gallery-item-rating" data-item="{{id}}">{{vote_average}}</span>
+        </div>
+
+    </div>
+</li>
+
+{{/each}}

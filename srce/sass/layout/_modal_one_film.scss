@@ -1,0 +1,275 @@
+.backdrop-movie-card {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.644);
+
+  z-index: 100;
+}
+
+.modal-movie-card-container {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100vh;
+  width: 280px;
+  z-index: 101;
+
+  background-color: #fff;
+  border-radius: 2px;
+
+  overflow-y: auto;
+}
+
+.modal-movie-card {
+  position: relative;
+  padding-top: 48px;
+  padding-right: 20px;
+  padding-bottom: 41px;
+  padding-left: 20px;
+
+  width: 280px;
+  height: 100vh;
+  font-size: 12px;
+  font-weight: 500;
+  overflow-y: auto;
+
+  background-color: var(--the-lightest-text-color);
+  border-radius: 5px;
+  color: var(--text-dark-color);
+}
+
+.modal-movie-card-image-wrapper {
+  width: 240px;
+  height: 355px;
+  border-radius: 5px;
+}
+
+.modal-movie-description {
+  padding-top: 30px;
+}
+
+.modal-movie-title {
+  font-size: 20px;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.modal-movie-details {
+  padding-bottom: 20px;
+}
+
+.modal-card-descriprion-item {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  &:last-child {
+    margin-bottom: 0px;
+  }
+}
+
+.descriprion-category {
+  display: block;
+  width: 70px;
+  margin-right: 40px;
+  color: var(--text-light-color);
+}
+
+.modal-movie-rating {
+  margin-right: 3px;
+  width: 36px;
+  height: 16px;
+  display: flex;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  text-transform: uppercase;
+
+  background-color: var(--accent-color);
+  color: var(--the-lightest-text-color);
+}
+
+.modal-movie-votes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.descriprion-category.rating {
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-genre {
+  margin-right: 5px;
+}
+
+.modal-movie-about {
+  margin-bottom: 35px;
+}
+
+.modal-movie-about-title {
+  line-height: 1.33;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.modal-movie-about-description {
+  line-height: 1.67;
+}
+
+.modal-btns-wrapper {
+  display: flex;
+}
+
+.modal-btn {
+  padding-top: 6px;
+  padding-left: 6px;
+  padding-bottom: 6px;
+  padding-right: 6px;
+
+  width: 112.58px;
+  height: 44px;
+
+  background-color: var(--the-lightest-text-color);
+  border-radius: 5px;
+  border: 1px solid var(--text-dark-color);
+
+  line-height: 1.333;
+  color: var(--text-dark-color);
+  text-transform: uppercase;
+  align-items: center;
+  text-align: center;
+
+  cursor: pointer;
+
+  transition: color var(--transition-time) var(--time-function),
+    background-color var(--transition-time) var(--time-function);
+
+  &:not(:last-child) {
+    margin-right: 15px;
+  }
+  &:hover,
+  &:focus {
+    background-color: var(--accent-color);
+    color: var(--the-lightest-text-color);
+  }
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: transparent;
+  z-index: 105;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  cursor: pointer;
+
+  transition: background-color var(--transition-time) var(--time-function);
+  &:hover,
+  &:focus {
+    background-color: var(--bcg-color);
+  }
+}
+
+.close-btn-icon {
+  position: absolute;
+}
+
+.close-btn-icon {
+  cursor: pointer;
+
+  color: var(--text-dark-color);
+  z-index: 103;
+  fill: currentColor;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  fill: var(--accent-color);
+}
+
+@media screen and (min-width: 768px) {
+  .modal-movie-card-container {
+    max-height: 562px;
+    width: 618px;
+    overflow-y: auto;
+  }
+
+  .modal-movie-card {
+    display: flex;
+    max-height: 562px;
+    width: 618px;
+    overflow-y: auto;
+  }
+
+  img {
+    display: block;
+    max-width: 264px;
+    height: 375px;
+  }
+
+  .modal-movie-card-image-wrapper {
+    margin-right: 32px;
+    width: 264px;
+    height: 374px;
+  }
+
+  .modal-movie-description {
+    padding-top: 0px;
+  }
+  .modal-btn {
+    width: 136px;
+    height: 44px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  img {
+    display: block;
+    max-width: 396px;
+    height: 478px;
+  }
+
+  .modal-movie-card-container {
+    width: 882px;
+    max-height: 568px;
+  }
+
+  .modal-movie-card {
+    padding-top: 50px;
+    padding-left: 30px;
+    padding-bottom: 40px;
+    padding-right: 30px;
+
+    max-height: 568px;
+    width: 882px;
+  }
+
+  .modal-movie-card-image-wrapper {
+    width: 396px;
+    height: 478px;
+  }
+  .modal-btn {
+    width: 136px;
+    height: 44px;
+  }
+}

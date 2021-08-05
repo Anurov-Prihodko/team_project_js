@@ -1,0 +1,16 @@
+:root {
+  --bcg-color: rgba(229, 229, 229, 0.7);
+  --minor-bcg-color: #f7f7f7;
+  --accent-color: #ff6b08;
+  --alert-color: #ff001b;
+  --movie-error-color: lightgrey;
+  --error-shadow-color: rgb(131, 130, 127);
+
+  --text-dark-color: #000000;
+  --text-light-color: #545454;
+  --the-lightest-text-color: #ffffff;
+
+  --text-main-font: 'Roboto', sans-serif;
+  --time-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-time: 250ms;
+}

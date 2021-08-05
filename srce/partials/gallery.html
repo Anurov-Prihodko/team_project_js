@@ -1,0 +1,16 @@
+<!--
+=== нужно задать деволтную высоту контейнеру и динамически (js или через класс css) добавить
+текст если ничего не загрузилось (посередине, полупрозрачным или серым), например: "Please select a
+movie." === 
+-->
+<div class="container">
+  <section class="movie-gallery calc-height-1">
+    <div class="movie-error visually-hidden" data-action="add-error">
+      <strong>Oops, something went wrong...</strong>
+    </div>
+    <ul id="mov_gall" class="list movie-gallery-list"></ul>
+    <div class="library-is-empty visually-hidden">
+      <strong>this list is empty...</strong>
+    </div>
+  </section>
+</div>
