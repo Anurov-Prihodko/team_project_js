@@ -168,8 +168,10 @@ function clearFilmContainer() {
 // === END SEARCH MOVIE by keyword BLOCK
 
 // === lOCALSTORAGE BLOCK
-let massivFfilmsWatched = [];
-let massivFfilmsQueue = [];
+// let massivFfilmsWatched = []
+// let massivFfilmsQueue = []
+let massivFfilmsWatched = localStorage.getItem('watched') === null ? [] : localStorage.getItem('watched').split(',')
+let massivFfilmsQueue = localStorage.getItem('queue') === null ? [] : localStorage.getItem('queue').split(',')
 
 refs.modalCardForOneFilm.addEventListener('click', onClickInModal);
 function onClickInModal(event) {
