@@ -43,6 +43,7 @@ const refs = {
   //mark//
   watched: doc.getElementById('watched'),
   queue: doc.getElementById('queue'),
+  body: doc.getElementById('body'),
   //mark//
   buttons: doc.querySelector('.btn-lib-list'),
   myLibBtn: doc.querySelector('#my-library'),

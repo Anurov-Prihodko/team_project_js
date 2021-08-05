@@ -27,16 +27,26 @@ let paintedDots = 5; //тут можна змінити кількість ві�
 let PAGES = 1; // початкова сторінка
 const doc = document;
 
+
 try {
   const q = localStorage.getItem('queue').split(',').indexOf('')
   const w = localStorage.getItem('watched').split(',').indexOf('')
 
   // я горжуся що зміг полічити цей баг проявляєтся якщо в queue або watched поставити лишню кому на початку. цей баг я сам породив коли криво реалізував видалення останього елементу через localStorage.setItem('position', '')
-  if(w === 0 || q === 0) falsh()
-  // if(q === 0) falsh()
+  if (w === 0 || q === 0) {
+    setTimeout(() => console.log('повідомлння від <Terminator>'), 600)
+    setTimeout(() => console.log('                                    Приймете... ?'), 3200)
+    setTimeout(() => {
+      console.log('помилка localStorage : ушкодженs данні під ключами :')
+      console.log('')
+      console.log(`        || 'queue' = ${q}  || 'watched' = ${w} ||`)
 
-  console.log('q = ', q, 'w = ', w)
-  console.log('q = ', q, 'w = ', w)
+    }, 7200)
+    setTimeout(() => console.log('reboot... .'), 9000) 
+
+    falsh()
+  }
+  
 } catch {
   localStorage.removeItem('position')
   localStorage.removeItem('queue')

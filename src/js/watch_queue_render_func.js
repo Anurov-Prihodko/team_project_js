@@ -21,10 +21,17 @@ refs.queue.addEventListener('click', queue);
 
 function queue() {   
   localStorage.setItem('position', 'queue')
+  // refs.body.classList.remove('scroll-hidden');
+  // refs.backdrop.classList.add('visually-hidden');
+  setTimeout(() => refs.body.classList.remove('scroll-hidden'), 0)
+  // refs.body.classList.remove('scroll-hidden');
 }
 function watched() {
 
-  localStorage.setItem('position', 'watched') 
+  localStorage.setItem('position', 'watched')
+  // refs.body.classList.remove('scroll-hidden');
+  // refs.backdrop.classList.add('visually-hidden');
+  setTimeout(() => refs.body.classList.remove('scroll-hidden'), 0)
 }
 //mark//
 
@@ -52,13 +59,15 @@ function onMyLibClick() {
   localStorage.setItem('position', 'watched')
   refs.watchedButton.classList.add('active');  
   refs.queueButton.classList.remove('active');
+  // refs.body.classList.remove('scroll-hidden');
   // document.getElementById('home').lastChild.textContent = 'BACK'  
 
   //mark// 
 
   refs.cardContainer.innerHTML = '';
-  setTimeout(() => refs.pagination.classList.add('visually-hidden'), 200);
-  refs.addError.classList.add('visually-hidden');
+  refs.pagination.classList.add('visually-hidden')
+  // setTimeout(() => refs.pagination.classList.add('visually-hidden'), 200);
+  // refs.addError.classList.add('visually-hidden');
 
   let ids = getItemsFromStorage('watched');
 
