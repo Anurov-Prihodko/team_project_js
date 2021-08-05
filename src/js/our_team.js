@@ -22,6 +22,7 @@ function onOurTeamLinkClick(event) {
 
   renderOurTeamCards(ourTeamCards);
   refs.backdrop.classList.remove('visually-hidden');
+  refs.body.classList.add('scroll-hidden');
 }
 
 /* Закрываем модалку при клике на бэкдроп или кнопку закрытия */
@@ -33,6 +34,7 @@ function onbackdropClick(event) {
   removeEventListenerFromBackdrop();
   removeEventListenerFromEscKey();
   refs.backdrop.classList.add('visually-hidden');
+  refs.body.classList.remove('scroll-hidden');
   clearTeamMemberCards();
 }
 
