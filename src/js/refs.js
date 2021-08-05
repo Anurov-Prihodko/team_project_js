@@ -8,8 +8,6 @@ const refs = {
     'body > header > div.container > div > nav > ul > li:nth-child(1) > a',
   ),
   searchInput: doc.querySelector('#search-form'),
-  // doc: doc,
-  homeLab: doc.querySelector('.site-nav-link'),
   input: doc.querySelector('.search-input'),
   btnList: doc.querySelector('body > header > div.container > ul'),
   watchedButton: doc.querySelector('body > header > div.container > ul > li:nth-child(1) > button'),
@@ -39,8 +37,8 @@ const refs = {
   modalCloseBtn: doc.querySelector('modal-close-btn'),
   //myLib
   //mark//
-  watched: doc.getElementById('watched'),
-  queue: doc.getElementById('queue'),
+  watched: document.getElementById('watched'),
+  queue: document.getElementById('queue'),
   //mark//
   buttons: doc.querySelector('.btn-lib-list'),
   myLibBtn: doc.querySelector('#my-library'),

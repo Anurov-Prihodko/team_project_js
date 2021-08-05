@@ -1,6 +1,5 @@
 'use strict';
 import refs from './refs';
-const doc = document
 // Переключатель темы
 
 const Theme = {
@@ -8,7 +7,7 @@ const Theme = {
   DARK: 'dark-theme',
 };
 const { LIGHT, DARK } = Theme;
-const themeClassContainer = doc.body;
+const themeClassContainer = document.body;
 
 themeClassContainer.classList.add(
   localStorage.getItem('theme') === null ? Theme.LIGHT : localStorage.getItem('theme'),
@@ -60,7 +59,7 @@ refs.toggleSwitch.addEventListener('change', switchTheme, false);
 //   }, PROMPT_DELAY);
 
 //   setTimeout(() => {
-//     const themeClassContainer = doc.body;
+//     const themeClassContainer = document.body;
 //     themeClassContainer.style.overflow = "visible";
 //   }, 3050);
 // }
@@ -69,13 +68,13 @@ refs.toggleSwitch.addEventListener('change', switchTheme, false);
 //   hasSubscribed = true;
 //   //   modal.hide();
 //   modalJoke.show();
-//   const themeClassContainer = doc.body;
+//   const themeClassContainer = document.body;
 //   themeClassContainer.style.overflow = "visible";
 // }
 
 // Плавающая кнопка «наверх»
 
-const rootElement = doc.documentElement;
+const rootElement = document.documentElement;
 
 function scrollToTop() {
   // Scroll to top logic

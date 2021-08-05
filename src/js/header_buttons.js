@@ -29,3 +29,4 @@ refs.libButton.addEventListener('click', onClickLib);
 refs.homeButton.addEventListener('click', onClickHome);
 refs.watchedButton.addEventListener('click', onClickLibBtnWatched);
 refs.queueButton.addEventListener('click', onClickLibBtnQueue);
+// console.log(refs);

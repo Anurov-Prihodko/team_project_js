@@ -26,16 +26,7 @@ let maxPAGES = 1;
 let paintedDots = 5; //тут можна змінити кількість відображених цифр (має бути /2 із решьою)
 let PAGES = 1; // початкова сторінка
 const doc = document;
-
-// localStorage.setItem('position', '')
-// doc.getElementById(beginning)
-doc.getElementById('beginning').addEventListener('click', beginningOne);
-
-function beginningOne () {
-  localStorage.setItem('position', '')
-  localStorage.setItem('home page main', '')
-}
-
+////
 
 // === вызовы фетчей в консоль ===
 // fetchMovieById('496450').then(films => console.log(films));
@@ -94,13 +85,19 @@ function cardsMarkUpForMovie({
 }
 
 const autoIn = arrey => {
-  PAGES = arrey.page
-  maxPAGES = arrey.total_pages
-  const pagItem = localStorage.getItem('home page main')
+  PAGES = arrey.page;
+  maxPAGES = arrey.total_pages;
+  const pagItem = localStorage.getItem('home page main');
 
-  if (!pagItem) localStorage.setItem('home page main', PAGES)
-  miniRender()
-  return arrey
+  if (!pagItem) localStorage.setItem('home page main', PAGES);
+  // realLaunch(pagItem)
+  // else console.log(maxPAGES)
+
+  // localStorage.setItem('home page main', PAGES)
+  miniRender();
+  // console.log(PAGES)
+  // console.log(maxPAGES)
+  return arrey;
 };
 
 const realLaunch = (pag = 1) => {
@@ -109,33 +106,27 @@ const realLaunch = (pag = 1) => {
     .then(response => response.results)
     .then(response => {
       const cards = response.reduce((acc, film) => acc + cardsMarkUpForMovie(film), []);
-      refs.cardContainer.insertAdjacentHTML('beforeend', cards)
+      refs.cardContainer.insertAdjacentHTML('beforeend', cards);
     });
+  // .then(miniRender(PAGES))
 };
 
-const PG = localStorage.getItem('home page main')
+const PG = localStorage.getItem('home page main');
 // console.log(PG)
-if (PG) {
-  localStorage.setItem('position', '')
-  realLaunch(Number(PG))
-
-}
-else {
-  localStorage.setItem('position', '')
-  realLaunch()
-}
+if (PG) realLaunch(Number(PG));
+else realLaunch();
 
 // ВЫЗЫВАЕТ НОТУ О ОШИБКЕ
 // noResults();
 
 function errorMessage() {
-  refs.cardContainer.innerHTML = ''
-  refs.addError.classList.remove('visually-hidden')
+  refs.cardContainer.innerHTML = '';
+  refs.addError.classList.remove('visually-hidden');
 }
 // === END GALLERY BLOCK
 
 // === SEARCH MOVIE by keyword BLOCK
-refs.searchInput.addEventListener('submit', onSearch)
+refs.searchInput.addEventListener('submit', onSearch);
 
 function onSearch(event) {
   threeSearch(twoSearch(event));
@@ -176,11 +167,9 @@ function clearFilmContainer() {
 }
 // === END SEARCH MOVIE by keyword BLOCK
 
-
 // === lOCALSTORAGE BLOCK
-let massivFfilmsWatched = localStorage.getItem('watched') === null ? [] : localStorage.getItem('watched').split(',')
-let massivFfilmsQueue = localStorage.getItem('queue') === null ? [] : localStorage.getItem('queue').split(',')
-
+let massivFfilmsWatched = [];
+let massivFfilmsQueue = [];
 
 refs.modalCardForOneFilm.addEventListener('click', onClickInModal);
 function onClickInModal(event) {
@@ -188,31 +177,28 @@ function onClickInModal(event) {
   const btnWatched = doc.getElementById('add-to-watched');
   const btnAddToQueue = doc.getElementById('add-to-queue');
 
+  //const getMassivFfilmsWatchedFromLocal = localStorage.getItem('watched')
   const filmId = btnWatched.dataset.act;
+  // console.log(localStorage.getItem('watched'));
   if (event.target === btnWatched && localStorage.getItem('watched')?.indexOf(filmId + '') > -1) {
+    //! видалятор по кнопці add-to-watched
+    // delCard('watched')
 
     const indexFilm = massivFfilmsWatched.indexOf(filmId);
 
     massivFfilmsWatched.splice(indexFilm, 1);
     localStorage.setItem('watched', massivFfilmsWatched);
-
-
-    if (massivFfilmsWatched.length === 0) {
-      localStorage.removeItem('watched')
-      if (localStorage.getItem('position') === 'watched') doc.querySelector('.library-is-empty').classList.remove('visually-hidden')     
-    }
-    
     btnWatched.textContent = 'add to watched';
 
     //mark//
     const position = localStorage.getItem('position');
     if (position === 'watched') {
+      console.log(position);
       doc.getElementById(localStorage.getItem('current card')).remove();
     }
-
-    
     //mark//
   } else if (event.target === btnWatched) {
+    // console.log('btnWatched = ', btnWatched);
     const filmId = btnWatched.dataset.act;
     massivFfilmsWatched.push(filmId);
     localStorage.setItem('watched', massivFfilmsWatched);
@@ -220,30 +206,54 @@ function onClickInModal(event) {
   }
 
   if (event.target === btnAddToQueue && localStorage.getItem('queue')?.indexOf(filmId + '') > -1) {
+    // delCard('queue')
+    // console.log('test 1');
     const indexFilm = massivFfilmsQueue.indexOf(filmId);
+    // console.log(massivFfilmsQueue);
     massivFfilmsQueue.splice(indexFilm, 1);
-    
-    
-    
     localStorage.setItem('queue', massivFfilmsQueue);
-    if (massivFfilmsQueue.length === 0) {
-      localStorage.removeItem('queue')
-        if (localStorage.getItem('position') === 'queue') 
-          doc.querySelector('.library-is-empty').classList.remove('visually-hidden')
-    }
     btnAddToQueue.textContent = 'add to queue';
     //mark//
     const position = localStorage.getItem('position');
     if (position === 'queue') {
+      console.log(position);
       doc.getElementById(localStorage.getItem('current card')).remove();
     }
     //mark//
   } else if (event.target === btnAddToQueue) {
     const filmId = btnWatched.dataset.act;
     massivFfilmsQueue.push(filmId);
-    localStorage.setItem('queue', massivFfilmsQueue);    
+    localStorage.setItem('queue', massivFfilmsQueue);
     btnAddToQueue.textContent = 'delete from queue';
+    // console.log('test 2');
   }
 }
 // === END lOCALSTORAGE BLOCK
 
+const delCard = posi => {
+  const position = localStorage.getItem('position');
+  const card = localStorage.getItem('current card');
+  console.log('posi = ', posi);
+  console.log('position = ', position);
+
+  if (position === 'watched' && card) {
+    // const watched = localStorage.getItem('watched')
+    const watched = JSON.parse(localStorage.getItem('watched'));
+    console.log(JSON.parse(watched));
+
+    // doc.getElementById(card).remove()
+    // localStorage.removeItem('current card')
+
+    console.log('watched');
+    // console.log('card = ', card)
+    // console.log(localStorage.getItem('position'))
+  }
+  if (position === 'queue' && card) {
+    // console.log('card = ', card)
+    // console.log(localStorage.getItem('position'))
+    console.log('queue');
+
+    doc.getElementById(card).remove();
+    localStorage.removeItem('current card');
+  }
+};
