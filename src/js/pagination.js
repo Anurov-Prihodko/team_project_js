@@ -29,13 +29,10 @@ const dotsArrayNext = () => {
 
 
 const miniRender = () => {
-  // KeyAlpha = key
-  // console.log(KeyAlpha)
   const element_ul = doc.getElementById('pag_list_id')
   element_ul.innerHTML = '';
 
   dotsArrayNext().map((value, index) => {
-    // console.log(value)
 
     const element_li = doc.createElement('li')
     const content = doc.createTextNode(`${value}`)
@@ -56,13 +53,11 @@ const miniRender = () => {
   })
 
 
-  // return element_ul
   return 
 }
 
 
 
-// console.log(doc.querySelectorAll(".pagination_items"))
 doc.getElementById("pag_list_id").addEventListener("click", (e) => { AutoProofreader(e) });
 
 
@@ -71,8 +66,6 @@ doc.getElementById("pag_list_id").addEventListener("click", (e) => { AutoProofre
 const AutoProofreader = (e, p = PAGES) => {
  
   const event = e.path[0].textContent
-  // console.log('event = ', event)
-  // console.log('doc.getElementById("pag_list_id") = ', doc.getElementById("pag_list_id").textContent)
   
   if (event !== doc.getElementById("pag_list_id").textContent) {
     
@@ -97,7 +90,6 @@ const AutoProofreader = (e, p = PAGES) => {
     doc.getElementById('mov_gall').innerHTML = '';
 
     if (KeyAlpha !== '') {
-      // console.log(KeyAlpha, p)
       threeSearch(KeyAlpha, p)
     }
     else      
