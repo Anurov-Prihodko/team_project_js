@@ -27,14 +27,36 @@ let paintedDots = 5; //тут можна змінити кількість ві�
 let PAGES = 1; // початкова сторінка
 const doc = document;
 
+try {
+  const q = localStorage.getItem('queue').split(',').indexOf('')
+  const w = localStorage.getItem('watched').split(',').indexOf('')
+
+  // я горжуся що зміг полічити цей баг проявляєтся якщо в queue або watched поставити лишню кому на початку. цей баг я сам породив коли криво реалізував видалення останього елементу через localStorage.setItem('position', '')
+  if(w === 0 || q === 0) falsh()
+  // if(q === 0) falsh()
+
+  console.log('q = ', q, 'w = ', w)
+  console.log('q = ', q, 'w = ', w)
+} catch {
+  localStorage.removeItem('position')
+  localStorage.removeItem('queue')
+  localStorage.removeItem('watched')
+  localStorage.removeItem('current card')
+}
+
 // localStorage.setItem('position', '')
 // doc.getElementById(beginning)
 doc.getElementById('beginning').addEventListener('click', beginningOne);
 
 function beginningOne () {
-  localStorage.setItem('position', '')
-  localStorage.setItem('home page main', '')
+  localStorage.removeItem('position')
+  localStorage.removeItem('home page main')
+  // localStorage.setItem('position', '')
+  // localStorage.setItem('home page main', '')
 }
+
+
+
 
 
 // === вызовы фетчей в консоль ===
@@ -116,12 +138,14 @@ const realLaunch = (pag = 1) => {
 const PG = localStorage.getItem('home page main')
 // console.log(PG)
 if (PG) {
-  localStorage.setItem('position', '')
+  localStorage.removeItem('position')
+  // localStorage.setItem('position', '')
   realLaunch(Number(PG))
 
 }
 else {
-  localStorage.setItem('position', '')
+  // localStorage.setItem('position', '')
+  localStorage.removeItem('position')
   realLaunch()
 }
 

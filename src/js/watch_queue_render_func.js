@@ -11,7 +11,8 @@ refs.homeBtn.addEventListener('click', onHomeBtnClick);
 doc.querySelector('.logo').addEventListener('click', initial)
 
 function initial() {
-  localStorage.setItem('home page main', '')
+  // localStorage.setItem('home page main', '')
+  localStorage.removeItem('home page main')
 }
 
 //mark//
@@ -22,13 +23,15 @@ function queue() {
   localStorage.setItem('position', 'queue')
 }
 function watched() {
+
   localStorage.setItem('position', 'watched') 
 }
 //mark//
 
 function onHomeBtnClick() {
-  doc.getElementById('home').lastChild.textContent = 'HOME'
-  localStorage.setItem('position', '')  
+  // doc.getElementById('home').lastChild.textContent = 'HOME'
+  // localStorage.setItem('position', '')
+  localStorage.removeItem('position')
   // refs.homeLab.textContent = 'HOME'
   
   refs.cardContainer.innerHTML = '';
@@ -49,7 +52,7 @@ function onMyLibClick() {
   localStorage.setItem('position', 'watched')
   refs.watchedButton.classList.add('active');  
   refs.queueButton.classList.remove('active');
-  document.getElementById('home').lastChild.textContent = 'BACK'  
+  // document.getElementById('home').lastChild.textContent = 'BACK'  
 
   //mark// 
 
