@@ -48,12 +48,12 @@ refs.subscribeBtn.addEventListener('click', onSubscribeBtnClick);
 
 function openModal() {
   if (promptCounter === MAX_PROMPT_ATTEMPTS || hasSubscribed) {
-    console.log('Максимальное кол-во надоеданий или подписался');
+    
     return;
   }
 
   setTimeout(() => {
-    // console.log('Открываем надоедалку');
+    
     modal.show();
     promptCounter += 1;
   }, PROMPT_DELAY);
