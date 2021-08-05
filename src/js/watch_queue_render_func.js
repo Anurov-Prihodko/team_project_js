@@ -65,6 +65,7 @@ function onMyLibBtnsClick(event) {
     return;
   } else hideMyLibNotification();
   fetchMoviesOnMyLibBtnsClick(ids);
+  refs.body.classList.add('scroll-hidden');
 }
 
 function fetchMoviesOnMyLibBtnsClick(idsForFetch) {

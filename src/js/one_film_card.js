@@ -38,13 +38,14 @@ function onMovieCardClick(event) {
   }
 
   const id = event.target.getAttribute('data-item');
-  localStorage.setItem('current card', id)//! зловили картку
+  localStorage.setItem('current card', id); //! зловили картку
   addEventListenerOnEscKey();
   addEventListenerOnModalBackdrop();
 
   fetchMovieById(id).then(renderModalMovieCard);
 
   refs.movieCardBackdrop.classList.remove('visually-hidden');
+  refs.body.classList.add('scroll-hidden');
 }
 
 /* Закрываем модалку при клике на бэкдроп или кнопку закрытия */
@@ -57,7 +58,7 @@ function onMovieCardBackdropClick(event) {
   removeEventListenerFromEscKey();
 
   refs.movieCardBackdrop.classList.add('visually-hidden');
-
+  refs.body.classList.remove('scroll-hidden');
   clearModalMovieCard();
 }
 

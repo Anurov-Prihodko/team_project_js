@@ -1,6 +1,8 @@
 'use strict';
 const doc = document;
 const refs = {
+  body: doc.body,
+
   libButton: doc.querySelector(
     'body > header > div.container > div > nav > ul > li:nth-child(2) > a',
   ),
