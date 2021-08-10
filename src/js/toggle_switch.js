@@ -34,7 +34,7 @@ refs.toggleSwitch.addEventListener('change', switchTheme, false);
 
 import BSN from 'bootstrap.native';
 
-const PROMPT_DELAY = 120000;
+const PROMPT_DELAY = 80000;
 const MAX_PROMPT_ATTEMPTS = 3;
 let promptCounter = 0;
 let hasSubscribed = false;
@@ -48,12 +48,10 @@ refs.subscribeBtn.addEventListener('click', onSubscribeBtnClick);
 
 function openModal() {
   if (promptCounter === MAX_PROMPT_ATTEMPTS || hasSubscribed) {
-    
     return;
   }
 
   setTimeout(() => {
-    
     modal.show();
     promptCounter += 1;
   }, PROMPT_DELAY);
